@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "MenuLeft";
+
+}
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            @if (ViewBag.Role == 1301)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" id="Active_Topic" asp-controller="Topic" asp-action="Index">
+                        <i class="nav-icon iconmoon iconmoon-edittext"></i> @Localizer["danhmucsach"]
+                    </a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Doc" asp-action="Index">
+                        <i class="nav-icon iconmoon iconmoon-KhoaHocAdmin"></i> @Localizer["sach"]
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Index">
+                        <i class="nav-icon iconmoon iconmoon-QuanLyHSSV"></i> @Localizer["taikhoan"]
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="Active_Usergroup" asp-controller="UserGroup" asp-action="Index">
+                        <i class="nav-icon iconmoon iconmoon-GomNhom"></i> @Localizer["nhomtaikhoan"]
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="DocReadRequired" asp-action="Index">
+                        <i class="nav-icon iconmoon iconmoon-CapNhatNhiemVu"></i> @Localizer["phancongdocsach"]
+                    </a>
+                </li>
+            }
+            else{
+            <li class="nav-item">
+                <a class="nav-link" id="Active_Topic" asp-controller="Topic" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-edittext"></i> @Localizer["danhmucsach"]
+                </a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" asp-controller="Category" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-BaiTapDaGiao"></i> @Localizer["theloaisach"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="CopyRight" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-NhaQuanLy"></i> @Localizer["tacquyen"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Doc" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-KhoaHocAdmin"></i> @Localizer["sach"]
+                </a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" asp-controller="Docinterest" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-animation"></i> @Localizer["sachmoihay"]
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Account" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-QuanLyHSSV"></i> @Localizer["taikhoan"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="Active_Usergroup" asp-controller="UserGroup" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-GomNhom"></i> @Localizer["nhomtaikhoan"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="DocReadRequired" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-CapNhatNhiemVu"></i> @Localizer["phancongdocsach"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Organization" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-GiaoDucTrungHoc"></i> @Localizer["donvi/tochuc"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="RefMailTemplate" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-Email"></i> @Localizer["maumail"]
+                </a>
+            </li>
+            }
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Board</title>
+
+    <!--ẩn hộp url khi chọn thêm trang vào màn hình chính apple-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--icon-->
+    <link href="lib/icomoon/style.css" rel="stylesheet" />
+    <link href="lib/icomoon/style-ui.css" rel="stylesheet" />
+
+    <!--bundle-->
+    <link href="dist/css/bundle.min.css" rel="stylesheet" />
+    <script src="dist/js/bundle.min.js"></script>
+</head>
+<body class="overflow-hidden" style="background-color:#ddd;">
+    <div class="fixed-top overflow-hidden" style="top:0;left:0;right:0;bottom:0;line-height:0;">
+        <div id="container-canvas-main" class="position-absolute overflow-hidden" style="top:0;left:0;right:0;bottom:0;z-index:1;"></div>
+        <canvas id="canvas-temp" class="position-absolute" style="top:0;left:0;z-index:2;"></canvas>
+    </div>
+
+    <!--<section id="container-export" class="fixed-top" style="left:auto;">
+        <div class="dropdown">
+            <div class="iconmoon-btn p-2" style="line-height:0;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconmoon iconmoon-download iconmoon-primary"></i>
+            </div>
+            <div class="dropdown-menu p-0 m-0 rounded-0 border-0" style="min-width:40px;">
+                <a class="dropdown-item px-3 py-2" href="#">Export image</a>
+                <a class="dropdown-item px-3 py-2" href="#">Export data</a>
+            </div>
+        </div>
+    </section>-->
+
+    <section id="container-menu" class="fixed-top bg-light shadow" style="right:auto;">
+        <div id="menu-template" class="d-none">
+            <div class="border-bottom position-relative" style="border-color:#a6a6a6;">
+                <div class="position-absolute background" style="top:0;left:0;right:0;bottom:0;z-index:1;"></div>
+                <div class="position-relative p-1" style="z-index:2;">
+                    <img src="icon/5_move.png" width="32" height="32" />
+                </div>
+                <div class="position-absolute action" style="top:0;left:0;right:0;bottom:0;z-index:3;"></div>
+                <div class="position-absolute more" style="right:0;bottom:0;z-index:4;">
+                    <div class="dropdown dropright">
+                        <div class="iconmoon-btn iconmoon-btn-primary-hover" style="line-height:0;padding:3px;border-radius:2px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="iconmoon iconmoon-caret-bottom-right iconmoon-primary" style="font-size:6px;"></i>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-left border-0 p-0 m-0 rounded-0 shadow" style="width:200px;">
+                            <div class="color d-flex align-items-center justify-content-center flex-wrap py-2" style="line-height:0;font-size:18px;"></div>
+                            <div class="size py-2 px-3"></div>
+                            <div class="confirm py-2 px-2 text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-drag" class="px-1 py-2" style="cursor:move;">
+            <div class="pt-1 border" style="background-color:#bac2dc;border-style:dotted !important;"></div>
+        </div>
+        <hr class="m-0" />
+        <div id="menu" class="d-flex flex-column align-items-center justify-content-center" style="width:40px"></div>
+    </section>
+    <script>
+        window.addEventListener('load', function () {
+            $('#menu-drag').draggable({
+                opacity: 0.75,
+                drag: function (element, ui) {
+                    //limit current btn move
+                    ui.position.left = 0;
+                    ui.position.top = 0;
+
+                    //limit parent box move
+                    ui.offset.left = Math.max(0, ui.offset.left);
+                    ui.offset.left = Math.min(window.innerWidth - 40, ui.offset.left);
+                    ui.offset.top = Math.max(0, ui.offset.top);
+                    ui.offset.top = Math.min(window.innerHeight - 64, ui.offset.top);
+
+                    //set parent move
+                    $(element.target).parent().css({
+                        left: ui.offset.left,
+                        top: ui.offset.top,
+                        right: 'auto',
+                        bottom: 'auto'
+                    })
+                }
+            });
+        });
+    </script>
+
+    <section class="fixed-bottom bg-light shadow" style="left:auto;line-height:0;">
+        <div id="zoom" class="d-flex w-100 align-items-center text-center">
+            <div class="col-auto p-0 zoom-in">
+                <div class="p-2 iconmoon-btn"><i class="iconmoon iconmoon-ZoomIn"></i></div>
+            </div>
+            <div class="col p-0" style="min-width:60px;">
+                <span class="zoom-label">100%</span>
+            </div>
+            <div class="col-auto p-0 zoom-out">
+                <div class="p-2 iconmoon-btn"><i class="iconmoon iconmoon-ZoomOut"></i></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="baihoc" xml:space="preserve">
+    <value>Bài học</value>
+  </data>
+  <data name="baikiemtra" xml:space="preserve">
+    <value>Bài kiểm tra</value>
+  </data>
+  <data name="banchuachonloaicauhoi" xml:space="preserve">
+    <value>Bạn chưa chọn loại câu hỏi</value>
+  </data>
+  <data name="banchuachonmucdocauhoi" xml:space="preserve">
+    <value>Bạn chưa chọn mức độ câu hỏi</value>
+  </data>
+  <data name="bancochacchan" xml:space="preserve">
+    <value>Bạn có chắc chắn</value>
+  </data>
+  <data name="bat" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="cacphuonganchoncua" xml:space="preserve">
+    <value>Các phương án chọn của</value>
+  </data>
+  <data name="capnhat" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="capnhatbaikiemtra" xml:space="preserve">
+    <value>Cập nhật bài kiểm tra</value>
+  </data>
+  <data name="capnhatcauhoi" xml:space="preserve">
+    <value>Cập nhật câu hỏi</value>
+  </data>
+  <data name="capnhatcauhoithanhcong" xml:space="preserve">
+    <value>Cập nhật câu hỏi thành công</value>
+  </data>
+  <data name="capnhattacquyenthanhcong" xml:space="preserve">
+    <value>Cập nhật tác quyền thành công</value>
+  </data>
+  <data name="cau" xml:space="preserve">
+    <value>Câu</value>
+  </data>
+  <data name="cauhoi" xml:space="preserve">
+    <value>Câu hỏi</value>
+  </data>
+  <data name="cauhoichuaduocluuvaohethong" xml:space="preserve">
+    <value>Câu hỏi chưa được lưu vào hệ thống</value>
+  </data>
+  <data name="chinhsua" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="chitietketqualambaikiemtra" xml:space="preserve">
+    <value>Chi tiết kết quả làm bài kiểm tra</value>
+  </data>
+  <data name="chonbaihoc" xml:space="preserve">
+    <value>Chọn bài học</value>
+  </data>
+  <data name="chonloaicauhoi" xml:space="preserve">
+    <value>Chọn loại câu hỏi</value>
+  </data>
+  <data name="chonmucdocauhoi" xml:space="preserve">
+    <value>Chọn mức độ câu hỏi</value>
+  </data>
+  <data name="chuachondapan" xml:space="preserve">
+    <value>Chưa chọn đáp án</value>
+  </data>
+  <data name="chuacothongtinmaloi" xml:space="preserve">
+    <value>Chưa có thông tin mã lỗi</value>
+  </data>
+  <data name="dangthemcauhoi" xml:space="preserve">
+    <value>Đăng Thêm câu hỏi</value>
+  </data>
+  <data name="dangxuly" xml:space="preserve">
+    <value>Đang xử lý </value>
+  </data>
+  <data name="danhsachfileloi" xml:space="preserve">
+    <value>Danh sách file lỗi</value>
+  </data>
+  <data name="dapan" xml:space="preserve">
+    <value>Đáp án</value>
+  </data>
+  <data name="dasudung" xml:space="preserve">
+    <value>Đã sử dụng</value>
+  </data>
+  <data name="dichuyenlen" xml:space="preserve">
+    <value>Di chuyển lên</value>
+  </data>
+  <data name="dichuyenxuong" xml:space="preserve">
+    <value>Di chuyển xuống</value>
+  </data>
+  <data name="diem" xml:space="preserve">
+    <value>Điểm</value>
+  </data>
+  <data name="diemdat" xml:space="preserve">
+    <value>Điểm đạt</value>
+  </data>
+  <data name="diemdatkhongduocdetrong" xml:space="preserve">
+    <value>Điểm đạt không được để trống</value>
+  </data>
+  <data name="diemdatkhongduoclonhonthangdiem" xml:space="preserve">
+    <value>Điểm đạt không được lớn hơn thang điểm</value>
+  </data>
+  <data name="doitailen" xml:space="preserve">
+    <value>Đợi tải lên</value>
+  </data>
+  <data name="dong" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="dongy" xml:space="preserve">
+    <value>Đồng ý</value>
+  </data>
+  <data name="dung" xml:space="preserve">
+    <value>Đúng</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="gaploitrongquatrinhthemdulieu" xml:space="preserve">
+    <value>Gặp lỗi trong quá trình thêm dư liệu</value>
+  </data>
+  <data name="ghepphuongandung" xml:space="preserve">
+    <value>Ghép phương án đúng</value>
+  </data>
+  <data name="goiy" xml:space="preserve">
+    <value>Gợi ý</value>
+  </data>
+  <data name="hethongtuchoifile" xml:space="preserve">
+    <value>Hệ thống từ chối file</value>
+  </data>
+  <data name="hienthi" xml:space="preserve">
+    <value>Hiển thị</value>
+  </data>
+  <data name="huongdanlambaikiemtra" xml:space="preserve">
+    <value>Hướng dẫn làm bài kiểm tra</value>
+  </data>
+  <data name="huongdanlambaithi" xml:space="preserve">
+    <value>Hướng dẫn làm bài thi</value>
+  </data>
+  <data name="huongdannhapcauhoidienkhuyet" xml:space="preserve">
+    <value>Hướng dẫn nhập câu hỏi điền khuyết</value>
+  </data>
+  <data name="huy" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="ketqua" xml:space="preserve">
+    <value>Kết quả</value>
+  </data>
+  <data name="ketquabaikiemtra" xml:space="preserve">
+    <value>Kết quả bài kiểm tra</value>
+  </data>
+  <data name="khongthedichuyenlen" xml:space="preserve">
+    <value>Không thể di chuyển lên</value>
+  </data>
+  <data name="khongthedichuyenxuong" xml:space="preserve">
+    <value>Không thể di chuyển xuống</value>
+  </data>
+  <data name="khongtimthaydulieu" xml:space="preserve">
+    <value>Không tìm thấy dữ liệu</value>
+  </data>
+  <data name="khongtimthaydulieucauhoi" xml:space="preserve">
+    <value>Không tìm thấy dữ liệu câu hỏi</value>
+  </data>
+  <data name="kiemtradulieu" xml:space="preserve">
+    <value>Kiểm tra dữ liệu</value>
+  </data>
+  <data name="loaicauhoi" xml:space="preserve">
+    <value>Loại câu hỏi</value>
+  </data>
+  <data name="lochienthi" xml:space="preserve">
+    <value>Lọc hiển thị</value>
+  </data>
+  <data name="loi" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="loidocghicosodulieu" xml:space="preserve">
+    <value>Lỗi đọc ghi cơ sở dữ liệu</value>
+  </data>
+  <data name="luachontraloikhongduoctrungnhau" xml:space="preserve">
+    <value>Lựa chọn trả lời không được trùng nhau</value>
+  </data>
+  <data name="luulai" xml:space="preserve">
+    <value>Lưu lại</value>
+  </data>
+  <data name="moidapanchiduocdungcho1cauhoi" xml:space="preserve">
+    <value>Mỗi đáp án chỉ được dùng cho 1 câu hỏi</value>
+  </data>
+  <data name="moidapanchiduocdungcho1cauhoi1" xml:space="preserve">
+    <value>Mỗi đáp án chỉ được dùng cho 1 câu hỏi</value>
+  </data>
+  <data name="mucdocauhoi" xml:space="preserve">
+    <value>Mức độ câu hỏi</value>
+  </data>
+  <data name="ngaychinhsua" xml:space="preserve">
+    <value>Ngày chỉnh sửa</value>
+  </data>
+  <data name="ngaytao" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="nguoitao" xml:space="preserve">
+    <value>Người tạo</value>
+  </data>
+  <data name="nhapdiem" xml:space="preserve">
+    <value>Nhập điểm</value>
+  </data>
+  <data name="nhaphuongdanlambaikiemtra" xml:space="preserve">
+    <value>Nhập hướng dẫn làm bài kiểm tra</value>
+  </data>
+  <data name="nhaphuongdanlambaithi" xml:space="preserve">
+    <value>Nhập hướng dẫn làm bài thi</value>
+  </data>
+  <data name="nhapnoidungcauhoi" xml:space="preserve">
+    <value>Nhập nội dung câu hỏi</value>
+  </data>
+  <data name="nhapnoidungdapan" xml:space="preserve">
+    <value>Nhập nội dung đáp án</value>
+  </data>
+  <data name="nhapnoidunggoiy" xml:space="preserve">
+    <value>Nhập nội dung gợi ý</value>
+  </data>
+  <data name="nhapnoidungluachon" xml:space="preserve">
+    <value>Nhập nội dung lựa chọn</value>
+  </data>
+  <data name="nhaptenkiemtra" xml:space="preserve">
+    <value>Nhập tên đề thi</value>
+  </data>
+  <data name="noidung" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="noidungcaudan" xml:space="preserve">
+    <value>Nội dung câu dẫn</value>
+  </data>
+  <data name="noidungcauhoi" xml:space="preserve">
+    <value>Nội dung câu hỏi</value>
+  </data>
+  <data name="noidungcauhoikhongdungdinhdang" xml:space="preserve">
+    <value>Nội dung câu hỏi không đúng định dạng</value>
+  </data>
+  <data name="noidungcauhoikhongduocdetrong" xml:space="preserve">
+    <value>Nội dung câu hỏi không được để trống</value>
+  </data>
+  <data name="noidungcautraloikhongduocdetrong" xml:space="preserve">
+    <value>Nội dung câu trả lời không được để trống</value>
+  </data>
+  <data name="noidunghuongdandienkhuyet" xml:space="preserve">
+    <value>Nội dung hướng dẫn điền khuyết</value>
+  </data>
+  <data name="noidunghuongdandienkhuyet1" xml:space="preserve">
+    <value>Bạn vui lòng đánh dấu chỗ trống nằm trong dấu [[]]. VD: [[A]]. Lưu ý các ký tự nằm trong dấu [[]] phải là các chữ cái A-Z hoặc a-z</value>
+  </data>
+  <data name="noidungtraloi" xml:space="preserve">
+    <value>Nội dung trả lời</value>
+  </data>
+  <data name="phaicoitnhat1luachoncho1chotrong" xml:space="preserve">
+    <value>Phải có ít nhất 1 lựa chọn cho 1 chỗ trống</value>
+  </data>
+  <data name="phantramdat" xml:space="preserve">
+    <value>Phần trăm đạt</value>
+  </data>
+  <data name="phuongan" xml:space="preserve">
+    <value>Phương án</value>
+  </data>
+  <data name="phuongandenghi" xml:space="preserve">
+    <value>Phương án đề nghị</value>
+  </data>
+  <data name="phut" xml:space="preserve">
+    <value>Phút</value>
+  </data>
+  <data name="quatrinhthemcauhoigapmotsoloivuilongkiemtralai" xml:space="preserve">
+    <value>Quá trình thêm câu hỏi gặp một số lỗi vui lòng kiểm tra lại</value>
+  </data>
+  <data name="quatrinhthemcauhoihoantat" xml:space="preserve">
+    <value>Quá trình thêm câu hỏi hoàn tất</value>
+  </data>
+  <data name="quaylai" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="sai" xml:space="preserve">
+    <value>Sai</value>
+  </data>
+  <data name="socauchualam" xml:space="preserve">
+    <value>Số câu chưa làm </value>
+  </data>
+  <data name="socaudung" xml:space="preserve">
+    <value>Số câu đúng</value>
+  </data>
+  <data name="socauhoi" xml:space="preserve">
+    <value>Số câu hỏi</value>
+  </data>
+  <data name="socausai" xml:space="preserve">
+    <value>Số câu sai</value>
+  </data>
+  <data name="solanthi" xml:space="preserve">
+    <value>Số lần thi</value>
+  </data>
+  <data name="soluongcaudanvaphuonganchonphaibangnhau" xml:space="preserve">
+    <value>Số lượng câu dẫn và phương án chọn phải bằng nhau</value>
+  </data>
+  <data name="soluongcaudanvaphuonganchonphaibangnhau1" xml:space="preserve">
+    <value>Số lượng câu dẫn và phương án chọn phải bằng nhau</value>
+  </data>
+  <data name="stt" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="tailaiteploi" xml:space="preserve">
+    <value>Tải lại tệp lỗi</value>
+  </data>
+  <data name="taimauexcel" xml:space="preserve">
+    <value>Tải mẫu excel</value>
+  </data>
+  <data name="tat" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="tenbaikiemtra" xml:space="preserve">
+    <value>Tên bài kiểm tra</value>
+  </data>
+  <data name="tendethi" xml:space="preserve">
+    <value>Tên đề thi</value>
+  </data>
+  <data name="thangdiem" xml:space="preserve">
+    <value>Thang điểm</value>
+  </data>
+  <data name="thanhcong" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="thembaikiemtra" xml:space="preserve">
+    <value>Thêm bài kiểm tra</value>
+  </data>
+  <data name="themcaudan" xml:space="preserve">
+    <value>Thêm câu dẫn </value>
+  </data>
+  <data name="themcauhoihoantat" xml:space="preserve">
+    <value>Thêm câu hỏi hoàn tất</value>
+  </data>
+  <data name="themcauhoithatbai" xml:space="preserve">
+    <value>Thêm câu hỏi thất bại</value>
+  </data>
+  <data name="themdapan" xml:space="preserve">
+    <value>Thêm đáp án</value>
+  </data>
+  <data name="themmoi" xml:space="preserve">
+    <value>Thêm mới</value>
+  </data>
+  <data name="themmoibaikiemtra" xml:space="preserve">
+    <value>Thêm mới bài kiểm tra</value>
+  </data>
+  <data name="themmoicauhoi" xml:space="preserve">
+    <value>Thêm mới câu hỏi</value>
+  </data>
+  <data name="themmoicauhoithanhcong" xml:space="preserve">
+    <value>Thêm mới câu hỏi thành công</value>
+  </data>
+  <data name="themmoitacquyenthanhcong" xml:space="preserve">
+    <value>Thêm mới tác quyền thành công</value>
+  </data>
+  <data name="themmoitufile" xml:space="preserve">
+    <value>Thêm mới từ file</value>
+  </data>
+  <data name="themphuongan" xml:space="preserve">
+    <value>Thêm phương án</value>
+  </data>
+  <data name="themtufile" xml:space="preserve">
+    <value>Thêm từ file</value>
+  </data>
+  <data name="thoigian" xml:space="preserve">
+    <value>Thời gian</value>
+  </data>
+  <data name="thoigianbatdau" xml:space="preserve">
+    <value>Thời gian bất đầu</value>
+  </data>
+  <data name="thoigianketthuc" xml:space="preserve">
+    <value>Thời gian kết thúc </value>
+  </data>
+  <data name="thoigianlambai" xml:space="preserve">
+    <value>Thời gian làm bài</value>
+  </data>
+  <data name="thoigiannopbai" xml:space="preserve">
+    <value>Thời gian nộp bài</value>
+  </data>
+  <data name="thongbao" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="thongtinbaikiemtrasebixoa" xml:space="preserve">
+    <value>Thông tin bài kiểm tra sẽ bị xóa</value>
+  </data>
+  <data name="thutucauhoi" xml:space="preserve">
+    <value>Thứ tự câu hỏi</value>
+  </data>
+  <data name="tieptuc" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="tongcongtailen" xml:space="preserve">
+    <value>Tổng cộng tải lên</value>
+  </data>
+  <data name="truongnaybatbuoc" xml:space="preserve">
+    <value>Trường này bắt buộc</value>
+  </data>
+  <data name="xacnhanhuynhapcauhoi" xml:space="preserve">
+    <value>Xác nhận hủy nhập câu hỏi</value>
+  </data>
+  <data name="xacnhanhuyquatrinhthemcauhoi" xml:space="preserve">
+    <value>Xác nhận hủy quá trình thêm câu hỏi</value>
+  </data>
+  <data name="xaotrondapan" xml:space="preserve">
+    <value>Xáo trộn đáp án</value>
+  </data>
+  <data name="xembaikiemtramau" xml:space="preserve">
+    <value>Xem bài kiểm tra mẫu</value>
+  </data>
+  <data name="xemchitiet" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="xemdemau" xml:space="preserve">
+    <value>Xem đề mẫu</value>
+  </data>
+  <data name="xemketqua" xml:space="preserve">
+    <value>Xem kết quả</value>
+  </data>
+  <data name="xemnoidungcauhoi" xml:space="preserve">
+    <value>Xem nội dung câu hỏi</value>
+  </data>
+  <data name="xemtruoc" xml:space="preserve">
+    <value>Xem trước</value>
+  </data>
+  <data name="xoa" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="xoadulieubaikiemtrathanhcong" xml:space="preserve">
+    <value>Xóa dữ liệu bài kiểm tra thành công</value>
+  </data>
+  <data name="xoadulieubaikiemtrathatbai" xml:space="preserve">
+    <value>Xóa dữ liệu bài kiểm tra thất bại</value>
+  </data>
+  <data name="xoafile" xml:space="preserve">
+    <value>Xóa file</value>
+  </data>
+  <data name="xuatthanhfile" xml:space="preserve">
+    <value>Xuất thành file</value>
+  </data>
+  <data name="xulythemcauhoivaohethong" xml:space="preserve">
+    <value>Xử lý thêm câu hỏi vào hệ thống</value>
+  </data>
+  <data name="error0" xml:space="preserve">
+    <value>Thêm thành công</value>
+  </data>
+  <data name="error8511" xml:space="preserve">
+    <value>ID tài khoản không tồn tại.</value>
+  </data>
+  <data name="error8512" xml:space="preserve">
+    <value>ID danh mục câu hỏi không đúng.</value>
+  </data>
+  <data name="error8513" xml:space="preserve">
+    <value>ID loại câu hỏi không đúng.</value>
+  </data>
+  <data name="error8514" xml:space="preserve">
+    <value>ID môn học không đúng.</value>
+  </data>
+  <data name="error8515" xml:space="preserve">
+    <value>Nội dung câu hỏi không đươc để trống</value>
+  </data>
+  <data name="error8516" xml:space="preserve">
+    <value>Chương trình trắc nghiệm không tồn tại (Cấp lớp)</value>
+  </data>
+  <data name="error8517" xml:space="preserve">
+    <value>Trạng thái phê duyệt không đúng</value>
+  </data>
+  <data name="error8518" xml:space="preserve">
+    <value>Câu hỏi phải có lý thuyết trọng tâm</value>
+  </data>
+  <data name="error8519" xml:space="preserve">
+    <value>Đáp án câu hỏi không được để trống</value>
+  </data>
+  <data name="error8520" xml:space="preserve">
+    <value>Câu hỏi đã được duyệt không thể cập nhật. (Nếu có thắc mắc vui lòng liên hệ người duyệt)</value>
+  </data>
+  <data name="error8500" xml:space="preserve">
+    <value>Không có quyền thêm  hoặc cập nhật câu hỏi</value>
+  </data>
+  <data name="error8503" xml:space="preserve">
+    <value>Không tồn tại chi tiết câu hỏi</value>
+  </data>
+  <data name="error8504" xml:space="preserve">
+    <value>Hai gợi ý câu hỏi không thể trùng vị trí(Index)</value>
+  </data>
+  <data name="error8505" xml:space="preserve">
+    <value>Hai đáp án câu hỏi không thể trùng vị trí(Index)</value>
+  </data>
+  <data name="error8506" xml:space="preserve">
+    <value>ID câu hỏi không tồn tại</value>
+  </data>
+  <data name="error8507" xml:space="preserve">
+    <value>Định dạng tập tin không tồn tại.</value>
+  </data>
+  <data name="error8508" xml:space="preserve">
+    <value>Câu hỏi đã được sử dụng không thể cập nhật</value>
+  </data>
+  <data name="error8510" xml:space="preserve">
+    <value>Mức độ câu hỏi không đúng</value>
+  </data>
+  <data name="error85101" xml:space="preserve">
+    <value>Loại tập tin không tồn tại.</value>
+  </data>
+  <data name="error10004" xml:space="preserve">
+    <value>Định dạng của câu hỏi không đúng</value>
+  </data>
+  <data name="socauhoidachon" xml:space="preserve">
+    <value>Số câu hỏi đã chọn</value>
+  </data>
+  <data name="taimauhuongdanimportword" xml:space="preserve">
+    <value>Tải mẫu hướng dẫn import word</value>
+  </data>
+  <data name="taimauword" xml:space="preserve">
+    <value>Tải mẫu word</value>
+  </data>
+  <data name="capnhatbaikiemtrathanhcong" xml:space="preserve">
+    <value>Cập nhật bài kiểm tra thành công</value>
+  </data>
+  <data name="themmoibaikiemtrathanhcong" xml:space="preserve">
+    <value>Thêm mới bài kiểm tra thành công</value>
+  </data>
+  <data name="loctheohienthi" xml:space="preserve">
+    <value>Lọc theo hiển thị</value>
+  </data>
+  <data name="tentaikhoan" xml:space="preserve">
+    <value>Tên tài khoản</value>
+  </data>
+  <data name="xuatdulieu" xml:space="preserve">
+    <value>Xuất dữ liệu</value>
+  </data>
+</root>

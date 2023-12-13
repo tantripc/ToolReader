@@ -1,0 +1,63 @@
+﻿@using ObjectDefine
+@{
+    List<doctoc> doctocls = Model;
+    doctoc doctocs = new doctoc();
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+    if (doctocls.Count > 0)
+    {
+        doctocs = doctocls[0];
+    }
+}
+
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tenmucluc"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="title" value="" type="text" name="username" placeholder="@Localizer["nhaptenmucluc"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="pdoctocid">@Localizer["mucluccapcha"]</label>
+        <div class="col-md-9">
+            <select style="width:100%;" id="pdoctocid" name="pdoctocid"></select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["loai"]</label>
+        <div class="col-md-4 col-form-label">
+            <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" required id="pagenumber" @(doctocs.act == "p" ? "checked=\"checked\"" : "") type="radio" value="1" name="filetype">
+                <label class="form-check-label" for="pagenumber">@Localizer["trang"]</label>
+            </div>
+            <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" required id="link" @(doctocs.act == "l" ? "checked=\"checked\"" : "") type="radio" value="2" name="filetype">
+                <label class="form-check-label" for="link">@Localizer["duongdan"]</label>
+            </div>
+        </div>
+    </div>
+    <div class="cnt-pagegoto @(doctocs.act == "p"?"":"d-none")">
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["ditoi"]</label>
+            <div class="col-md-9">
+                <input class="form-control" required style="width:100%" value="@doctocs.gotoref" id="pagegoto" name="pagegoto" type="number" placeholder="@Localizer["nhapsotrangditoi"]*">
+            </div>
+        </div>
+    </div>
+    <div class="cnt-linkgoto @(doctocs.act == "l"?"":"d-none")">
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["ditoi"]</label>
+            <div class="col-md-9">
+                <input class="form-control" required style="width:100%" value="@doctocs.gotoref" id="linkgoto" name="linkgoto" type="text" placeholder="@Localizer["nhapduongdanditoi"]*">
+            </div>
+        </div>
+    </div>
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+<script src="@Url.Content("~/lib/ckeditor/ckeditor.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/doctoc/func_addupdate_toc.js")" asp-append-version="true"></script>
+<script>
+    var pdoctocid = '@doctocs.pdoctocid';
+</script>

@@ -1,0 +1,280 @@
+﻿@{
+    Data_Detailbook file = Model;
+    ViewData["Title"] = file.Title;
+    Layout = "~/Views/Shared/_LayoutViewer.cshtml";
+    long? FileId = ViewBag.FileId;
+    string? FileRowId = ViewBag.ID;
+    long? Id_Doc_View = FileId;
+    int CountFile = 0;
+
+    string GetImageFormthumbnailSV = ViewBag.Folder_Image_Thumb + "/" + "__pagenumber__.png";
+    string GetImageFormSV = ViewBag.Folder_Image + "/" + "__pagenumber__.png";
+
+
+
+    bool isUsingCallApi = false;
+    System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(WebConfigs.AppSettings.UrlSaveImage + ViewBag.domain + "/" + FileId + "/" + "image");
+    if (dir.Exists == true)
+    {
+        CountFile = dir.GetFiles().Length;
+        if (CountFile >= 10)
+        {
+            isUsingCallApi = true;
+        }
+        CountFile = dir.GetFiles().Length < 10 ? 10 : dir.GetFiles().Length;
+    }
+    else
+    {
+        CountFile = 10;
+    }
+}
+<div id="popup_log"></div>
+<div id="popup_search">
+    <div class="card search_text  w3-animate-right" id="card_search" data-hide="0">
+        <div class="card-header">
+            Tìm kiếm
+            <button type="button" onclick="IshideShowPopup()" class="close" data-dismiss="modal">
+                <span aria-hidden="true"><i style="font-weight: 700;" class="iconmoon iconmoon-Close"></i></span>
+            </button>
+        </div>
+        <div class="card-body content_search">
+            <div class="box_text ui-widget">
+                <label for="autocompltee"></label>  <input type="text" name="country" class="ui-autocomplete-input search_content" id="autocomplete-ajax" style="position: absolute; z-index: 2; background: transparent;" />
+                <input type="text" name="country" id="autocomplete-ajax-x" class="ui-autocomplete-input search_content" disabled="disabled" style="color: #CCC; position: absolute; background: transparent; z-index: 1;" /><i class="iconmoon iconmoon-TimKiem icon_search"></i>
+            </div>
+            <p class="result-text">Tổng: <span class="total_page_search">0</span></p>
+            <div id="findResultsText"></div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="lv_popup_control">
+        @await Component.InvokeAsync("ControlViewer", new {id=ViewBag.FileId,FileRowId=ViewBag.FileRowId,typebook=ViewBag.type,customerid=ViewBag.CustomerId})
+    </div>
+
+    <div class="lv_content_viewer" data-mode="1">
+        <div class="container_content">
+            <div class="page_content">
+                <div class="pages">
+                    @if (ViewBag.totalpage > 10)
+                    {
+                        if (isUsingCallApi == false)
+                        {
+                            for (int i = 1; i <= CountFile; i++)
+                            {
+                                <div class="page_view pageview_bookmark_@i" data-p="@i" data-bookmark="-1">
+                                    @{
+                                        string link = Url.Action("GetStreamFile", "BookAttach", new { url = Html.Raw(ViewBag.UrlFilePdf) }).Replace("__pagenumber__", i.ToString());
+                                                    <img src="@link" data-page="@i" />
+                                    }
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 1; i < CountFile; i++)
+                            {
+                                <div class="page_view pageview_bookmark_@i" data-p="@i" data-bookmark="-1">
+                                    @{
+                                        string link = Url.Action("GetStreamFile", "BookAttach", new { url = Html.Raw(ViewBag.UrlFilePdfLocal) }).Replace("__pagenumber__", i.ToString());
+                                                    <img src="@link" data-page="@i" />
+                                    }
+
+                                </div>
+                            }
+                        }
+                        //isUsingCallApi = false;
+                        for (var i = CountFile; i < ViewBag.totalpage; i++)
+                        {
+                            <div class="page_view pageview_bookmark_@i" data-p="@i" data-bookmark="-1">
+                                <div class="inner" style="height: 100%;display: none;flex-direction: column;justify-content: center;"><div class="loading override_loading"></div></div>
+                                <img data-page="@i" />
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 1; i <= ViewBag.totalpage; i++)
+                        {
+                            string link = @Url.Action("GetStreamFile", "BookAttach", new { url = Html.Raw(ViewBag.UrlFilePdf) }).Replace("__pagenumber__", i.ToString());
+                            <div class="page_view pageview_bookmark_@i" data-p="@i" data-bookmark="-1">
+                                <img src="@link" data-page="@i" />
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="container_content_thumnail d-none">
+            @for (int i = 1; i <= ViewBag.totalpage; i++)
+            {
+                <div class="page_item_thumnail" fill="no" data-p="@i">
+                    <div class="page_number_thumnail" data-islink="@(ViewBag.Islink == true? "1" : "2")">@(i)</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="lv_footer_viewer">
+    <div class="button_toc" onclick="show_hide_tableofcontent(this)">
+        <i class="iconmoon iconmoon-menu2"></i>
+        <span>@Localizer["mucluc"]</span>
+    </div>
+    <div class="group_button">
+        <div class="button_note button_lvbook" title="@Localizer["ghichu"]">
+            <i class="iconmoon iconmoon-WriteNote"></i>
+            <div class="total_item">
+                <span class="total_notes"></span>
+            </div>
+        </div>
+        <div class="button_bookmark button_lvbook" title="@Localizer["danhdautrang"]">
+            <i class="iconmoon iconmoon-Bookmark"></i>
+            <div class="total_item">
+                <span class="total_bookmark"></span>
+            </div>
+        </div>
+
+        <div class="line_button">
+            <i class="iconmoon iconmoon-Line5"></i>
+        </div>
+
+        <div class="button_back button_lvbook disabled" title="@Localizer["trangtruoc"]" onclick="view_back_page()">
+            <i class="iconmoon iconmoon-Back1"></i>
+        </div>
+        <div class="page_number">
+            <div class="group_span">
+                <span>
+                    <input id="page_active" value="1" min="1" max="@ViewBag.totalpage" type="number" />
+                </span>
+                <span>/</span>
+                <span>@ViewBag.totalpage</span>
+            </div>
+        </div>
+        <div class="button_next button_lvbook" title="@Localizer["trangsau"]" onclick="view_next_page()">
+            <i class="iconmoon iconmoon-Next"></i>
+        </div>
+
+        <div class="line_button">
+            <i class="iconmoon iconmoon-Line5"></i>
+        </div>
+
+        <div class="button_one_page button_lvbook active" title="@Localizer["xem1trang"]" onclick="view_one_page()">
+            <i class="iconmoon iconmoon-OnePage"></i>
+        </div>
+        <div class="button_two_page button_lvbook" title="@Localizer["xem2trang"]" onclick="view_two_page()">
+            <i class="iconmoon iconmoon-TwoPage"></i>
+        </div>
+        <div class="button_thumbnail button_lvbook" title="@Localizer["xemtatca"]" onclick="view_thumbnail()">
+            <i class="iconmoon iconmoon-Grid"></i>
+        </div>
+
+        <div class="line_button">
+            <i class="iconmoon iconmoon-Line5"></i>
+        </div>
+
+
+        @*<div class="button_zoom_in button_lvbook" title="@Localizer["phongto"]" onclick="zoom_in()">
+        <i class="iconmoon iconmoon-ZoomOut"></i>
+        </div>*@
+        <div class="cnt_range_zoom">
+            <input type="range" step="1" min="1" max="200" value="100" class="form-range" id="range_zoom">
+            <label for="range_zoom" class="form-label">100%</label>
+        </div>
+        @*<div class="button_zoom_out button_lvbook" title="@Localizer["thunho"]" onclick="zoom_out()">
+        <i class="iconmoon iconmoon-ZoomIn"></i>
+        </div>*@
+
+    </div>
+  @*  <div class="group_search">
+        <input id="search_content" class="search_content" placeholder="Nhập nội dung cần tìm" />
+        <div class="btn_search" onclick="search_content(this)">
+            <i class="iconmoon iconmoon-TimKiem"></i>
+        </div>
+    </div>*@
+    <div class="button_group_maximize">
+        <div class="button_maximize button_lvbook" title="@Localizer["toanmanhinh"]" onclick="maximize_reader()">
+            <i class="iconmoon iconmoon-Maximize"></i>
+        </div>
+        <div class="button_minimize button_lvbook" title="@Localizer["tattoanmanhinh"]" onclick="minimize_reader()">
+            <i class="iconmoon iconmoon-Minimize"></i>
+        </div>
+    </div>
+</div>
+<script>
+    var CountFile = '@CountFile';
+    var _folder_json = '@ViewBag.folder_json';
+    var _folder_image = '@ViewBag.folder_image';
+    var _folder_user = '@ViewBag.folder_user';
+    const _FileId = '@FileId';
+</script>
+<div id="popup_log_template" style="display:none">
+    <div id="modalbackdrop" class="modal-backdrop fade show"></div>
+    <div class="modal fade show modal_log" id="modal_log" tabindex="-1" role="dialog" aria-hidden="true" style="display:block">
+        <div class="modal_notifylog modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thông báo</h5>
+                    <button type="button" onclick="close_popup_log()" class="close" data-dismiss="modal">
+                        <span aria-hidden="true"><i style="font-weight: 700;" class="iconmoon iconmoon-Close"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{_RootBase}images/TiepTucDoc.svg" />
+                    <h6 class="text-popup">
+                        Ban đã đọc đến trang {page} ! <br /> Bạn có muốn đọc tiếp không?
+                    </h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="close_popup_log()" class="btn btn-secondary button-close" data-dismiss="modal"> Đóng</button>
+                    <button type="button" onclick="readlog('{page}')" class="btn btn-primary button-yes"> Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div id="popup_search_template" style="display:none">
+    <div class="card search_text  w3-animate-right" id="card_search">
+        <div class="card-header">
+            Tìm kiếm
+            <button type="button" onclick="close_popup_search()" class="close" data-dismiss="modal">
+                <span aria-hidden="true"><i style="font-weight: 700;" class="iconmoon iconmoon-Close"></i></span>
+            </button>
+        </div>
+        <div class="card-body content_search">
+            <div class="box_text ui-widget"> <label for="autocompltee">Tags: </label><input type="text" autocomplete="off" class=" ui-autocomplete-inputsearch_content" id="autocompltee" @*onkeydown="search_live()" /><i class="iconmoon iconmoon-TimKiem icon_search"></i></div>
+            <p class="result-text">Tổng: <span class="total_page_search">0</span></p>
+            <div class="card_body_search" id="card_body_search_text"></div>
+        </div>
+    </div>
+</div>*@
+@section Scripts
+    {
+    <script>
+        var pageheight = '1125';
+        var pagewidth = '793';
+        
+        const _Type = '@ViewBag.type';
+        var nosign = '@ViewBag.nosign';
+        var _UrlLoadImage = "@Url.Action("GetStreamFile", "BookAttach", new { url = Html.Raw(ViewBag.UrlFilePdf)})";
+        var _UrlLoadImageThumbnail = "@Url.Action("GetStreamFileThumbnail", "BookAttach", new { url = Html.Raw(ViewBag.UrlFilePdf)})";
+        var _docattachid = '@FileRowId';
+        var _total_page = '@ViewBag.totalpage';
+        var _link_reader_image = "@Html.Raw(GetImageFormSV)";
+        var _link_reader_thumnail = "@Html.Raw(GetImageFormthumbnailSV)";
+        var _fileName_Image = "@ViewBag.fileName_Image";
+        var _fileExt = "@ViewBag.fileExt";
+        var _Islink = "@ViewBag.Islink";
+        var isUsingCallApi = parseBool('@isUsingCallApi');
+        var DomainName = '@WebConfigs.AppSettings.DomainName';
+        var Redirect_Login = '@WebConfigs.AppSettings.WebApiServiceLibrary';
+    </script>
+    <script type="text/javascript" src="~/lib/autocomplete-search/jquery-1.8.2.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/lib/autocomplete-search/jquery.autocomplete.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/lib/autocomplete-search/searchtext.js" asp-append-version="true"></script>
+    <script src="~/lib/turn.js/turnjs4/turn.js" asp-append-version="true"></script>
+    <script src="~/lib/turn.js/turnjs4/zoom.js" asp-append-version="true"></script>
+    <script src="~/lib/lvreader/load-script.js" asp-append-version="true"></script>
+    <script src="~/lib/lvreader/render_viewer.js" asp-append-version="true"></script>
+   
+
+    }

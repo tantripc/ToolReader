@@ -1,0 +1,16 @@
+
+.iconmoon.iconmoon-primary {
+    color: #5c77d0;
+}
+
+.iconmoon-btn {
+    cursor: pointer;
+}
+
+    .iconmoon-btn.iconmoon-btn-primary-hover:hover {
+        background-color: #4e65b1 !important;
+    }
+
+        .iconmoon-btn.iconmoon-btn-primary-hover:hover .iconmoon {
+            color: #fff !important;
+        }

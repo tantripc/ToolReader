@@ -1,0 +1,91 @@
+﻿#init_dialog_crop_image .modal-body {
+    overflow: hidden !important;
+}
+
+#init_dialog_crop_image .iconfullscreen {
+    display: none;
+}
+
+#crop_image {
+    width: auto;
+    height: 100%;
+    max-height: 100%;
+    display: none
+}
+
+.group-buttons-tool {
+    position: absolute;
+    height: 50px;
+    background-color: #fff;
+    width: 100%;
+    bottom: 0px;
+    line-height: 50px;
+}
+
+    .group-buttons-tool .cnt-control {
+        width: 335px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+.cnt-select {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    width: 65px;
+}
+
+    .cnt-select .child {
+        position: absolute;
+        top: -22px;
+        width: 65px;
+        left: 0px;
+    }
+
+select.group-toggles-tool {
+    border: none;
+    padding: .375rem .375rem;
+}
+.control-zoom {
+    width: 25px;
+    display: inline-block;
+    position: relative;
+    margin-left: 15px;
+}
+    .control-zoom i {
+        font-size: 20px;
+        position: absolute;
+        cursor: pointer;
+        top: -12px;
+        left: 75px;
+    }
+.control-reset {
+    font-size: 16px;
+    position: absolute;
+    top: 3px;
+    right: 50px;
+    cursor: pointer;
+    color: #5C77D0;
+    text-decoration: underline;
+}
+.control-child {
+    position: absolute;
+    top: 5px;
+    font-size: 20px;
+    left: 178px;
+}
+.control-child i {
+    margin-right: 20px;
+    cursor: pointer
+}
+    .control-child i:last-child{
+        margin-right:0px;
+    }
+@media (max-width: 566.98px) {
+    .group-buttons-tool .cnt-control{
+        margin-left:0px;
+    }
+    .control-reset{
+        display:none;
+    }
+}

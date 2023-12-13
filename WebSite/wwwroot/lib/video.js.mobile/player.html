@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Video player with subtitles - Copyright 2019 by ntkien</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <link href="video-js.min.css" rel="stylesheet">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: none;
+            box-shadow: none;
+            font-family: 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        button, input, textarea, iframe, audio, video, image, object {
+            outline: none;
+        }
+
+        /*custom scroll in chrome*/
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        ::-webkit-scrollbar-track-piece {
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: rgba(0,0,0,0.2);
+            }
+
+        ::-webkit-scrollbar-corner {
+            display: none;
+        }
+
+        ::-webkit-resizer {
+            display: none;
+        }
+        /*end custom scroll in chrome*/
+
+        .video-js {
+            width: 100%;
+            height: 100%;
+        }
+
+            .video-js .vjs-big-play-button {
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            .video-js .vjs-text-track-display > div > div > div {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+        .rowcontent {
+            font-family: 'Segoe UI';
+        }
+
+            .rowcontent.active {
+                background-color: #ddd;
+            }
+        .close {
+            position: absolute;
+            right: 6px;
+            top: 12px;
+            width: 15px;
+            height: 15px;
+            opacity: 0.3;
+        }
+
+            .close:hover {
+                opacity: 1;
+                cursor:pointer;
+            }
+
+            .close:before, .close:after {
+                position: absolute;
+                left: 0px;
+                content: ' ';
+                height: 20px;
+                width: 2px;
+                background-color: #333;
+            }
+
+            .close:before {
+                transform: rotate(45deg);
+            }
+
+            .close:after {
+                transform: rotate(-45deg);
+            }
+    </style>
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="videojs-ie8.min.js"></script>
+</head>
+<body>
+    <div id="player" style="position:fixed;top:0;left:0;right:0;bottom:0;visibility:hidden;">
+        <div id="videobox" style="width:100%;position:absolute;top:0;left:0;bottom:0;animation:width 0.3 ease;">
+            <video id="videoid">
+                <!--<source src="Teamwork.mp4" type="video/mp4">
+                <track src="Teamwork-vi.vtt" kind="subtitles" srclang="vi" label="Tiếng Việt" default>
+                <track src="Teamwork-en.vtt" kind="subtitles" srclang="en" label="Tiếng Anh">-->
+            </video>
+        </div>
+        <div id="trackbox" style="width:0%;position:absolute;top:0;right:0;bottom:0;animation:width 0.3 ease;box-sizing:border-box;background-color:#fafafa;display:none;">
+            <div id="trackid" style="max-height:100%;box-sizing:border-box;overflow:auto;"></div>
+        </div>
+    </div>
+    <script src='video.min.js'></script>
+    <script src='videojs-contrib-hls.js'></script>
+    <script src="videojs-playlist.js"></script>
+    <script src="Youtube.min.js"></script>
+    <script src="player.js"></script>
+</body>
+</html>

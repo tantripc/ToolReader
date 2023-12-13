@@ -1,0 +1,250 @@
+﻿@using ObjectDefine
+@{
+    doc docs = Model;
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+    long? checknull = ViewBag.id;
+    string[] tag_keyword = { };
+    if (!string.IsNullOrEmpty(docs.keyword))
+    {
+        tag_keyword = docs.keyword.Split(';');
+    }
+    string arrcatg_js = "";
+    if (docs.catg_js != null)
+    {
+        arrcatg_js = JsonConvert.SerializeObject(docs.catg_js);
+    }
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="topic">@Localizer["danhmuc"] (*)</label>
+        <div class="col-md-9">
+            <select required style="width:100%;" id="topic" name="topic">@docs.topicname</select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="cp">@Localizer["tacquyen"]</label>
+        <div class="col-md-9">
+            <select required style="width:100%;" id="cp" name="cp">@docs.cprname</select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tensach"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="title" value="@docs.title" type="text" name="username" placeholder="@Localizer["nhaptensach"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tentacgia"]</label>
+        <div class="col-md-9">
+            <input class="form-control" id="author" value="@docs.author" type="text" name="author" placeholder="@Localizer["nhaptentacgia"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["nguoibiendich"]</label>
+        <div class="col-md-9">
+            <input class="form-control" id="translator" value="@docs.translator" type="text" name="author" placeholder="@Localizer["nhapnguoibiendich"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["nguoitonghop"]</label>
+        <div class="col-md-9">
+            <input class="form-control" id="collector" value="@docs.collector" type="text" name="author" placeholder="@Localizer["nhapnguoitonghop"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["nhaxuatban"]</label>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-4">
+                    <input class="form-control" id="publisher" value="@docs.publisher" type="text" name="publisher" placeholder="@Localizer["nhapnhaxuatban"]">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" style="width:100%" id="publishyear" value="@docs.publishyear" type="date" name="publishyear" placeholder="@Localizer["nhapnamxuatban"]">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" style="width:100%" id="publishnum" value="@docs.publishnum" type="number" name="publishnum" placeholder="@Localizer["nhapsolanxuatban"]">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["gioithieu"]</label>
+        <div class="col-md-9">
+            <div id="abstractcontent">@Html.Raw(docs.abstractcontent)</div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["motangan"]</label>
+        <div class="col-md-9">
+            <div id="desct">@Html.Raw(docs.desct)</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["theloai"]</label>
+        <div class="col-md-9">
+            <select id="catgnamejs">@Html.Raw(docs.catg_jss)</select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["gia"]</label>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-4">
+                    <input class="form-control" type="number" style="width:100%" id="originprice" value="@docs.originprice" name="originprice" placeholder="@Localizer["nhapgiagoc"]">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" type="number" style="width:100%" id="price" value="@docs.price" name="price" placeholder="@Localizer["nhapgiaban"]">
+                </div>
+                <div class="col-4">
+                    <input style="width:100%" id="currency" value="@docs.currency" name="currency" placeholder="@Localizer["chonloaitien"]">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["isbn"]</label>
+        <div class="col-md-9">
+            <input class="form-control" id="isbn" value="@docs.isbn" type="text" name="isbn" placeholder="@Localizer["nhapisbn"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tukhoatimkiem"]</label>
+        <div class="col-md-9">
+            <select class="form-control" multiple data-role="tagsinput" id="tag_keyword">
+                @if (tag_keyword.Length > 0)
+                {
+                    for (int i = 0; i < tag_keyword.Length; i++)
+                    {
+                        <option value="@tag_keyword[i]">@tag_keyword[i]</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    @if (checknull == null)
+    {
+        <div class="form-group row cnt-fileattach">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["filedinhkem"]</label>
+            <div class="col-md-9">
+                <div id="attachfilename" class="mb-2">@docs.attachfile</div>
+                <button class="btn btn_updateload" type="button" onclick="upload_attachfile()">
+                    <i class="icon-paper-clip"></i>
+                    <span>@(string.IsNullOrEmpty(docs.attachfile) ? Localizer["chonfiledinhkem"].Value.ToString() : Localizer["capnhatfiledinhkem"].Value.ToString())</span>
+                </button>
+                <input type="file" data-name="@docs.attachfile" hidden id="attachfile" />
+            </div>
+        </div>
+    }
+    else
+    {
+
+    }
+    <div class="form-group row d-none" id="pagenumber">
+        <label class="col-md-3 col-form-label">@Localizer["sotrang"]</label>
+        <div class="col-md-9">
+            <input class="form-control" id="numpage" value="@docs.numpage" type="text" name="numpage" placeholder="@Localizer["nhapsotrang"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["anhbiasach"]</label>
+        <div class="col-md-3">
+            @if (docs.docid != null)
+            {
+                if (string.IsNullOrEmpty(docs.coverfile))
+                {
+                    docs.coverfile = "CoverSheet/default.jpg";
+                }
+                <img id="imgcoversheet" src="@WebConfigs.AppSettings.WebApiFileUrl.TrimEnd('/')/@docs.coverfile" />
+            }
+            else
+            {
+                <img id="imgcoversheet" class="imgcoversheet" style="display:none"/>
+            }
+            <button class="btn btn_updateload" type="button" onclick="updatecoversheet()">
+                <i class="icon-cloud-upload"></i>
+                <span>@(docs.docid != null ? Localizer["chonanhbiasach"].Value.ToString() : Localizer["chonanhbiasach"].Value.ToString())</span>
+            </button>
+            <input type="file" data-name="@docs.coverfile" accept=".png,.jpg,.gif,.jpeg" hidden id="coverfile" />
+        </div>
+    </div>
+</form>
+<script>
+    var topicid = '@docs.topicid';
+    var topicname = '@Html.Raw(docs.topicname)';
+    var cprid = '@docs.cprid';
+    var publishyear = '@docs.publishyear';
+    var api_file = '@WebConfigs.AppSettings.WebApiFile';
+    var arrcatg = '@Html.Raw(arrcatg_js)';
+</script>
+<script>
+    var catid = [];
+    if (arrcatg != '') {
+        var Jsoncatgid = JSON.parse(arrcatg);
+        if (Jsoncatgid != null) {
+            for (var i = 0; i < Jsoncatgid.length; i++) {
+                catid.push(Jsoncatgid[i].catgid);
+            }
+        }
+        $(document).ready(function () {
+            loadKendoMultiSelect({
+                id: "catgnamejs",
+                placeholder: _localizer.chontheloaisach,
+                dataTextField: "catgname",
+                dataValueField: "catgid",
+                value: catid,
+                url: _RootBase + "Category/getcategory",
+                data: {
+                    numofrow: -1
+                },
+                itemTemplate: '<span class="k-state-default" style="background-image: url(\'' + api_file + '#:decodeURIComponent(data.profilephoto)#\')"></span>' +
+                    '<span class="k-state-default"><h3 style="font-size:16px;font-weight: 200;">#: data.catgname #</h3></span>',
+                tagTemplate: '<span class="selected-value" style="background-image: url(\'' + api_file + '#:decodeURIComponent(data.profilephoto)#\')"></span><span>#:data.catgname#</span>',
+                maxSelectedItems: 10
+            });
+        });
+    } else {
+        $(document).ready(function () {
+            $.ajax({
+                url: _RootBase + "Category/getcategory",
+                dataType: "json",
+                type: "POST",
+                async: true,
+                data: {
+                    numofrow: -1
+                },
+                success: function (data) {
+                    $("#catgnamejs").kendoMultiSelect({
+                        dataTextField: "catgname",
+                        dataValueField: "catgid",
+                        placeholder: _localizer.chontheloaisach,
+                        downArrow: true,
+                        dataSource: data,
+                        itemTemplate: '<span class="k-state-default" style="background-image: url(\'' + api_file + '#:decodeURIComponent(data.profilephoto)#\')"></span>' +
+                            '<span class="k-state-default"><h3 style="font-size:16px;font-weight: 200;">#: data.catgname #</h3></span>',
+                        tagTemplate: '<span class="selected-value" style="background-image: url(\'' + api_file + '#:decodeURIComponent(data.profilephoto)#\')"></span><span>#:data.catgname#</span>',
+                        maxSelectedItems: 10
+                    });
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            });
+        });
+    }
+</script>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+@*<link href="@Url.Content("~/lib/cropper/cropper.css")" asp-append-version="true" rel="stylesheet" />*@
+<link href="@Url.Content("~/css/doc.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+<script src="@Url.Content("~/lib/ckeditor/ckeditor.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/doc/func_addupdate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/tagsinput/tagsinput.js")" asp-append-version="true"></script>
+@*<script src="@Url.Content("~/lib/cropper/cropper.js")" asp-append-version="true"></script>*@
+
+
+
+

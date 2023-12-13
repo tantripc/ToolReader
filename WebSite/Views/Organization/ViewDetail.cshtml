@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+    organization organization = Model;
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="label" style="border-top: none;width:30%">@Localizer["tentochuc"]: </       td>
+                        <td style="border-top: none;">@organization.orgname</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["nguoidungdau"]: </td>
+                        <td>@organization.head_fullname</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["mota"]: </td>
+                        <td>@organization.description</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["madonvi"]: </td>
+                        <td>@organization.org_code</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["diachi"]: </td>
+                        <td>@organization.address</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["email"]: </td>
+                        <td>@organization.email</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["dienthoai"]: </td>
+                        <td>@organization.phone</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["sothanhvien"]: </td>
+                        <td>@organization.numuser</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["ngaythanhlap"]: </td>
+                        <td>@(organization.createddate != null ? DateTime.Parse(organization.createddate.ToString()).ToString("dd/MM/yyyy") : "")</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["ladonviphuthuoc"]: </td>
+                        <td>@(organization.is_depended_unit == true ? Localizer["co"] : Localizer["khong"])</td>
+                    </tr>
+                    <tr>
+                        <td class="label">@Localizer["chucdanh"]: </td>
+                        <td>@organization.title</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

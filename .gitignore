@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DefineConstants/bin
+/DefineConstants/obj
+/EReaderWeb/bin/Release/net6.0
+/EReaderWeb/bin/Debug/net6.0
+/EReaderWeb/logs/apiconnector
+/EReaderWeb/obj
+/ReadFileOnline/bin/Debug/net6.0
+/RepositoriesAPI/bin
+/RepositoriesAPI/obj
+/ToolReader/bin/Debug/net6.0
+/ToolReader/obj
+/WebSite/bin/Debug/net6.0
+/WebSite/obj
+/ReadFileOnline/obj
+/OauthAPI/bin
+/OauthAPI/obj

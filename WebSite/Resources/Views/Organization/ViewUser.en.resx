@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="apdung" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="banchuachonsheet" xml:space="preserve">
+    <value>You haven't selected the sheet</value>
+  </data>
+  <data name="bancochacchan" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="capnhat" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="chinhsua" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="chonfiledinhkem" xml:space="preserve">
+    <value>Select attachment</value>
+  </data>
+  <data name="chonloaitaikhoan" xml:space="preserve">
+    <value>Select role</value>
+  </data>
+  <data name="chonsheet" xml:space="preserve">
+    <value>Select sheet</value>
+  </data>
+  <data name="loisodongdulieu" xml:space="preserve">
+    <value>There are &lt;b&gt; __numerror__ &lt;/b&gt; faulty datastream</value>
+  </data>
+  <data name="diachi" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="dienthoai" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="dongf" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="dong" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="dongy" xml:space="preserve">
+    <value>Agree</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="filedinhkem" xml:space="preserve">
+    <value>Attached file</value>
+  </data>
+  <data name="giangvien" xml:space="preserve">
+    <value>Teacher</value>
+  </data>
+  <data name="gioitinh" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="hovaten" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="hocvien" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="huy" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ketquathaotac" xml:space="preserve">
+    <value>Result of manipulation</value>
+  </data>
+  <data name="khac" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="kichhoat" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="loidocghicosodulieu" xml:space="preserve">
+    <value>Error reading from database</value>
+  </data>
+  <data name="nam" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="ngaysinh" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="nhapdulieu" xml:space="preserve">
+    <value>Insert information</value>
+  </data>
+  <data name="nu" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="quaylai" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="stt" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="taptinkhongdungdinhdang" xml:space="preserve">
+    <value>The file isn't in correct format</value>
+  </data>
+  <data name="taptinkhonghotro" xml:space="preserve">
+    <value>File not supported</value>
+  </data>
+  <data name="themmoi" xml:space="preserve">
+    <value>Add </value>
+  </data>
+  <data name="themmoithanhcongdongdulieu" xml:space="preserve">
+    <value>Successfully added new &lt;b&gt; __numok__ &lt;/b&gt; data lines</value>
+  </data>
+  <data name="themtufile" xml:space="preserve">
+    <value>Add from file</value>
+  </data>
+  <data name="thongbao" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="trangthai" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="xoa" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="xuatdulieu" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="xuatthanhfile" xml:space="preserve">
+    <value>Export to file</value>
+  </data>
+  <data name="banchuachonloaitaikhoan" xml:space="preserve">
+    <value>You have not selected any account type</value>
+  </data>
+  <data name="danhsachtaikhoan" xml:space="preserve">
+    <value>List of accounts</value>
+  </data>
+  <data name="dakichhoat" xml:space="preserve">
+    <value>Activated</value>
+  </data>
+  <data name="chuakichhoat" xml:space="preserve">
+    <value>Not activated</value>
+  </data>
+  <data name="capnhattaikhoanthanhcong" xml:space="preserve">
+    <value>Successfully updated account </value>
+  </data>
+  <data name="capnhattaikhoan" xml:space="preserve">
+    <value>Update account</value>
+  </data>
+  <data name="xuatdulieutaikhoan" xml:space="preserve">
+    <value>Export account data</value>
+  </data>
+  <data name="xoadulieutaikhoanthanhcong" xml:space="preserve">
+    <value>Successfully deleted account data</value>
+  </data>
+  <data name="themtaikhoantufile" xml:space="preserve">
+    <value>Add account from file</value>
+  </data>
+  <data name="kichhoattaikhoanthanhcong" xml:space="preserve">
+    <value>Successfully activated account</value>
+  </data>
+  <data name="themmoitaikhoan" xml:space="preserve">
+    <value>Add new account</value>
+  </data>
+  <data name="tentaikhoan" xml:space="preserve">
+    <value>Account name</value>
+  </data>
+  <data name="taikhoansebixoakhoihethong" xml:space="preserve">
+    <value>The account will be deleted from system!</value>
+  </data>
+  <data name="quantri" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="loctheotentaikhoan" xml:space="preserve">
+    <value>Filter by account name</value>
+  </data>
+  <data name="loctheoloaitaikhoan" xml:space="preserve">
+    <value>Filter by account type</value>
+  </data>
+  <data name="loaitaikhoan" xml:space="preserve">
+    <value>Account type</value>
+  </data>
+  <data name="themtaikhoanthanhcong" xml:space="preserve">
+    <value>Successfully added account</value>
+  </data>
+  <data name="manhanvien" xml:space="preserve">
+    <value>Employee code</value>
+  </data>
+  <data name="ngaybatdaulamviec" xml:space="preserve">
+    <value>Start date of employment</value>
+  </data>
+  <data name="noilamviec" xml:space="preserve">
+    <value>Workplace</value>
+  </data>
+  <data name="tendangnhap" xml:space="preserve">
+    <value>Account name</value>
+  </data>
+  <data name="nhapnoidungtimkiem" xml:space="preserve">
+    <value>Enter keywords to search</value>
+  </data>
+  <data name="taikhoan" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="taikhoandachon" xml:space="preserve">
+    <value>Select account</value>
+  </data>
+  <data name="themtaikhoan" xml:space="preserve">
+    <value>Add account</value>
+  </data>
+  <data name="themtaikhoantuhethong" xml:space="preserve">
+    <value>Add account from system</value>
+  </data>
+  <data name="themtaikhoanvaophongban" xml:space="preserve">
+    <value>Add accounnt to organization</value>
+  </data>
+  <data name="banchuachontaikhoan" xml:space="preserve">
+    <value>You haven't selected accounts</value>
+  </data>
+  <data name="taikhoandabixoakhoiphongbanthanhcong" xml:space="preserve">
+    <value>The account is removed a the organization!</value>
+  </data>
+  <data name="taikhoansebiloaikhoiphongban" xml:space="preserve">
+    <value>The account will be remove a the organization!</value>
+  </data>
+  <data name="themmoithanhcongnumtaikhoanvaophongban" xml:space="preserve">
+    <value>Successfully adding new __num__ accounts to the organization</value>
+  </data>
+  <data name="xoakhoiphongban" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="xuatketqua" xml:space="preserve">
+    <value>Export result</value>
+  </data>
+  <data name="cmnd_socancuoc" xml:space="preserve">
+    <value>Identity card</value>
+  </data>
+</root>

@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = Localizer["nhomtaikhoan"];
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Dictionary<string, string> _localizer = Localizer.GetAllStrings().ToDictionary(x => x.Name, x => x.Value);
+}
+<div class="row cnt_grid_custom">
+    <div class="col-lg-12">
+        <div class="cnt-card">
+            <div class="card-header">
+                <div class="card-header-actions">
+                    <a class="card-header-action" title="@Localizer["themmoitaikhoan"]" href="#" onclick="addupdate_usergroup(undefined,'@ViewBag.orgid')">
+                        <i class="iconmoon iconmoon-PlusCircle icons font-lg"></i>
+                        <span>@Localizer["themmoi"]</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div id="listusergroup"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+<div class="d-none" id="modal_import">
+    <div class="form-group row">
+        <label class="col-md-3"> @Localizer["loaitaikhoan"]</label>
+        <div class="col-md-9">
+            <input style="width:100%" class="v_role" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["filedinhkem"]</label>
+        <div class="col-md-9">
+            <div class="mb-2 attachfilename"></div>
+            <button class="btn" type="button" style="border: 1px dashed #a2aab2;background-color: #edeff0;line-height: 20px;padding: 10px 20px;text-align: center;" onclick="upload_attachfile()">
+                <i class="icon-paper-clip"></i>
+                <span>@Localizer["chonfiledinhkem"]</span>
+            </button>
+            <input type="file" data-name="" accept=".xlsx" hidden class="attachfile" />
+        </div>
+    </div>
+    <div class="form-group row cnt-worksheet d-none">
+        <label class="col-md-3 col-form-label">@Localizer["chonsheet"]</label>
+        <div class="col-md-9">
+            <div class="sheet_file" style="width:100%;"></div>
+        </div>
+    </div>
+</div>
+<div class="d-none" id="modal_export">
+    <div class="form-group row">
+        <label class="col-md-3"> @Localizer["loaitaikhoan"]</label>
+        <div class="col-md-9">
+            <input style="width:100%" class="v_role" />
+        </div>
+    </div>
+</div>
+@section Css{
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.flat.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.mobile.flat.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/custom.css")" asp-append-version="true" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="@Url.Content("~/lib/kendoui/js/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/lib/kendoui/js/messages/kendo.messages."+_currentCulture+".min.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/kendoui/js/cultures/kendo.culture."+_currentCulture+".min.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/kendoui/js/function_kendo.js")" asp-append-version="true"></script>
+    <script>
+     
+        var link_usergroup_member = '@Url.Action("IndexUser","UserGroup", new { ugid = "__ugid__",ugname = "__ugname__",orgid = "__orgid__"})';
+        var _orgid = '@ViewBag.orgid';
+        var _link_export='@Url.Action("ExportFile","Account")';
+        var _localizer = @Html.Raw(JsonConvert.SerializeObject(_localizer));
+    </script>
+    <script src="@Url.Content("~/lib/popper.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/js/usergroup/list.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/js/usergroup/func_addupdate.js")" asp-append-version="true"></script>
+
+}

@@ -1,0 +1,111 @@
+﻿@{
+    users users = Model;
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tentaikhoan"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="username" value="@users.username" type="text" name="username" placeholder="@Localizer["nhaptentaikhoan"]">
+        </div>
+    </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["emailaddr"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="emailaddr" value="@users.emailaddr" type="email" name="emailaddr" placeholder="@Localizer["nhapemailaddr"]">
+        </div>
+    </div>
+    <div class="form-group row d-none">
+        <label class="col-md-3 col-form-label">@Localizer["pwd"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="password" value="@WebConfigs.AppSettings.WebApi_clientSecret" type="password" name="password" placeholder="@Localizer["nhappwd"]">
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["hovaten"] (*)</label>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-6">
+                    <input class="form-control" placeholder="@Localizer["nhapho"]" style="width:100%;" required type="text" id="firstname" value="@(users.firstname)" />
+                </div>
+                <div class="col-6">
+                    <input class="form-control" placeholder="@Localizer["nhapten"]" style="width:100%;" required type="text" id="lastname" value="@(users.lastname)" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="vrole">@Localizer["loaitaikhoan"] (*)</label>
+        <div class="col-md-9">
+            <select style="width:100%;" id="vrole" name="vrole"></select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="org">@Localizer["phongban"]</label>
+        <div class="col-md-9">
+            <select style="width:100%;" id="org" name="org"></select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["diachi"] </label>
+        <div class="col-md-9">
+            <textarea class="form-control" id="diachi" value="@users.contacts" type="text" name="diachi" placeholder="@Localizer["nhapdiachi"]">@users.contacts</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["ngaysinh"]</label>
+        <div class="col-md-9 col-form-label">
+            <div class="row" style="align-items: baseline;">
+                <div class="col-6">
+                    <input placeholder="@Localizer["nhapngaysinh"]" style="width:100%;" required type="date" id="dob" value="@(users.dob != null ? DateTime.Parse(users.dob.ToString()).ToString("yyyy-MM-dd") : "")" />
+                </div>
+                <div class="col-6">
+                    <div class="item-radio">
+                        @if (users.gender == null)
+                        {
+                            <input class="k-radio" type="radio" checked="checked" id="gender1" value="1" name="gender"/>
+                            <label class="k-radio-label" for="gender1">@Localizer["nam"]</label>
+                            <input class="k-radio" type="radio" id="gender2" value="2" name="gender"/>
+                            <label class="k-radio-label" for="gender2">@Localizer["nu"]</label>
+                        }
+                        else
+                        {
+                            <input class="k-radio" type="radio" @(users.gender == 1 ? "checked=\"checked\"" : "") id="gender1" value="1" name="gender"/>
+                            <label class="k-radio-label" for="gender1">@Localizer["nam"]</label>
+                            <input class="k-radio" type="radio" @(users.gender == 2 ? "checked=\"checked\"" : "") id="gender2" value="2" name="gender"/>
+                            <label class="k-radio-label" for="gender2">@Localizer["nu"]</label>
+                        }
+                        @*<input type="radio" @(users.gender == 3 ? "checked=\"checked\"" : "") id="gender3" value="3" name="gender">
+                        <label for="gender3">@Localizer["khac"]</label>*@
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["sodienthoai"] </label>
+        <div class="col-md-9">
+            <input class="form-control" id="sodienthoai" value="@users.mobile" type="text" name="sodienthoai" placeholder="@Localizer["nhapsodienthoai"]">
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["mataikhoan"]</label>
+        <div class="col-md-9">
+            <input class="form-control" id="user_code" value="@users.user_code" type="text" name="user_code" placeholder="@Localizer["nhapmataikhoan"]">
+        </div>
+    </div>
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+<script>
+    var _vrole = '@users.v_role';
+    var _orgid = '@users.orgid';
+    var _dob = '@users.dob';
+
+</script>
+<script src="@Url.Content("~/js/account/func_addupdate.js")"></script>

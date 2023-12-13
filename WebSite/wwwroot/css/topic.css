@@ -1,0 +1,77 @@
+﻿.subject-row {
+    margin: 2rem;
+}
+
+.subject .sub-name {
+    display: table-cell;
+    vertical-align: middle;
+    height: inherit;
+    line-height: normal;
+}
+
+.subject {
+    height: 80px;
+    padding: 0 20px 0 80px;
+    margin: 0 0 30px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    position: relative;
+    line-height: 80px;
+    font-size: 14pt;
+    background-color: #fff;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+a.link-subject,
+a.link-subject:hover,
+a.link-subject:focus,
+a.link-subject:active {
+    text-decoration: none;
+}
+
+.subject {
+    height: 80px;
+    padding: 0 20px 0 80px;
+    margin: 0 0 30px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    position: relative;
+    line-height: 80px;
+    font-size: 14pt;
+    background-color: #fff;
+    text-transform: uppercase;
+    color: #777;
+}
+
+    .subject .sub-name {
+        display: table-cell;
+        vertical-align: middle;
+        height: inherit;
+        line-height: normal;
+    }
+
+    .subject:hover {
+        background-color: #0077ac;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .subject i {
+        font-size: 35px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+.s-icon {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+}

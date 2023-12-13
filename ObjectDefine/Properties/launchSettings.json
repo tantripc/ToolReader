@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ObjectDefine": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\EReader\\WebSite\\WebSite"
+    }
+  }
+}

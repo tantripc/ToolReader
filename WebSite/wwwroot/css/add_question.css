@@ -1,0 +1,254 @@
+﻿.form-check {
+    margin: 15px auto;
+    margin-right: -30px;
+    padding-right: 30px;
+}
+
+.form-check-input {
+    margin-top: 12px;
+}
+
+.btn-add-option-question {
+    width: 150px;
+    text-align: center;
+    float: right;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+    .btn-add-option-question:hover {
+        background-color: #fafafa;
+    }
+
+
+.form-check .fa.fa-minus {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    display: none;
+    cursor: pointer;
+}
+
+    .form-check:hover .fa.fa-minus,
+    .form-check .fa.fa-minus:hover {
+        display: block;
+    }
+
+.k-editor-inline.k-editor {
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    padding: 10px;
+    height: 60px;
+}
+
+table.k-editor {
+    height: 120px;
+}
+
+.k-editor-toolbar .k-tool-group .k-combobox {
+    width: 110px;
+}
+
+.form-control {
+    font-size: 14px;
+    height: auto;
+}
+
+    .form-control:focus {
+        box-shadow: none;
+        outline: none;
+    }
+/*Ghép ðôi*/
+.group-answer-matching table tr.tr_option {
+    border-bottom: 1px dashed #ccc;
+}
+
+.group-answer-matching table tr td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+    .group-answer-matching table tr td:first-child {
+        border-right: 1px dashed #ccc;
+    }
+
+.group-answer-matching .item_matching i.fa-minus {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.group-answer-matching .item_matching:hover i.fa-minus {
+    display: block;
+}
+
+.item-template-question {
+    height: 100px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+    .item-template-question:hover,
+    .item-template-question.active {
+        border-color: blue;
+    }
+
+.lable-template-question {
+    text-align: center;
+    line-height: 32px;
+}
+/*custom radio*/
+#createQuestion [type="radio"]:checked,
+#createQuestion [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+    #createQuestion [type="radio"]:checked + label,
+    #createQuestion [type="radio"]:not(:checked) + label {
+        position: relative;
+        padding-left: 40px;
+        cursor: pointer;
+        line-height: 24px;
+        display: inline-block;
+        color: #333;
+    }
+
+#createQuestion [type="radio"] + label {
+    margin-bottom: -10px;
+}
+
+#createQuestion [type="radio"]:checked + label:before,
+#createQuestion [type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    background: #F5F5F5;
+    box-sizing: unset;
+}
+
+#createQuestion [type="radio"]:checked + label:before {
+    border: 1px solid #DCCCB5;
+    background: #F2E9EA;
+}
+
+#createQuestion [type="radio"]:checked + label:after,
+#createQuestion [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #59B779;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    box-sizing: unset;
+}
+
+#createQuestion [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #C0C0C0;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    box-sizing: unset;
+}
+
+#createQuestion [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-sizing: unset;
+}
+/*end custom radio*/
+#createQuestion .group-option .form-check {
+    padding-left: 0px;
+}
+
+#createQuestion .group-option .form-check {
+    padding-left: 0px;
+}
+
+    #createQuestion .group-option .form-check .form-check-label {
+        padding-left: 40px;
+    }
+/*custom checkbox*/
+#createQuestion .hidden-box {
+    position: absolute;
+    z-index: -1000;
+    appearance: none;
+    opacity: 0;
+}
+
+#createQuestion .check--label {
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+    line-height: 24px;
+    display: inline-block;
+    color: #333;
+    margin-bottom: -10px;
+}
+
+#createQuestion .check--label-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ccc;
+    box-sizing: unset;
+}
+
+#createQuestion .check--label-text {
+    display: flex;
+    align-self: center;
+    position: relative;
+    cursor: pointer;
+}
+
+
+#createQuestion .hidden-box:checked + .check--label .check--label-box {
+    background-color: #59B779;
+    border-color: #DCCCB5;
+}
+
+    #createQuestion .hidden-box:checked + .check--label .check--label-box:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 3px;
+        left: 8px;
+        width: 6px;
+        height: 12px;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+#createQuestion .hidden-box:checked + .check--label .check--label-text:after {
+    width: 85%;
+}
+
+#createQuestion .group-matching-answer [type="radio"] + label {
+    margin-bottom: 15px;
+    margin-left: 8px;
+    padding-left: 35px;
+}

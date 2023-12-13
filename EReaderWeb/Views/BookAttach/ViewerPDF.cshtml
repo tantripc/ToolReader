@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutViewer.cshtml";
+    Data_Detailbook file = Model;
+    ViewData["Title"] = "Đọc sách";
+    //byte[] bytes = System.Text.Encoding.GetEncoding(28591).GetBytes(file.docattachid.ToString());
+    //string attach_code = System.Convert.ToBase64String(bytes);
+    string url_file = Url.Action("GetStreamFile", "BookAttach", new { id = WebConfigs.AppSettings.WebApiServiceLibrary.TrimEnd('/')+file.UrlFile });
+}
+
+<iframe src="~/lib/pdfjs/web/viewer.html?file=@url_file" style="width:100%;height:calc(100% - 30px);position:fixed;top:30px;left:0px;">
+</iframe>
+

@@ -1,0 +1,4 @@
+﻿.modal-dialog.modal-custom-icon .modal-content .modal-body {
+    overflow: hidden !important;
+    max-height: 100%;
+}

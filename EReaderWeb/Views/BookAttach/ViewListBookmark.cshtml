@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+    //List<Bookmark> lst_bookmark = Model;
+}
+@*@foreach (Bookmark item in lst_bookmark)
+{
+    <div class="item_bookmark">
+        <div class="label_bookmark" onclick="goto_bookmark(this)" data-p="@item.PageNum">@Localizer["trang"] @item.PageNum</div>
+        <div class="btn_delete" onclick="delete_bookmark(@item.Id)">
+            <i class="iconmoon iconmoon-xoa"></i>
+        </div>
+    </div>
+}
+<div class="item_bookmark">
+    <div class="label_bookmark" onclick="goto_bookmark(this)" data-p="-1"></div>
+    <div class="btn_delete" onclick="delete_bookmark(-1)">
+        <i class="iconmoon iconmoon-xoa"></i>
+    </div>
+</div>
+*@

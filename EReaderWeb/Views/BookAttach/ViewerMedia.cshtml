@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutViewer.cshtml";
+    Data_Detailbook file = Model;
+    ViewData["Title"] = "Đọc sách";
+    //byte[] bytes = System.Text.Encoding.GetEncoding(28591).GetBytes(file.docattachid.ToString());
+    //string attach_code = System.Convert.ToBase64String(bytes);
+    string url_file = file.UrlFile;
+    int? total_page = 0;
+}
+<div>
+    <div class="lv_popup_control">
+        @await Component.InvokeAsync("ControlViewer", new {id=ViewBag.FileId,FileRowId=ViewBag.FileRowId})
+    </div>
+    <div class="lv_content_viewer">
+        <div style="width:100%;height:100%">
+            @if (PubFunc.isEmbedCode(file.UrlFile))
+            {
+                <div>@Html.Raw(file.UrlFile)</div>
+            }
+            else if (PubFunc.isCheckUrlYoutube(file.UrlFile))
+            {
+                <iframe src="@Url.Content("~/lib/video.js/player.html?url="+url_file)" style="width:100%;height:calc(100% - 6px);" allowfullscreen></iframe>
+            }
+            else
+            {
+                <iframe src="@Url.Content("~/lib/video.js/player.html?url="+url_file)" style="width:100%;height:calc(100% - 6px);" allowfullscreen></iframe>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+<script>
+    var link='@url_file';
+    var _total_page='@total_page';
+    var pagewidth = 0;
+    var pageheight = 0;
+</script>
+<script src="~/js/file_viewer_render.js" asp-append-version="true"></script>
+}

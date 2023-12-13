@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Đọc sách";
+    Layout = "~/Views/Shared/_LayoutViewer.cshtml";
+    Data_Detailbook file = Model;
+    string key_file = Guid.NewGuid().ToString();
+    string name = file.Title;
+    if (!string.IsNullOrEmpty(name))
+    {
+        key_file = PubFunc.GetUrlText(name);
+    }
+    else
+    {
+        name = key_file;
+    }
+    string url_file = file.UrlFile;
+    string extend = System.IO.Path.GetExtension(url_file);
+    string url_script = WebConfigs.AppSettings.OfficeViewerUrl.TrimEnd('/') + "/web-apps/apps/api/documents/api.js";
+    int? total_page = 0;
+}
+<div>
+    <div class="lv_popup_control">
+        @await Component.InvokeAsync("ControlViewer", new {id=ViewBag.FileId,FileRowId=ViewBag.FileRowId})
+    </div>
+    <div class="lv_content_viewer">
+        <div style="width:100%;height:100%;">
+            <div id="viewer_ppt"></div>
+        </div>
+    </div>
+</div>
+@section Css{
+<style>
+    iframe {
+        height: 100%;
+    }
+</style>
+}
+@section Scripts{
+<script>
+    var _total_page='@total_page';
+    var pagewidth = 0;
+    var pageheight = 0;
+</script>
+<script src="~/js/file_viewer_render.js" asp-append-version="true"></script>
+<script type="text/javascript" src="@url_script"></script>
+
+<script>
+    config_powerpoint = {
+        "type": "embedded",
+        "document": {
+            "fileType": "@extend.Replace(".","")",
+            key: '@key_file',
+            "title": "@Html.Raw(name+extend)",
+            url: "@url_file",
+            permissions: {
+                edit: false,
+                download: false,
+                print: false
+            }
+        },
+        "documentType": "presentation",
+        "editorConfig": {
+            "mode": "embedded",
+            lang: 'vi-VN',
+            customization: {
+                anonymous: {
+                    request: false,
+                },
+                about: false,
+                chat: false,
+                comments: false,
+            },
+            "embedded": {
+                //"fullscreenUrl": "@Html.Raw(ViewBag.LinkFullScreen)",
+                "toolbarDocked": "top"
+            },
+        }
+    };
+    var docEditor_powerpoint = new DocsAPI.DocEditor("viewer_ppt", config_powerpoint);
+</script>
+}
+
+

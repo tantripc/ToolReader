@@ -1,0 +1,120 @@
+﻿@{
+    long? id = ViewBag.id;
+    Layout = null;
+    List<docexam> docexams = Model;
+    docexam ls = new docexam();
+    if (docexams.Count > 0)
+    {
+        ls = docexams[0];
+    }
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["tenbaikiemtra"] *</label>
+        <div class="col-md-9">
+            <input required class="form-control" id="title" type="text" name="title" placeholder="@Localizer["nhaptenkiemtra"] *" value="@ls.title">
+        </div>
+    </div>
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["thoigianlambai"]  @(Localizer["phut"].Value.ToLower()) *</label>
+        <div class="col-md-9">
+            <input type="number" required class="form-control col-md-6" id="required_time_minute" placeholder="@Localizer["nhapthoigian"] *" value="@ls.required_time_minute" min="1" />
+        </div>
+    </div>
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["thangdiem"]</label>
+        <div class="col-md-9" style="position:relative">
+            <input type="number" readonly required class="form-control col-md-6" id="total_point" placeholder="@Localizer["thangdiem"]" value="@ls.total_point" min="1" max="1000" />
+            <div id="notes_hd" class="" style="position:absolute;left: 28rem;top: 5px;Display:block !important;">
+                <a href="#" data-toggle="popoverthangdiem" title="" data-content="@Localizer["contentthangdiem"]" style="font-size:20px;z-index:1000;" data-original-title="@Localizer["titlethangdiem"]">
+                    <i class="iconmoon iconmoon-information"></i>
+                </a>
+            </div>
+        </div>  
+    </div>
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["diemdat"] *</label>
+        <div class="col-md-9" id="validatescore" style="position:relative;">
+            <input type="number" class="form-control col-md-6" id="scorepass" placeholder="@Localizer["nhapdiemdat"] *" value="@ls.scorepass" min="1" max="1000" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["hienthi"]</label>
+        <div class="col-md-4 col-form-label">
+            <label class="switch switch-label switch-primary">
+                <input class="switch-input" type="checkbox" @(ls.iseffect == null ? "checked=\"checked\"" : ls.iseffect == true ? "checked=\"checked\"" : "") id="iseffect">
+                <span class="switch-slider" data-checked="@Localizer["bat"]" data-unchecked="@Localizer["tat"]"></span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="textarea-input">@Localizer["cauhoi"]</label>
+        <div class="col-md-9 item-content">
+            <div class="content_type" data-type="question">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="text-right pointercursor cnt-item-content">
+                            <a class="card-header-action mr-2" title="@Localizer["themtaikhoantufile"]" onclick="importQuesListFromWord()">
+                                <i class="icons iconmoon iconmoon-excel"></i>
+                                <span>@Localizer["themtufile"]</span>
+                            </a>
+                            <a class="add_question" title="@Localizer["themmoicauhoi"]" style="cursor:pointer;font-size:20px;" onclick="addnewquestion(this)">
+                                <i class="icon-plus icons"></i>
+                            </a>
+                        </div>
+                        <table class="table table-responsive-sm table-striped mt-2">
+                            <thead>
+                                <tr>
+                                    <th style="width:50px">@Localizer["stt"]</th>
+                                    <th>@Localizer["cauhoi"]</th>
+                                    <th>@Localizer["diem"]</th>
+                                    <th style="width:150px">@Localizer["loaicauhoi"]</th>
+                                    <th style="width:150px"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="cnt_question">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/ckeditor/ckeditor.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/tagsinput/tagsinput.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/docexam/func_addupdate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/docexam/importword.js")" asp-append-version="true"></script>
+<link href="@Url.Content("~/lib/mathlive/mathlive.css")" asp-append-version="true" rel="stylesheet" />
+<link href="@Url.Content("~/lib/mathlive/mathlive.core.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/mathlive/mathlive.js")" asp-append-version="true"></script>
+ <script src="@Url.Content("~/lib/popper.js")" asp-append-version="true"></script>
+<script>
+    var api_file = '@WebConfigs.AppSettings.WebApiFile';
+    var read_file = '@WebConfigs.AppSettings.WebApiFileUrl';
+    var link_file = '@ls.content_link';
+    var motluachon = '@v_questiontype.MOTLUACHON';
+    var nhieuluachon = '@v_questiontype.NHIEULUACHON';
+    var dungsai = '@v_questiontype.DUNGSAI';
+    var dienkhuyet = '@v_questiontype.DIENKHUYET';
+    var ghepdoi = '@v_questiontype.GHEPDOI';
+    var traloingan = '@v_questiontype.TRALOINGAN';
+    var tuluan = '@v_questiontype.TULUAN';
+    $('[data-toggle="popoverthangdiem"]').popover();
+</script>
+<style>
+    
+   
+    .btn {
+        margin-bottom: 0.2rem;
+    }
+
+    p {
+        margin-bottom: 0 !important;
+    }
+    .popover{
+        z-index:3008;
+    }
+</style>

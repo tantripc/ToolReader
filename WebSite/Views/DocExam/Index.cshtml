@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = Localizer["baikiemtra"];
+    Layout = "_LayoutDetail";
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Dictionary<string, string> _localizer = Localizer.GetAllStrings().ToDictionary(x => x.Name, x => x.Value);
+}
+<div class="row cnt_grid_custom">
+    <div class="col-lg-12">
+        <div class="cnt-card">
+            <div class="card-header">
+                <div class="card-header-actions">
+                    <a class="card-header-action mr-2" href="@Url.Action("ExportFileTemplate","Home", new { fileTemplateName = DefineConstants.fileTemplateName.SampleDocQuiz})">
+                        <i class="iconmoon iconmoon-download"></i>
+                        <span>@Localizer["taimauword"]</span>
+                    </a>
+                    <a class="card-header-action mr-2" href="@Url.Action("ExportFileTemplate","Home", new { fileTemplateName = DefineConstants.fileTemplateName.SampleImportWord})">
+                        <i class="iconmoon iconmoon-download"></i>
+                        <span>@Localizer["taimauhuongdanimportword"]</span>
+                    </a>
+                  @*  <a class="card-header-action mr-2" style="cursor:pointer" title="@Localizer["xuatthanhfile"]" onclick="exportDocreadrequired()">
+                        <i class="icons iconmoon iconmoon-export"></i>
+                        <span>@Localizer["xuatthanhfile"]</span>
+                    </a>*@
+                  
+                    <a class="card-header-action" title="@Localizer["themmoi"]" href="#" onclick="addupdatedocexam()">
+                        <i class="iconmoon iconmoon-PlusCircle icons font-lg"></i>
+                        <span>@Localizer["themmoi"]</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div id="ListExam"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+<style>
+    .badgtd {
+        background-color: #FFD8D8;
+        padding: 8px 20px;
+        border-radius: 15px;
+        color: #C35053;
+    }
+
+    .badgtdd {
+        background-color: #ABFFC1;
+        padding: 8px 20px;
+        border-radius: 15px;
+        color: #03881F;
+    }
+    .action{
+        margin-top:7px;
+    }
+</style>
+@section Css{
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.common.min.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.flat.min.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.mobile.flat.min.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/custom.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/css/modal_custom.css")" asp-append-version="true" rel="stylesheet" />
+  
+}
+@section Scripts{
+    <script src="@Url.Content("~/lib/kendoui/js/jszip.min.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/kendoui/js/kendo.all.min.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/kendoui/js/messages/kendo.messages."+_currentCulture+".min.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/kendoui/js/cultures/kendo.culture."+_currentCulture+".min.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/kendoui/js/function_kendo.js")" asp-append-version="true"></script>
+   
+    <script>
+        var api_file = '@WebConfigs.AppSettings.WebApiFile';
+        var question_content = [];
+        var _urlResultExam = '@Url.Action("ViewResultExercise","DocExam", new {id="__id__"})';
+             var _docid = '@ViewBag.docid';
+        var _userid = '@ViewBag.userid';
+        var UrlFileWord = '@WebConfigs.AppSettings.UploadPathQuiz';
+        var _localizer = @Html.Raw(JsonConvert.SerializeObject(_localizer));
+    </script>
+    <script src="@Url.Content("~/js/docexam/list.js")" asp-append-version="true"></script>
+
+    @*<script src="@Url.Content("~/js/docexam/importword.js")" asp-append-version="true"></script>*@
+    <script src="@Url.Content("~/lib/moment.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/js/docexam/func_addupdate.js")" asp-append-version="true"></script>
+
+}

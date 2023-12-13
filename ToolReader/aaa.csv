@@ -1,0 +1,9 @@
+Bookmark,Bookmark.Id,Bookmark.FileId,Bookmark.SesionName,Bookmark.PageNum,Bookmark.Author,Bookmark.Type,Bookmark.CustomerId,Bookmark.Degree
+ObjectDefine.Bookmark,841,12326,"Lời mở đầu",1,tnhvi,"","",-1
+ObjectDefine.Bookmark,847,12326,"Hình 1",1,a,"","",-1
+ObjectDefine.Bookmark,842,12326,"Chương 1",2,"","","",-1
+ObjectDefine.Bookmark,848,12326,"Hình 2",2,b,"","",-1
+ObjectDefine.Bookmark,843,12326,"Chương 1.1",3,"","","",842
+ObjectDefine.Bookmark,844,12326,"Chương 1.2",4,"","","",842
+ObjectDefine.Bookmark,845,12326,"Chương 1.3",6,"","","",842
+ObjectDefine.Bookmark,846,12326,"Chương 2",9,"","","",-1

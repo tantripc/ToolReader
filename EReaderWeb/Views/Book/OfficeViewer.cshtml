@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Đọc sách";
+    Layout = null;
+    string url_file = ViewBag.UrlFile;
+    string key_file = ViewBag.KeyFile;
+    string extend = System.IO.Path.GetExtension(url_file);
+    string name = url_file.Split('/').Last().ToString();
+    string url_script = WebConfigs.AppSettings.OfficeViewerUrl.TrimEnd('/') + "/web-apps/apps/api/documents/api.js";
+    string documentType = "word";
+    switch (extend)
+    {
+        case ".doc":
+        case ".docx": documentType = "word"; break;
+        case ".ppt":
+        case ".pptx": documentType = "presentation"; break;
+        case ".xls":
+        case ".xlsx": documentType = "spreadsheet"; break;
+        default: break;
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Viewer</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description">
+</head>
+
+<body>
+    <div style="width:100%;height:100%">
+        <div id="view_Word"></div>
+    </div>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            position: fixed;
+        }
+
+        iframe {
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="@url_script"></script>
+    <script>
+                config_word = {
+                    "type": "embedded",
+                    "document": {
+                        "fileType": "@extend.Replace(".","")",
+                        "key": "@key_file",
+                        "title": "@Html.Raw(name+extend)",
+                        url: "@url_file",
+                        permissions: {
+                            edit: false,
+                            download: false,
+                            print:false
+                        }
+                    },
+                    "documentType": "@documentType",
+                    "editorConfig": {                        
+                        "mode": "view",
+                        lang: 'vi-VN',
+                        customization: {
+                            anonymous: {
+                                request: false,
+                            },
+                            about: false,
+                            chat: false,
+                            comments: false,
+                        },
+                        "embedded": {
+                            "toolbarDocked": "top"
+                        },
+                    }
+                };
+                var docEditor_word = new DocsAPI.DocEditor("view_Word", config_word);
+    </script>
+</body>
+
+</html>

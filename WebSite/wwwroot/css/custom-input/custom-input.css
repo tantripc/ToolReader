@@ -1,0 +1,282 @@
+﻿input[type=checkbox].custom-input,
+input[type=radio].custom-input,
+input[type=checkbox].custom-input-smaller,
+input[type=radio].custom-input-smaller {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+    input[type=checkbox].custom-input + label,
+    input[type=radio].custom-input + label,
+    input[type=checkbox].custom-input-smaller + label,
+    input[type=radio].custom-input-smaller + label {
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        font-weight: inherit;
+        /*font-size: 11pt;*/
+        /*white-space: nowrap;*/
+        cursor: pointer;
+        position: relative;
+        background-image: none;
+        background-repeat: no-repeat;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    input[type=checkbox].custom-input + label,
+    input[type=checkbox].custom-input-smaller + label {
+        background-image: url('images/checkbox.png');
+    }
+
+    input[type=radio].custom-input + label,
+    input[type=radio].custom-input-smaller + label {
+        /* background-image: url(images/radio.png); */
+        /* content: ''; */
+        /* width: 0px; */
+        /* height: 29px; */
+        /* background: #92a197; */
+        border: 1px solid #ccc;
+        /* position: absolute; */
+        /* top: 4px; */
+        left: -4px;
+        border-radius: 100%;
+    }
+
+        /*-------------------------------------MEDIUM------------------------------------------------------*/
+        /*custom checkbox*/
+        input[type=checkbox].custom-input + label.for-custom-input,
+        input[type=radio].custom-input + label.for-custom-input {
+            height: 30px;
+            width: 30px;
+            padding-left: 35px;
+            line-height: 28px;
+            background-size: 28px;
+            background-position: 1px 0;
+        }
+
+    /*input[type=checkbox].custom-input[checked] + label.for-custom-input,*/
+    input[type=checkbox].custom-input:checked + label.for-custom-input,
+    /*input[type=radio].custom-input[checked] + label.for-custom-input,*/
+    input[type=radio].custom-input:checked + label.for-custom-input {
+        background-position: 1px -28px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled] + label.for-custom-input,*/
+    input[type=checkbox].custom-input:disabled + label.for-custom-input,
+    /*input[type=radio].custom-input[disabled] + label.for-custom-input,*/
+    input[type=radio].custom-input:disabled + label.for-custom-input {
+        background-position: 1px -56px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled]:checked + label.for-custom-input,*/
+    /*input[type=checkbox].custom-input[checked]:disabled + label.for-custom-input,*/
+    /*input[type=checkbox].custom-input[disabled][checked] + label.for-custom-input,*/
+    input[type=checkbox].custom-input:disabled:checked + label.for-custom-input,
+    /*input[type=radio].custom-input[disabled]:checked + label.for-custom-input,*/
+    /*input[type=radio].custom-input[checked]:disabled + label.for-custom-input,*/
+    /*input[type=radio].custom-input[disabled][checked] + label.for-custom-input,*/
+    input[type=radio].custom-input:disabled:checked + label.for-custom-input {
+        background-position: 1px -84px;
+    }
+
+
+    input[type=checkbox].custom-input.focus + label.for-custom-input,
+    input[type=checkbox].custom-input:focus + label.for-custom-input,
+    input[type=radio].custom-input.focus + label.for-custom-input,
+    input[type=radio].custom-input:focus + label.for-custom-input {
+        background-position: 1px -112px;
+    }
+
+    /*input[type=checkbox].custom-input[checked].focus + label.for-custom-input,*/
+    input[type=checkbox].custom-input.focus:checked + label.for-custom-input,
+    /*input[type=checkbox].custom-input[checked]:focus + label.for-custom-input,*/
+    input[type=checkbox].custom-input:focus:checked + label.for-custom-input,
+    /*input[type=radio].custom-input[checked].focus + label.for-custom-input,*/
+    input[type=radio].custom-input.focus:checked + label.for-custom-input,
+    /*input[type=radio].custom-input[checked]:focus + label.for-custom-input,*/
+    input[type=radio].custom-input:focus:checked + label.for-custom-input {
+        background-position: 1px -140px;
+    }
+
+    /*-------------------------------------SMALL------------------------------------------------------*/
+    /*custom checkbox*/
+    input[type=checkbox].custom-input + label.for-custom-input-small,
+    input[type=radio].custom-input + label.for-custom-input-small {
+        height: 24px;
+        padding-left: 30px;
+        line-height: 24px;
+        background-size: 24px;
+        background-position: 0 0;
+    }
+
+    /*input[type=checkbox].custom-input[checked] + label.for-custom-input-small,*/
+    input[type=checkbox].custom-input:checked + label.for-custom-input-small,
+    /*input[type=radio].custom-input[checked] + label.for-custom-input-small,*/
+    input[type=radio].custom-input:checked + label.for-custom-input-small {
+        background-position: 0 -24px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled] + label.for-custom-input-small,*/
+    input[type=checkbox].custom-input:disabled + label.for-custom-input-small,
+    /*input[type=radio].custom-input[disabled] + label.for-custom-input-small,*/
+    input[type=radio].custom-input:disabled + label.for-custom-input-small {
+        background-position: 0 -48px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled]:checked + label.for-custom-input-small,*/
+    /*input[type=checkbox].custom-input[checked]:disabled + label.for-custom-input-small,*/
+    /*input[type=checkbox].custom-input[disabled][checked] + label.for-custom-input-small,*/
+    input[type=checkbox].custom-input:disabled:checked + label.for-custom-input-small,
+    /*input[type=radio].custom-input[disabled]:checked + label.for-custom-input-small,*/
+    /*input[type=radio].custom-input[checked]:disabled + label.for-custom-input-small,*/
+    /*input[type=radio].custom-input[disabled][checked] + label.for-custom-input-small,*/
+    input[type=radio].custom-input:disabled:checked + label.for-custom-input-small {
+        background-position: 0 -72px;
+    }
+
+    input[type=checkbox].custom-input.focus + label.for-custom-input-small,
+    input[type=checkbox].custom-input:focus + label.for-custom-input-small,
+    input[type=radio].custom-input.focus + label.for-custom-input-small,
+    input[type=radio].custom-input:focus + label.for-custom-input-small
+    {
+        background-position: 0 -96px;
+    }
+
+    /*input[type=checkbox].custom-input[checked].focus + label.for-custom-input-small,*/
+    input[type=checkbox].custom-input.focus:checked + label.for-custom-input-small,
+    /*input[type=checkbox].custom-input[checked]:focus + label.for-custom-input-small,*/
+    input[type=checkbox].custom-input:focus:checked + label.for-custom-input-small,
+    /*input[type=radio].custom-input[checked].focus + label.for-custom-input-small,*/
+    input[type=radio].custom-input.focus:checked + label.for-custom-input-small,
+    /*input[type=radio].custom-input[checked]:focus + label.for-custom-input-small,*/
+    input[type=radio].custom-input:focus:checked + label.for-custom-input-small {
+        background-position: 0 -120px;
+    }
+
+    /*------------------------------------- VERY SMALL------------------------------------------------------*/
+
+    input[type=checkbox].custom-input + label.for-custom-input-very-small,
+    input[type=radio].custom-input + label.for-custom-input-very-small {
+        height: 20px;
+        padding-left: 30px;
+        line-height: 20px;
+        font-size: 12px;
+        background-size: 20px;
+        background-position: 0 0;
+    }
+
+    /*input[type=checkbox].custom-input[checked] + label.for-custom-input-very-small,*/
+    input[type=checkbox].custom-input:checked + label.for-custom-input-very-small,
+    /*input[type=radio].custom-input[checked] + label.for-custom-input-very-small,*/
+    input[type=radio].custom-input:checked + label.for-custom-input-very-small {
+        background-position: 0 -20px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled] + label.for-custom-input-very-small,*/
+    input[type=checkbox].custom-input:disabled + label.for-custom-input-very-small,
+    /*input[type=radio].custom-input[disabled] + label.for-custom-input-very-small,*/
+    input[type=radio].custom-input:disabled + label.for-custom-input-very-small {
+        background-position: 0 -40px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled]:checked + label.for-custom-input-very-small,*/
+    /*input[type=checkbox].custom-input[checked]:disabled + label.for-custom-input-very-small,*/
+    /*input[type=checkbox].custom-input[disabled][checked] + label.for-custom-input-very-small,*/
+    input[type=checkbox].custom-input:disabled:checked + label.for-custom-input-very-small,
+    /*input[type=radio].custom-input[disabled]:checked + label.for-custom-input-very-small,*/
+    /*input[type=radio].custom-input[checked]:disabled + label.for-custom-input-very-small,*/
+    /*input[type=radio].custom-input[disabled][checked] + label.for-custom-input-very-small,*/
+    input[type=radio].custom-input:disabled:checked + label.for-custom-input-very-small {
+        background-position: 0 -60px;
+    }
+
+    input[type=checkbox].custom-input.focus + label.for-custom-input-very-small,
+    input[type=checkbox].custom-input:focus + label.for-custom-input-very-small,
+    input[type=radio].custom-input.focus + label.for-custom-input-very-small,
+    input[type=radio].custom-input:focus + label.for-custom-input-very-small {
+        background-position: 0 -80px;
+    }
+
+
+    /*input[type=checkbox].custom-input[checked].focus + label.for-custom-input-very-small,*/
+    input[type=checkbox].custom-input.focus:checked + label.for-custom-input-very-small,
+    /*input[type=checkbox].custom-input[checked]:focus + label.for-custom-input-very-small,*/
+    input[type=checkbox].custom-input:focus:checked + label.for-custom-input-very-small,
+    /*input[type=radio].custom-input[checked].focus + label.for-custom-input-very-small,*/
+    input[type=radio].custom-input.focus:checked + label.for-custom-input-very-small,
+    /*input[type=radio].custom-input[checked]:focus + label.for-custom-input-very-small,*/
+    input[type=radio].custom-input:focus:checked + label.for-custom-input-very-small {
+        background-position: 0 -100px;
+    }
+    /*end custom checkbox*/
+
+
+    /*------------------------------------- SMALLER------------------------------------------------------*/
+
+    input[type=radio].custom-input ~ label:not(.for-custom-input-smaller),
+    input[type=checkbox].custom-input ~ label:not(.for-custom-input-smaller) {
+        vertical-align: top;
+    }
+
+    input[type=checkbox].custom-input + label.for-custom-input-smaller,
+    input[type=radio].custom-input + label.for-custom-input-smaller {
+        height: 19px;
+        padding-left: 26px;
+        line-height: 19px;
+        background-size: 19px;
+        background-position: 1px 0;
+    }
+
+
+    /*input[type=checkbox].custom-input[checked]:checked + label.for-custom-input-smaller,*/
+    input[type=checkbox].custom-input:checked + label.for-custom-input-smaller,
+    /*input[type=radio].custom-input[checked] + label.for-custom-input-smaller,*/
+    input[type=radio].custom-input:checked + label.for-custom-input-smaller {
+        background-position: 1px -19px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled] + label.for-custom-input-smaller,*/
+    input[type=checkbox].custom-input:disabled + label.for-custom-input-smaller,
+    /*input[type=radio].custom-input[disabled] + label.for-custom-input-smaller,*/
+    input[type=radio].custom-input:disabled + label.for-custom-input-smaller {
+        background-position: 1px -38px;
+    }
+
+    /*input[type=checkbox].custom-input[disabled]:checked + label.for-custom-input-smaller,*/
+    /*input[type=checkbox].custom-input[checked]:disabled + label.for-custom-input-smaller,*/
+    /*input[type=checkbox].custom-input[disabled][checked] + label.for-custom-input-smaller,*/
+    input[type=checkbox].custom-input:disabled:checked + label.for-custom-input-smaller,
+    /*input[type=radio].custom-input[disabled]:checked + label.for-custom-input-smaller,*/
+    /*input[type=radio].custom-input[checked]:disabled + label.for-custom-input-smaller,*/
+    /*input[type=radio].custom-input[disabled][checked] + label.for-custom-input-smaller,*/
+    input[type=radio].custom-input:disabled:checked + label.for-custom-input-smaller {
+        background-position: 1px -57px;
+    }
+
+    input[type=checkbox].custom-input.focus + label.for-custom-input-smaller,
+    input[type=checkbox].custom-input:focus + label.for-custom-input-smaller,
+    input[type=radio].custom-input.focus + label.for-custom-input-smaller,
+    input[type=radio].custom-input:focus + label.for-custom-input-smaller {
+        background-position: 1px -76px;
+    }
+
+    /*input[type=checkbox].custom-input[checked].focus + label.for-custom-input-smaller,*/
+    input[type=checkbox].custom-input.focus:checked + label.for-custom-input-smaller,
+    /*input[type=checkbox].custom-input[checked]:focus:checked + label.for-custom-input-smaller,*/
+    input[type=checkbox].custom-input:focus:checked + label.for-custom-input-smaller,
+    /*input[type=radio].custom-input[checked].focus + label.for-custom-input-smaller,*/
+    input[type=radio].custom-input.focus:checked + label.for-custom-input-smaller,
+    /*input[type=radio].custom-input[checked]:focus + label.for-custom-input-smaller,*/
+    input[type=radio].custom-input:focus:checked + label.for-custom-input-smaller {
+        background-position: 1px -95px;
+    }

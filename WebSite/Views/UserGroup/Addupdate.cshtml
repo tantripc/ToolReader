@@ -1,0 +1,33 @@
+﻿@{
+    List<user_group> lstusers = Model;
+    user_group userss = new user_group();
+    if(lstusers.Count >0){
+        userss = lstusers[0];
+    }
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tennhom"]*</label>
+        <div class="col-md-9">
+            <input class="form-control" placeholder="@Localizer["nhaptennhom"]" style="width:100%;" required type="text" id="ugname" value="@(userss.ugname)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["motanhom"]</label>
+        <div class="col-md-9">
+            <input class="form-control" placeholder="@Localizer["nhapmotanhom"]" style="width:100%;" required type="text" id="description" value="@(userss.description)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="orgid">@Localizer["phongban"]</label>
+        <div class="col-md-9">
+            <select required style="width:100%;" id="orgid" name="orgid">@userss.orgid</select>
+        </div>
+    </div>
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+

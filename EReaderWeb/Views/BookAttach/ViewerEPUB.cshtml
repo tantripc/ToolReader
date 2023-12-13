@@ -1,0 +1,29 @@
+﻿@{
+    Data_Detailbook file = Model;
+    ViewData["Title"] = "Đọc sách";
+    string url_file = Url.Action("GetStreamFile", "BookAttach", new { url = ViewBag.UrlFileEpub });
+    Layout = "~/Views/Shared/_LayoutViewer.cshtml";
+    int? total_page =  0;
+}
+<div>
+    <div class="lv_popup_control">
+        @await Component.InvokeAsync("ControlViewer", new {id=ViewBag.FileId,FileRowId=ViewBag.FileRowId})
+    </div>
+    <div class="lv_content_viewer">
+            <iframe src="@Url.Content("~/lib/ePubViewer/index.html?url="+url_file)" style="width:100%;height:calc(100% - 6px);" allowfullscreen>
+
+</iframe>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var link='@url_file';
+        var _total_page='@total_page';
+        var pagewidth = 0;
+        var _FileId = '@ViewBag.FileId';
+        var pageheight = 0;
+    </script>
+    <script src="~/js/file_viewer_render.js" asp-append-version="true"></script>
+}
+
+

@@ -1,0 +1,77 @@
+﻿@using ObjectDefine
+@{
+    List<docattach> docattachs = Model;
+    docattach docattachls = new docattach();
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+    if (docattachs.Count > 0)
+    {
+        docattachls = docattachs[0];
+    }
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["dangtailieu"]</label>
+        <div class="col-md-9 col-form-label">
+            <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input k-radio" id="fileattach" @(docattachls.attachfile!=null ? "checked=\"checked\"" : "checked=\"checked\"") type="radio" value="1" name="filetype" />
+                <label class="form-check-label k-radio-label" for="fileattach">@Localizer["taptin"]</label>
+            </div>
+            <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input k-radio" id="filelink" @(docattachls.attachlink!=null ? "checked=\"checked\"" : "") type="radio" value="2" name="filetype">
+                <label class="form-check-label k-radio-label" for="filelink">@Localizer["lienket"]</label>
+            </div>
+            <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input k-radio" id="embed" type="radio" value="3" name="filetype">
+                <label class="form-check-label k-radio-label" for="embed">@Localizer["embed"]</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="cnt-filelink @(docattachls.attachlink !=null?"":"d-none")">
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label embed_input" for="text-input">@Localizer["manhungembed"]</label>
+            <div class="col-md-9 embed_input">
+                <textarea class="form-control " style="width:100%" value="@docattachls.attachlink" id="embed_input" name="embed_input" type="url" placeholder="@Localizer["nhapmanhungembed"]*"></textarea>
+            </div>
+
+            <label class="col-md-3 col-form-label link_input" for="text-input">@Localizer["linklienket"]</label>
+            <div class="col-md-9 link_input">
+                <input class="form-control " style="width:100%" value="@docattachls.attachlink" id="linktoshare" name="linktoshare" type="url" placeholder="@Localizer["nhaplinklienket"]*" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group row cnt-fileattach @(docattachls.attachlink!=null?"d-none":"")">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["filedinhkem"]</label>
+        <div class="col-md-9">
+            <div id="attachfilename" class="mb-2">@docattachls.attachfile</div>
+            <button class="btn" type="button" style="border: 1px dashed #a2aab2;background-color: #edeff0;line-height: 20px;padding: 10px 20px;text-align: center;" onclick="upload_attachfile()">
+                <i class="icon-paper-clip"></i>
+                <span>@(string.IsNullOrEmpty(docattachls.attachfile) ? Localizer["chonfiledinhkem"].Value.ToString() : Localizer["capnhatfiledinhkem"].Value.ToString())</span>
+            </button>
+            <input type="file" data-name="@docattachls.attachfile" hidden id="attachfile" />
+        </div>
+    </div>
+    <div class="form-group row d-none" id="page">
+        <label class="col-md-3 col-form-label">@Localizer["sotrang"]</label>
+        <div class="col-md-9 col-form-label">
+            <input class="form-control" value="" type="text" id="pagenumber" name="pagenumber" placeholder="@Localizer["nhapsotrang"]">
+        </div>
+    </div>
+    <div class="form-group row cnt-isdefault">
+        <label class="col-md-3 col-form-label">@Localizer["filesachmacdinh"]</label>
+        <div class="col-md-4 col-form-label">
+            <label class="switch switch-label switch-primary">
+                <input class="switch-input" type="checkbox" @(docattachls.isdefault == true ? "checked=\"checked\"" : "") id="iseffect">
+                <span class="switch-slider" data-checked="@Localizer["bat"]" data-unchecked="@Localizer["tat"]"></span>
+            </label>
+        </div>
+    </div>
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+<script>
+    var api_file = '@WebConfigs.AppSettings.WebApiFile';
+</script>
+<script src="@Url.Content("~/js/docattach/func_addupdate.js")" asp-append-version="true"></script>

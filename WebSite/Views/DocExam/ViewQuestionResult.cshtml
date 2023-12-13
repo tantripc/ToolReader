@@ -1,0 +1,289 @@
+﻿@{
+    Layout = null;
+    List<question_bank> lst_question = Model;
+}
+@if (lst_question.Count > 0)
+{
+    @for (int i = 0; i < lst_question.Count; i++)
+    {
+        List<qbank_choice> lst_option = new List<qbank_choice>();
+        if (!string.IsNullOrEmpty(lst_question[i].question_bank_choice))
+        {
+            lst_option = JsonConvert.DeserializeObject<List<qbank_choice>>(lst_question[i].question_bank_choice);
+        }
+        <div class="item-question">
+            <div style="font-weight: 600;margin-bottom: 10px;">
+                @Localizer["cau"] @(lst_question[i].ordinal):
+            </div>
+            @if (lst_question[i].v_questiontype == v_questiontype.MOTLUACHON || lst_question[i].v_questiontype == v_questiontype.NHIEULUACHON || lst_question[i].v_questiontype == v_questiontype.DUNGSAI)
+            {
+                <div>@Html.Raw(lst_question[i].content)</div>
+                <div class="content-answer">
+                    @for (int j = 0; j < lst_option.Count; j++)
+                    {
+                        lst_option[j].showidx = lst_option[j].idx;
+                        if (lst_question[i].v_questiontype == v_questiontype.MOTLUACHON || lst_question[i].v_questiontype == v_questiontype.DUNGSAI)
+                        {
+                            <div class="item-answer">
+                                <input disabled="disabled" type="radio" id="@(j + 1)_optionques_@(lst_question[i].ordinal)" name="radio-group-@(lst_question[i].ordinal)" @(lst_option[j].showidx == lst_question[i].answer ? "checked=\"checked\"" : "")>
+                                <label for="@(j + 1)_optionques_@(lst_question[i].ordinal)">
+                                    @Html.Raw(lst_option[j].showidx)
+                                </label>
+                                <span>.</span>
+                                <span style="display: inline-flex;max-width:calc(100% - 100px);">@Html.Raw(lst_option[j].choice_content)</span>
+                                @if (lst_question[i].iscorrect == false && lst_option[j].showidx == lst_question[i].answer)
+                                {
+                                    <i class="iconmoon iconmoon-wrong" style="color:red;line-height: 22px;margin-left: 10px;"></i>
+                                }
+                                else if (lst_option[j].idx == lst_question[i].solution_key)
+                                {
+                                    <i class="iconmoon iconmoon-right" style="color:#1cd81c;line-height: 22px;margin-left: 10px;"></i>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+
+                            string[] solution_key = lst_question[i].solution_key.Split(';');
+                            if (string.IsNullOrEmpty(lst_question[i].answer))
+                            {
+                                lst_question[i].answer = "";
+                            }
+                            <div class="item-answer">
+                                <input disabled="disabled" type="checkbox" class="hidden-box" id="@(j + 1)_optionques_@(i + 1)" @(!string.IsNullOrEmpty(lst_question[i].answer) && lst_question[i].answer.IndexOf(lst_option[j].showidx) != -1 ? "checked=\"checked\"" : "") />
+                                <label for="@(j + 1)_optionques_@(i + 1)" class="check--label">
+                                    <span class="check--label-box"></span>
+                                    <span class="check--label-text">
+                                        @Html.Raw(lst_option[j].showidx)
+                                    </span>
+                                </label>
+                                <span>.</span>
+                                <span style="display: inline-flex;max-width:calc(100% - 100px);">@Html.Raw(lst_option[j].choice_content)</span>
+
+                                @for (int t = 0; t < solution_key.Length; t++)
+                                {
+                                    if (lst_question[i].iscorrect == false && lst_question[i].answer.IndexOf(lst_option[j].showidx) != -1)
+                                    {
+                                        <i class="iconmoon iconmoon-wrong" style="color:red;line-height: 22px;margin-left: 10px;"></i>
+                                        break;
+                                    }
+                                    else if (lst_option[j].idx == solution_key[t])
+                                    {
+                                        <i class="iconmoon iconmoon-right" style="color:#1cd81c;line-height: 22px;margin-left: 10px;"></i>
+                                        break;
+                                    }
+                                }
+                            </div>
+                        }
+                    }
+
+                </div>
+            }
+            else if (lst_question[i].v_questiontype == v_questiontype.DIENKHUYET)
+            {
+                List<qbank_choice> lst_choice = new List<qbank_choice>();
+                if (!string.IsNullOrEmpty(lst_question[i].question_bank_choice))
+                {
+                    lst_choice = JsonConvert.DeserializeObject<List<qbank_choice>>(lst_question[i].question_bank_choice);
+                }
+                if(lst_choice!=null && lst_choice.Count==0 && lst_question[i].qbank_choice != null)
+                {
+                    lst_choice = lst_question[i].qbank_choice;
+                }
+                <div>
+                    @{
+                        string content = lst_question[i].content;
+                        System.Text.StringBuilder solution = new System.Text.StringBuilder();
+                    }
+                    @for (int j = 0; j < lst_choice.Count; j++)
+                    {
+                        lst_choice[j].showidx = lst_choice[j].idx;
+                        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                        sb.Append("<input style=\"min-width:100px;width: auto;display: inline-block;\" disabled=\"disabled\" class=\"form-control\" value=\"" + (!string.IsNullOrEmpty(lst_choice[j].answer) ? lst_choice[j].answer : "") + "\" />");
+                        string str_correct = "";
+                        if (lst_choice[j].iscorrect == false)
+                        {
+                            str_correct += "<i class=\"iconmoon iconmoon-wrong\" style=\"color:red;line-height: 22px;margin-left: 5px;\"></i>";
+                        }
+                        else if (lst_choice[j].iscorrect == true)
+                        {
+                            str_correct += "<i class=\"iconmoon iconmoon-right\" style=\"color:#1cd81c;line-height: 22px;margin-left: 5px;\"></i>";
+                        }
+
+                        solution.Append("<div><span class=\"mr-2\">(" + lst_choice[j].idx + ").</span><span>" + lst_choice[j].solution_key.TrimStart('|').TrimEnd('|').Replace("|", " | ") + "</span></div>");
+                        content = content.Replace(lst_choice[j].choice_content, sb.ToString() + "<span class=\"ms-2\">(" + lst_choice[j].showidx + ")" + str_correct + "</span>");
+
+
+                    }
+                    <div>@Html.Raw(content)</div>
+                    
+                </div>
+            }
+            else if (lst_question[i].v_questiontype == v_questiontype.GHEPDOI)
+            {
+                List<qbank_choice> lst_question_bank_choice = new List<qbank_choice>();
+                    if (!string.IsNullOrEmpty(lst_question[i].question_bank_choice))
+                {
+                    lst_question_bank_choice = JsonConvert.DeserializeObject<List<qbank_choice>>(lst_question[i].question_bank_choice);
+                }
+                List<qbank_suggest> lst_question_bank_suggest = new List<qbank_suggest>();
+                    if (!string.IsNullOrEmpty(lst_question[i].question_bank_suggest))
+                {
+                    lst_question_bank_suggest = JsonConvert.DeserializeObject<List<qbank_suggest>>(lst_question[i].question_bank_suggest);
+                }
+                int max_row = Math.Max(lst_question_bank_choice.Count, lst_question_bank_suggest.Count);
+
+                string[] arr_answer = { };
+                if (!string.IsNullOrEmpty(lst_question[i].answer))
+                {
+                    arr_answer = lst_question[i].answer.Split(';');
+                }
+                <div class="row">
+                    <div class="col-12">
+                        <div>@Html.Raw(lst_question[i].content)</div>
+                    </div>
+                    <div class="col-5">
+                        <ul class="list-group">
+                            <li class="list-group-item disabled">@Localizer["noidungcaudan"] (A)</li>
+                            @for (int g = 0; g < max_row; g++)
+                            {
+                                lst_question_bank_choice[g].showidx = lst_question_bank_choice[g].idx;
+                                <li class="list-group-item">
+                                    <div class="draggable" rel="@(g <= lst_question_bank_choice.Count ? lst_question_bank_choice[g].showidx : "")">
+                                        <span class="mr-2">@(g <= lst_question_bank_choice.Count ? lst_question_bank_choice[g].showidx : "").</span>
+                                        <span>@Html.Raw(g <= lst_question_bank_choice.Count ? lst_question_bank_choice[g].choice_content : "")</span>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-7">
+                        <ul class="list-group">
+                            <li class="list-group-item disabled">
+                                <div class="row">
+                                    <div class="col-6">@Localizer["traloi"]</div>
+                                    <div class="col-5">@Localizer["phuonganluachon"] (B)</div>
+                                </div>
+                            </li>
+                            @for (int g = 0; g < max_row; g++)
+                            {
+                                string key_ans = "";
+                                string content_ans = "";
+                                for (int t = 0; t < arr_answer.Length; t++)
+                                {
+                                    lst_question_bank_suggest[g].showidx = lst_question_bank_suggest[g].idx;
+                                    if (!string.IsNullOrEmpty(arr_answer[t]))
+                                    {
+                                        string[] arr_key = arr_answer[t].Split('-');
+                                        for (int n = 0; n < arr_key.Length; n++)
+                                        {
+                                            if (arr_key[1] == lst_question_bank_suggest[g].showidx)
+                                            {
+                                                key_ans = arr_key[0].Replace("\"", "");
+                                                List<qbank_choice> arr_temp = lst_question_bank_choice.Where(x => x.showidx == key_ans).ToList();
+                                                content_ans = arr_temp.Count > 0 ? arr_temp[0].choice_content : "";
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                }
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="item_answer" rel="@(g <= lst_question_bank_suggest.Count ? lst_question_bank_suggest[g].showidx : "")" @(!string.IsNullOrEmpty(key_ans) ? "ans=" + key_ans + "" : "")>
+                                                <div class="droptarget" style="background-color:transparent;color:#333;">
+                                                    <span class="mr-2">@(!string.IsNullOrEmpty(key_ans) ? key_ans + "." : "") </span>
+                                                    @Html.Raw(!string.IsNullOrEmpty(key_ans) ? content_ans : "")
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="col-5">
+                                            <span class="mr-2">@(g <= lst_question_bank_suggest.Count ? lst_question_bank_suggest[g].showidx : "").</span>
+                                            <span>@Html.Raw(g <= lst_question_bank_suggest.Count ? lst_question_bank_suggest[g].suggest_content : "")</span>
+                                        </div>
+                                        <div class="col-1">
+                                            @if (g <= lst_question_bank_choice.Count && lst_question_bank_choice[g].iscorrect == false)
+                                            {
+                                                <i class="iconmoon iconmoon-wrong" style="color:red;line-height: 22px;"></i>
+                                            }
+                                            else if (g <= lst_question_bank_choice.Count && lst_question_bank_choice[g].iscorrect == true)
+                                            {
+                                                <i class="iconmoon iconmoon-right" style="color:#1cd81c;line-height: 22px;"></i>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+            else if (lst_question[i].v_questiontype == v_questiontype.TULUAN || lst_question[i].v_questiontype == v_questiontype.TRALOINGAN)
+            {
+                <div class="pl-5">@Html.Raw(lst_question[i].content)</div>
+                @if (!string.IsNullOrEmpty(lst_question[i].answer) || lst_question[i].learner_task_path != null)
+                {
+                    <div class="explanation mt-4">
+                        <div>@Localizer["cautraloi"]:</div>
+                        <div class="pl-5">@Html.Raw(lst_question[i].answer)</div>
+                    </div>
+
+                }
+                @if (lst_question[i].learner_task_path != null && lst_question[i].learner_task_path.Count > 0)
+                {
+                    <div class="mt-4">
+                        @foreach (learnertask_path item in lst_question[i].learner_task_path)
+                        {
+                            if (item.qbankid == lst_question[i].qbankid)
+                            {
+                                <div>@Localizer["filedinhkem"]:</div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="border:none;background-color:transparent;">
+                                        <div>
+                                            @foreach (string path in item.learner_task_path)
+                                            {
+                                                string filename_url = WebConfigs.AppSettings.WebApiFile.TrimEnd('/') + "/files?file=" + path;
+                                                <a style="text-decoration:none;color:#333;" href="@filename_url" target="_blank" title="@Localizer["taifile"]">
+                                                    <i class="iconmoon iconmoon-download"></i>
+                                                </a>
+                                                <span class="ml-2" style="font-weight:normal"><a href="@filename_url" target="_blank">@(path.Split('/').Last())</a></span>
+                                            }
+                                        </div>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                }
+            }
+            @if (!string.IsNullOrEmpty(lst_question[i].explanation))
+            {
+                <div class="explanation mt-4">
+                    <div>@Localizer["goiy"]</div>
+                    <div class="pl-5">@Html.Raw(lst_question[i].explanation)</div>
+                </div>
+            }
+        </div>
+    }
+}
+<style>
+    .item-question .col-5 li.list-group-item:hover:not(.disabled) {
+        background-color: transparent !important;
+        color: #333;
+        cursor: unset;
+    }
+
+    .item-question .col-5 li.list-group-item .draggable {
+        cursor: unset;
+    }
+
+  
+</style>
+
+
+

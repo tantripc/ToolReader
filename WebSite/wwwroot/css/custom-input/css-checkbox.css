@@ -1,0 +1,55 @@
+﻿/*custom checkbox*/
+input[type=checkbox].custom-input {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+    input[type=checkbox].custom-input + label.for-custom-input {
+        height: 32px;
+        padding: 0 0 0 35px;
+        margin: 0;
+        display: inline-block;
+        line-height: 32px;
+        font-weight: normal;
+        font-size: 11pt;
+        white-space: nowrap;
+        cursor: pointer;
+        background-image: url('image/check_square.png');
+        background-repeat: no-repeat;
+        background-size: 32px;
+        background-position: 0 0;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        
+    }
+
+    input[type=checkbox].custom-input:checked + label.for-custom-input {
+        background-position: 0 -32px;
+        
+    }
+
+    input[type=checkbox].custom-input[disabled] + label.for-custom-input {
+        background-position: 0 -64px;
+    }
+
+    input[type=checkbox].custom-input[disabled]:checked + label.for-custom-input {
+        background-position: 0 -96px;
+    }
+
+    input[type=checkbox].custom-input:focus + label.for-custom-input {
+        background-position: 0 -128px;
+    }
+
+    input[type=checkbox].custom-input:focus:checked + label.for-custom-input {
+        background-position: 0 -160px;
+    }
+/*end custom checkbox*/

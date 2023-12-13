@@ -1,0 +1,42 @@
+﻿@using ObjectDefine
+@{
+    topic topics = Model;
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["nhapdanhmuc"] (*)</label>
+        <div class="col-md-9">
+                <input class="form-control" required id="topicname" value="@topics.topicname" type="text" name="topicname" placeholder="@Localizer["nhapdanhmuc"]">
+        </div>
+    </div>
+     <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="ptopicid">@Localizer["danhmuccapcha"]</label>
+        <div class="col-md-9">
+            <select style="width:100%;" id="ptopicid" name="ptopicid"></select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["hoatdong"]</label>
+        <div class="col-md-4 col-form-label">
+                <label class="switch switch-label switch-primary">
+                <input class="switch-input" type="checkbox" @(topics.iseffect != true ? "checked=\"checked\"" : "checked=\"checked\"") id="iseffect">
+                <span class="switch-slider" data-checked="@Localizer["bat"]" data-unchecked="@Localizer["tat"]"></span>
+            </label>
+           
+        </div>
+    </div>
+   @* <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="topicid">@Localizer["chonchudecha"] (*)</label>
+        <div class="col-md-9">
+            <select required style="width:100%;" id="topicid" name="topicid"></select>
+        </div>
+    </div>*@
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+<script src="@Url.Content("~/lib/ckeditor/ckeditor.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/topic/func_addupdate.js")" asp-append-version="true"></script>
+

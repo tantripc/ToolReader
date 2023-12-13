@@ -1,0 +1,10 @@
+﻿.ML__keyboard.is-visible, .ML__popover {
+    z-index: 100000 !important;
+}
+.ML__fieldcontainer {
+    border: 1px solid #ccc;
+}
+.ML__fieldcontainer__field {
+    line-height: 40px !important;
+    height: 40px !important;
+}

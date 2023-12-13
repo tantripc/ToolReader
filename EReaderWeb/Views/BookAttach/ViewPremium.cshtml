@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+    var FileId = ViewBag.FileId;
+    ViewData["Title"] = "Đọc sách";
+}
+
+<iframe src="~/lib/viewpremium/html/index.html?fileid=FileId" style="width:100%;height:calc(100%);position:fixed;top:0px;left:0px;">
+</iframe>
+

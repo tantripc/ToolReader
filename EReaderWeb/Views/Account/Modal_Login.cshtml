@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Modal_Login";
+    Layout = null;
+    Dictionary<string, string> _localizer_layout = Localizer.GetAllStrings().ToDictionary(x => x.Name, x => x.Value);
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+<div id="modalLogin" class="modal fade">
+    <div class="modal-dialog modal-login modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row modal_login">
+                    <div class="col-md-7 col-12 p-0 d-none d-md-block">
+                        <div class="image_left">
+                            <img class="image_background" src="~/images/bg_LogIn.png" />
+                            <img class="logo_site_auth" src="~/images/Logo.svg" />
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12 p-0 cover_form_login">
+                        <button class="button-animation" onclick="modalRate()"><i class="nav-icon iconmoon iconmoon-Close"></i></button>
+                        <form class="content_right" id="formlogin">
+                            <div class="title_login">@Localizer["dangnhap"]</div>
+                            <div class="mb-2">
+                                <div class="row_input">
+                                    <i class="iconmoon iconmoon-user1"></i>
+                                    <input class="form-control" required id="txt_username_login" placeholder="@Localizer["tendangnhap"]*" />
+                                </div>
+                                <div class="row_input row_input_password">
+                                    <i class="iconmoon iconmoon-Lock"></i>
+                                    <input class="form-control" required id="txt_password_login" placeholder="@Localizer["matkhau"]*" type="password" />
+                                    <div onclick="Showhidepwd()" class="confirm-password-new" type="button">
+                                        <i id="eyeball" class="iconmoon iconmoon-Noviewer"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*   @if (islibrary == "True")
+                            {
+                            <div class="btn_login" onclick="SignIn_issynclibrary()">@Localizer["dangnhap"]</div>
+                            }
+                            else
+                            {*@
+                            <div class="row">
+                                <div class="col-12 cover_lstbox_library">
+                                    <div onclick="forgot_modal()" class="text_forgotpass">
+                                        @Localizer["quenmatkhau"]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn_login" onclick="SignIn()">@Localizer["dangnhap"]</div>
+                            <div onclick="register_modal()" class="text_register">@Localizer["dangkytaikhoan"]</div>
+                            @*}*@
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="@Url.Content("~/css/login.css")" rel="stylesheet" asp-append-version="true" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/dist/additional-methods.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")" asp-append-version="true"></script>
+<script>
+    var _url = '@Url.Action("Index","Home")';
+</script>

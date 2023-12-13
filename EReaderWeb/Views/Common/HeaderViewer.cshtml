@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+    //users acc = Model;
+}
+<header class="menu_viewer_top">
+    <nav class="navbar navbar-expand navbar-light border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <div class="btn_back">
+                <a href="@(WebConfigs.AppSettings.WebApiServiceLibrary)DigitalDocument/Index?currentTreeId=-1&currentViewId=new&display=icon">
+                    <i class="iconmoon iconmoon-Back1"></i>
+                </a>
+                <span></span>
+            </div>
+            <div class="navbar-collapse collapse content_control_button">
+
+                <div class="content_profile_account">
+                    <div class="cnt_add_bookmark" onclick="addbookmark()">
+                        <i class="iconmoon iconmoon-Bookmark_1"></i>
+                        <i class="iconmoon iconmoon-Bookmark"></i>
+                    </div>
+                        <div class="dropdown drop_profile">
+                        <img src="~/images/NoAvatar.png" />
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuProfile" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>@ViewBag.UserName</span>
+                                <i class="iconmoon iconmoon-Down1"></i>
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuProfile">
+                                <li>
+                                <a title="Trở về" class="dropdown-item" href="@(WebConfigs.AppSettings.WebApiServiceLibrary)DigitalDocument/Index?currentTreeId=-1&currentViewId=new&display=icon">Trở về</a>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</header>

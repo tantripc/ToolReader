@@ -1,0 +1,359 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\anime-master\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <None Include="wwwroot\lib\anime-master\.github\ISSUE_TEMPLATE\feature_request.md" />
+    <None Include="wwwroot\lib\viewpremium\js\BookPreview.js" />
+    <None Include="wwwroot\lib\viewpremium\js\config.js" />
+    <None Include="wwwroot\lib\viewpremium\js\FlipBookPlugins.min.js" />
+    <None Include="wwwroot\lib\viewpremium\js\flipHtml5.hiSlider2.min.js" />
+    <None Include="wwwroot\lib\viewpremium\js\jquery-3.5.1.min.js" />
+    <None Include="wwwroot\lib\viewpremium\js\LoadingJS.js" />
+    <None Include="wwwroot\lib\viewpremium\js\LoadReader.js" />
+    <None Include="wwwroot\lib\viewpremium\js\main.js" />
+    <None Include="wwwroot\lib\viewpremium\js\previewBook.js" />
+    <None Include="wwwroot\lib\viewpremium\js\resource_edit.js" />
+    <None Include="wwwroot\lib\viewpremium\js\visitinfo.js" />
+  </ItemGroup>
+
+
+  <!--<ItemGroup>
+    <Content Remove="Views\Notification\NotifyPrepend.cshtml" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="DtronixPdf" Version="1.0.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <!--<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>-->
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="Tesseract" Version="5.2.0" />
+    <PackageReference Include="Tesseract.Net.SDK" Version="4.5.411" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <ProjectReference Include="..\DefineConstants\DefineConstants.csproj" />
+    <ProjectReference Include="..\ObjectDefine\ObjectDefine.csproj" />
+    <ProjectReference Include="..\RepositoriesAPI\RepositoriesAPI.csproj" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\concrt140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\CPU指令集检测工具.exe" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\libiomp5md.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mfc140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mfcm140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mkldnn.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mklml.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_1.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_2.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_atomic_wait.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_codecvt_ids.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\onnxruntime.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\opencv_world411.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\paddle_inference.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\paddle2onnx.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\PaddleOCR.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\concrt140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\CPU指令集检测工具.exe" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\libiomp5md.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mfc140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mfcm140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mkldnn.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\mklml.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_1.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_2.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_atomic_wait.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\msvcp140_codecvt_ids.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\onnxruntime.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\opencv_world411.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\paddle_inference.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\paddle2onnx.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\PaddleOCR.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\vcamp140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\vccorlib140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\vcomp140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\vcruntime140.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\vcruntime140_1.dll" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <None Remove="C:\Users\phuvo\.nuget\packages\paddleocrsharp\3.1.0\build\PaddleOCRLib\yt_CPUCheck.dll" />
+  </ItemGroup>
+
+	<!-- <ItemGroup>
+    <None Include="Views\Notification\NotifyPrepend.cshtml" />
+    <None Include="wwwroot\lib\iconmoon\demo-files\demo.js" />
+    <None Include="wwwroot\lib\iconmoon\fonts\icomoon.svg" />
+    <None Include="wwwroot\lib\jsebook\lib\bufferpack\bufferpack.js" />
+    <None Include="wwwroot\lib\jsebook\lib\bufferpack\LICENSE" />
+    <None Include="wwwroot\lib\jsebook\lib\jasmine-2.0.0\boot.js" />
+    <None Include="wwwroot\lib\jsebook\lib\jasmine-2.0.0\console.js" />
+    <None Include="wwwroot\lib\jsebook\lib\jasmine-2.0.0\jasmine-html.js" />
+    <None Include="wwwroot\lib\jsebook\lib\jasmine-2.0.0\jasmine.js" />
+    <None Include="wwwroot\lib\jsebook\spec\locmap_test.js" />
+    <None Include="wwwroot\lib\jsebook\spec\mobiread_test.js" />
+    <None Include="wwwroot\lib\jsebook\spec\mobiread_util.js" />
+    <None Include="wwwroot\lib\jsebook\src\locmap.js" />
+    <None Include="wwwroot\lib\jsebook\src\mobiread.js" />
+    <None Include="wwwroot\lib\kendoui\js\angular.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\cultures\kendo.culture.en-US.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\cultures\kendo.culture.en.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\cultures\kendo.culture.vi-VN.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\cultures\kendo.culture.vi.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\function_kendo.js" />
+    <None Include="wwwroot\lib\kendoui\js\jquery.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\jszip.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\kendo.all.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\kendo.angular.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\kendo.dataviz.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\messages\kendo.messages.en.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\messages\kendo.messages.vi.min.js" />
+    <None Include="wwwroot\lib\kendoui\js\pako_deflate.min.js" />
+    <None Include="wwwroot\lib\kendoui\styles\fonts\glyphs\KendoUIGlyphs.svg" />
+    <None Include="wwwroot\lib\kendoui\styles\fonts\glyphs\WebComponentsIcons.svg" />
+    <None Include="wwwroot\lib\kendoui\styles\images\kendoui.svg" />
+    <None Include="wwwroot\lib\lvreader\render_viewer.js" />
+    <None Include="wwwroot\lib\materialize\materialize.js" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_AMS-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Caligraphic-Bold.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Caligraphic-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Fraktur-Bold.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Fraktur-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Main-Bold.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Main-BoldItalic.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Main-Italic.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Main-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Math-BoldItalic.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Math-Italic.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Math-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_SansSerif-Bold.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_SansSerif-Italic.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_SansSerif-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Script-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Size1-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Size2-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Size3-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Size4-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\fonts\KaTeX_Typewriter-Regular.woff2" />
+    <None Include="wwwroot\lib\mathlive\mathlive.js" />
+    <None Include="wwwroot\lib\mathlive\mathlive.mjs" />
+    <None Include="wwwroot\lib\mathlive\src\addons\auto-render.js" />
+    <None Include="wwwroot\lib\mathlive\src\addons\debug.js" />
+    <None Include="wwwroot\lib\mathlive\src\addons\maston.js" />
+    <None Include="wwwroot\lib\mathlive\src\addons\outputLatex.js" />
+    <None Include="wwwroot\lib\mathlive\src\addons\outputMathML.js" />
+    <None Include="wwwroot\lib\mathlive\src\addons\outputSpokenText.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\color.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\context.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\definitions.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\delimiters.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\fontMetrics.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\fontMetricsData.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\grapheme-splitter.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\lexer.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\mathAtom.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\mathstyle.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\parser.js" />
+    <None Include="wwwroot\lib\mathlive\src\core\span.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-editableMathlist.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-keyboard.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-mathfield.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-mathpath.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-popover.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-shortcuts.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-undo.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\editor-virtualKeyboard.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\l10n.js" />
+    <None Include="wwwroot\lib\mathlive\src\editor\outputASCIIMath.js" />
+    <None Include="wwwroot\lib\mathlive\src\mathlive.js" />
+    <None Include="wwwroot\lib\mathlive\src\vue-mathlive.js" />
+    <None Include="wwwroot\lib\mathlive\vue-mathlive.mjs" />
+    <None Include="wwwroot\lib\rateit\jquery.rateit.js" />
+    <None Include="wwwroot\lib\rateit\jquery.rateit.min.js" />
+    <None Include="wwwroot\lib\rateit\jquery.rateit.min.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Notification\NotifyPrepend.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Notification\NotifyPrepend.cshtml" />
+  </ItemGroup>-->
+
+</Project>

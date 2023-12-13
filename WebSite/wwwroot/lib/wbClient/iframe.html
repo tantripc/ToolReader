@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control</title>
+
+    <!--ẩn hộp url khi chọn thêm trang vào màn hình chính apple-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--style-->
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!--<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />-->
+    <!--<script src="lib/jquery/jquery.min.js"></script>-->
+    <script src="../jquery/dist/jquery.js"></script>
+    <style>
+        body, section, article {
+            -webkit-user-select: none; /* Safari 3.1+ */
+            -moz-user-select: none; /* Firefox 2+ */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard syntax */
+        }
+    </style>
+</head>
+<body>
+    <div style="position:fixed;top:0;left:0;right:0;bottom:0;background-color:#ddd;">
+        <div class="w-100 h-75" id="containerBoard" style="line-height:0;"></div>
+        <div class="w-100 h-25 px-4 d-flex align-items-center justify-content-center">
+            <div class="w-25 d-flex align-items-center flex-nowrap">
+                <div id="set-menu-all" class="mr-3">
+                    <div class="custom-control custom-checkbox">
+                        <input id="customCheck" type="checkbox" class="custom-control-input" value="*" checked />
+                        <label for="customCheck" class="custom-control-label">All</label>
+                    </div>
+                </div>
+                <div id="set-menu">
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input id="customCheck1" type="checkbox" class="custom-control-input" value="cursor" checked />
+                        <label for="customCheck1" class="custom-control-label">cursor</label>
+                    </div>
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input id="customCheck2" type="checkbox" class="custom-control-input" value="pen" checked />
+                        <label for="customCheck2" class="custom-control-label">pen</label>
+                    </div>
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input id="customCheck3" type="checkbox" class="custom-control-input" value="highline" checked />
+                        <label for="customCheck3" class="custom-control-label">highline</label>
+                    </div>
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input id="customCheck4" type="checkbox" class="custom-control-input" value="eraser" checked />
+                        <label for="customCheck4" class="custom-control-label">eraser</label>
+                    </div>
+                </div>
+            </div>
+            <div class="w-25 d-flex align-items-center justify-content-center flex-wrap" id="set-pointer">
+                <button class="btn btn-info btn-sm m-1" value="cursor">
+                    <img src="icon/5_move.png" />
+                </button>
+                <button class="btn btn-info btn-sm m-1" value="pen">
+                    <img src="icon/1_pencil.png" />
+                </button>
+                <button class="btn btn-info btn-sm m-1" value="highline">
+                    <img src="icon/2_marker.png" />
+                </button>
+                <button class="btn btn-info btn-sm m-1" value="eraser">
+                    <img src="icon/3_eraser.png" />
+                </button>
+                <button class="btn btn-info btn-sm m-1" id="set-image">
+                    <img src="icon/16_image.png" />
+                </button>
+                <button class="btn btn-info btn-sm m-1" id="clean-data">
+                    <img src="icon/19_delete.png" />
+                </button>
+            </div>
+            <div class="w-25 d-flex align-items-center justify-content-center flex-wrap">
+                <button class="btn btn-success btn-sm m-1" id="get-data">
+                    get data
+                </button>
+                <button class="btn btn-success btn-sm m-1" id="set-data">
+                    set data
+                </button>
+                <button class="btn btn-success btn-sm m-1" id="get-image">
+                    get image
+                </button>
+            </div>
+            <div class="w-25">
+                <img id="result" class="mw-100 mh-100 border border-success" />
+            </div>
+        </div>
+    </div>
+    <script src="dist/js/api.min.js"></script>
+    <!--<script src="script/api/designer-api-iframe.js"></script>-->
+    <script>
+        window.addEventListener('load', function () {
+            new DesignerApiIframe(document.getElementById('containerBoard'), 'bundle.html', null, load, error);
+
+            function load(api) {
+                api.receiveMessage('receive-data', function (data) {
+                    //
+                });
+
+                api.receiveMessage('receive-image', function (data) {
+                    if (data) {
+                        $('img#result').get(0).src = data;
+                    }
+                });
+
+                $('#get-data').click(function () {
+                    api.sendMessage('get-data');
+                });
+
+                $('#set-data').click(function () {
+                    let data = [];
+                    api.sendMessage('set-data', data);
+                });
+
+                $('#clean-data').click(function () {
+                    api.sendMessage('clean-data');
+                });
+
+                $('#set-image').click(function () {
+                    var inputFile_1 = document.createElement('input');
+                    inputFile_1.type = 'file';
+                    inputFile_1.accept = 'image/*';
+                    inputFile_1.multiple = false;
+                    inputFile_1.onchange = function () {
+                        for (var i = 0, len = inputFile_1.files.length; i < len; i++) {
+                            var file = inputFile_1.files[i];
+                            if ((file.type + '').match('image/*')) {
+                                handleImageFile(file, function (base64) {
+                                    api.sendMessage('set-image', base64);
+                                });
+                            }
+                            else {
+                                alert("??nh d?ng t?p tin kh�ng ???c h? tr?! (" + file.type + ")");
+                            }
+                        }
+                        inputFile_1.remove();
+                    };
+                    inputFile_1.click();
+                });
+
+                $('#get-image').click(function () {
+                    api.sendMessage('get-image');
+                });
+
+                $('#set-pointer button[value]').click(function () {
+                    api.sendMessage('set-pointer', this.value);
+                });
+
+                $('#set-menu-all input[type="checkbox"]').change(function () {
+                    let data = $(this).is(':checked') ? '*' : null;
+                    api.sendMessage('set-menu', data);
+                });
+
+                $('#set-menu input[type="checkbox"]').change(function () {
+                    let data = $('#set-menu input[type="checkbox"]:checked').map(function () {
+                        return this.value;
+                    }).get();
+                    api.sendMessage('set-menu', data);
+                });
+            }
+
+            function error(error) {
+                console.log(error);
+            }
+
+            var handleImageFile = function (file, callback) {
+                var fr = new FileReader();
+                fr.onload = function () {
+                    var img = new Image();
+                    img.onload = function () {
+                        var maxWidth = 1920, maxHeight = 1080, newWidth = 0, newHeight = 0;
+                        if (img.width > maxWidth || img.height > maxHeight) {
+                            var imgFactor = img.naturalHeight / img.naturalWidth;
+                            if (imgFactor > maxHeight / maxWidth) {
+                                newHeight = maxHeight;
+                                newWidth = newHeight / imgFactor;
+                            }
+                            else {
+                                newWidth = maxWidth;
+                                newHeight = newWidth * imgFactor;
+                            }
+                            var canvas = document.createElement('canvas');
+                            canvas.width = newWidth;
+                            canvas.height = newHeight;
+                            canvas.getContext('2d').drawImage(img, 0, 0, newWidth, newHeight);
+                            callback(canvas.toDataURL('image/png', 1));
+                        }
+                        else {
+                            callback(fr.result);
+                        }
+                    };
+                    img.onerror = function () {
+                        alert("Kh�ng ??c ???c d? li?u h�nh ?nh!");
+                    };
+                    img.crossOrigin = "anonymous";
+                    img.src = fr.result;
+                };
+                fr.onerror = function () {
+                    alert('Kh�ng ??c ???c d? li?u t?p tin!');
+                };
+                fr.readAsDataURL(file);
+            };
+        });
+    </script>
+</body>
+</html>

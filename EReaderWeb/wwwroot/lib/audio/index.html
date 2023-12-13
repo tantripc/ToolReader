@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Play | E-READER</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <meta name="keywords" content="E-Reader Audio, Reader, e" />
+    <meta name="description" content="Audio E-Reader" />
+    <link rel="stylesheet" href="./assets/css/metro.min.css">
+    <link rel="stylesheet" href="./assets/css/metro-colors.min.css">
+    <link rel="stylesheet" href="./assets/css/metro-icons.min.css">
+</head>
+<body>
+    <style>
+        body {
+            background-image: linear-gradient( to right bottom, #118ab2, #0e92b9, #0b99c1, #07a1c8, #03a9cf, #37b0d8, #51b8e1, #66bfe9, #8cc7f2, #accff8, #c7d8fc, #dee2ff );
+        }
+    </style>
+    <section id="home">
+        <div class="playbox">
+            <nav>
+                <ul>
+                    <li class="nav-link d-none"><a href="#"></a></li>
+                </ul>
+            </nav>
+
+            <div class="controller">
+                <h3 class="heading2">AUDIO E-READER</h3>
+                <div id="circle-bg" class="circle">
+                    <div id="circle-sm" class="circle2"><img id="cover" src="" class="fluid-img"></div>
+                </div>
+                <div class="songs">
+                    <h4 id="song-name"></h4>
+                    <h5 id="author"></h5>
+                    <div class="controls">
+                        <img id="play-stop" class="media-btn" onclick="data_play()" data-val="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <audio id="player_audio" data-role="audio-player"
+               data-on-play ="dataplay()"
+               data-autoplay="true"
+               data-on-pause ="datapause()"
+               data-src="">
+        </audio>
+
+    </section>
+    <script src="./assets/js/metro.min.js"></script>
+    <script src="./assets/js/app.js" type="text/javascript"></script>
+</body>
+
+</html>

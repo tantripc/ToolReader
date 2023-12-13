@@ -1,0 +1,32 @@
+﻿.switch-label .switch-slider::after {
+    text-transform: unset;
+}
+
+form label.error, label.error {
+    /* remove the next line when you have trouble in IE6 with labels in list */
+    color: red;
+    font-style: italic
+}
+
+div.error {
+    display: none;
+}
+
+input.error,textarea.error {
+    border: 1px dotted red;
+}
+
+.k-combobox form label.error, .k-combobox label.error,
+.k-datepicker label.error, 
+.k-timepicker label.error {
+    position: absolute;
+    left: 0px;
+    bottom: -30px;
+}
+.k-combobox.k-error-custom, .k-datepicker.k-error-custom {
+    margin-bottom: 15px;
+}
+    .k-combobox.k-error-custom .k-dropdown-wrap,
+    .k-datepicker.k-error-custom .k-picker-wrap {
+        border: 1px dotted red;
+    }

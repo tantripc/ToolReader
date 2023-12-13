@@ -1,0 +1,156 @@
+﻿@{
+    organization data = Model;
+    Dictionary<string, string> _localizer = Localizer.GetAllStrings().ToDictionary(x => x.Name, x => x.Value);
+    Layout = null;
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["tendonvi"]</label>
+        <div class="col-md-9">
+            <input class="form-control" value="@data.orgname" id="orgname" type="text" required placeholder="@Localizer["nhaptendonvi"]*">
+        </div>
+    </div>
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["madonvi"]</label>
+        <div class="col-md-9">
+            <input class="form-control" value="@data.org_code" id="org_code" type="text" placeholder="@Localizer["nhapmadonvi"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="textarea-input">@Localizer["mota"]</label>
+        <div class="col-md-9">
+            <textarea class="form-control" id="description" rows="3" placeholder="@Localizer["nhapmota"]">@(data.description)</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="textarea-input">@Localizer["diachi"]</label>
+        <div class="col-md-9">
+            <textarea class="form-control" id="address" rows="3" placeholder="@Localizer["nhapdiachi"]">@(data.address)</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["email"]</label>
+        <div class="col-md-9">
+            <input class="form-control" value="@data.email" id="email" type="text" placeholder="@Localizer["nhapemail"]">
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["dienthoai"]</label>
+        <div class="col-md-9">
+            <input class="form-control" value="@data.phone" id="phone" type="text" placeholder="@Localizer["nhapsodienthoai"]">
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["ngaythanhlap"]</label>
+        <div class="col-md-9 col-form-label">
+            <input placeholder="@Localizer["ngaythanhlap"]" style="width:100%;" type="date" id="founding_date" value="@(data.founding_date==null?"":DateTime.Parse(data.founding_date.ToString()).ToString("yyyy-MM-dd"))" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["ladonviphuthuoc"]</label>
+        <div class="col-md-4 col-form-label">
+            <label class="switch switch-label switch-primary">
+                <input class="switch-input" type="checkbox" @(data.is_depended_unit == true ? "checked=\"checked\"" : "") id="is_depended_unit">
+                <span class="switch-slider" data-checked="@Localizer["bat"]" data-unchecked="@Localizer["tat"]"></span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["donviquanly"]</label>
+        <div class="col-md-9">
+            <input id="porgid" style="width:100%;" />
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["nguoidungdau"]</label>
+        <div class="col-md-9 col-form-label">
+            <input id="presenter_user" style="width:100%;" />
+        </div>
+    </div>
+    <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["chucvu"]</label>
+        <div class="col-md-9">
+            <input class="form-control" value="@data.title" id="title" type="text" placeholder="@Localizer["nhapchucvu"]">
+
+        </div>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+
+        <div class="form-group row mt-3">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["dongbothuvien"]</label>
+        </div>
+        <div class="form-group row mt-3">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["linkapi"]</label>
+            <div class="col-md-9">
+                <input class="form-control" value="@data.syncapi" id="syncapi" type="url" placeholder="@Localizer["nhaplinkapi"]">
+            </div>
+        </div>
+        <div class="form-group row mt-3">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["madoitac"]</label>
+            <div class="col-md-9">
+                <input class="form-control" value="@data.syncpartner" id="syncpartner" type="text" placeholder="@Localizer["nhapmadoitac"]">
+            </div>
+        </div>
+        <div class="form-group row mt-3">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["taikhoan"]</label>
+            <div class="col-md-9">
+                <input class="form-control" value="@data.syncuser" id="syncuser" type="text" placeholder="@Localizer["nhaptaikhoan"]">
+            </div>
+        </div>
+        <div class="form-group row mt-3">
+            <label class="col-md-3 col-form-label" for="text-input">@Localizer["matkhautaikhoandongbo"]</label>
+            <div class="col-md-9">
+                <input class="form-control" value="@data.syncpwd" id="syncpwd" type="password" placeholder="@Localizer["nhapmatkhautaikhoandongbo"]">
+            </div>
+        </div>
+    </div>
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_vi.js")"></script>
+<script>
+    $("form").validate();
+    var link_api_file = '@WebConfigs.AppSettings.WebApiFileUrl';
+    $(document).ready(function () {
+        loadKendoComboBox({
+            id: "presenter_user",
+            placeholder: '@Localizer["chontaikhoan"]',
+            dataTextField: "fullname",
+            dataValueField: "userid",
+            url: _RootBase + "Account/search",
+            value: '@(data.head_userid != null ? data.head_userid.ToString() : "")',
+            data: {
+                posstart: 1,
+                numofrow: 40,
+                v_role: '1301',
+                fullname: $('#presenter_user').val()
+            },
+            template: '<span class="k-state-default" style="background-image: url(\'' + link_api_file + '#:decodeURIComponent(data.profilephoto)#\')"></span>' +
+                '<span class="k-state-default"><h3>#: data.fullname #</h3><p>#: data.emailaddr #</p></span>',
+        });
+        loadKendoComboBox({
+            id: "porgid",
+            placeholder: '@Localizer["chondonvi"]',
+            dataTextField: "orgname",
+            dataValueField: "orgid",
+            url: _RootBase + "Organization/get_organization",
+            value: '@(data.porgid != null ? data.porgid.ToString() : "")',
+            data: {
+                posstart: 1,
+                numofrow: -1,
+                recursive: true,
+                porgid: -1
+            },
+            isLevel: true
+        });
+    });
+
+
+</script>
+
+

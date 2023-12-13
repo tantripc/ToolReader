@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = Localizer["donvi"];
+    List<organization> organization = Model;
+    Dictionary<string, string> _localizer = Localizer.GetAllStrings().ToDictionary(x => x.Name, x => x.Value);
+}
+<div class="row cnt_grid_custom">
+    <div class="col-lg-12">
+        <div class="cnt-card">
+
+            <div class="row subject-row">
+                @foreach (var item in organization)
+                {
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                        <a class="link-subject" href="~/Topic/Topic?orgid=@item.orgid&orgname=@item.orgname" title="@item.orgname">
+                            <div class="subject">
+                                <i class="iconmoon iconmoon-DonViKhac"></i>
+                                <div class="sub-name">@item.orgname</div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+
+@section Css{
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.common.min.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.flat.min.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/kendoui/styles/kendo.mobile.flat.min.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/css/topic.css")" asp-append-version="true" rel="stylesheet" />
+}

@@ -1,0 +1,96 @@
+﻿@using ObjectDefine
+@{
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+    List<copyright> copyrights = Model;
+    copyright ls = new copyright();
+    if (copyrights.Count > 0)
+    {
+        ls = copyrights[0];
+    }
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="cprgrouptype">@Localizer["nhomtacquyen"] (*)</label>
+        <div class="col-md-9">
+            <select required style="width:100%;" id="cprgrouptype" name="cprgrouptype">@ls.cprgrouptype</select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="cpruserid">@Localizer["quanlytacquyen"] (*)</label>
+        <div class="col-md-9">
+            <select required style="width:100%;" id="cpruserid" name="cpruserid">@ls.cpruserid</select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tacquyen"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="cprname" value="@ls.cprname" type="text" name="cprname" placeholder="@Localizer["nhaptacquyen"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tenviettat"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control"  id="shortname" value="@ls.shortname" type="text" name="shortname" placeholder="@Localizer["nhaptennhomviettat"]">
+        </div>
+    </div>
+   
+     <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["email"]</label>
+        <div class="col-md-9">
+            <input class="form-control"  id="email" value="@ls.email" type="text" name="email" placeholder="@Localizer["nhapemail"]">
+        </div>
+    </div>
+     <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["sodienthoai"]</label>
+        <div class="col-md-9">
+            <input class="form-control"  id="phone" value="@ls.phone" type="text" name="phone" placeholder="@Localizer["nhapsodienthoai"]">
+        </div>
+    </div>
+     <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["diachi"]</label>
+        <div class="col-md-9">
+            <textarea class="form-control"  id="address" value="@ls.address" type="text" name="address" placeholder="@Localizer["nhapdiachi"]"></textarea>
+        </div>
+    </div>
+     <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["hoatdong"]</label>
+        <div class="col-md-4 col-form-label">
+            <label class="switch switch-label switch-primary">
+                <input class="switch-input" type="checkbox" @(ls.hide != null ? (ls.hide == false? "checked=\"checked\"":"") : "checked=\"checked\"") id=" ">
+                <span class="switch-slider" data-checked="@Localizer["bat"]" data-unchecked="@Localizer["tat"]"></span>
+            </label>
+        </div>
+    </div>
+     <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["ghichu"]</label>
+        <div class="col-md-9">
+            <textarea class="form-control"  id="notes" value="@ls.notes" type="text" name="notes" placeholder="@Localizer["nhapghichu"]"></textarea>
+        </div>
+    </div>
+
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+<script src="@Url.Content("~/lib/ckeditor/ckeditor.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/copyright/func_addupdate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/tagsinput/tagsinput.js")" asp-append-version="true"></script>
+
+
+<script>
+    var api_file = '@WebConfigs.AppSettings.WebApiFile';
+  var congtyvanxb = '@cprgrouptype.CONGTYPHATHANHVANXB';
+    var canhan = '@cprgrouptype.CANHAN';
+    var baovatapchi = '@cprgrouptype.BAOVATAPCHI';
+
+</script>
+<style>
+        input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+</style>

@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="anh" xml:space="preserve">
+    <value>Ảnh</value>
+  </data>
+  <data name="anhdaidien" xml:space="preserve">
+    <value>Ảnh đại diện</value>
+  </data>
+  <data name="apdung" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="banchuachonfile" xml:space="preserve">
+    <value>Bạn chưa chọn file</value>
+  </data>
+  <data name="banchuachonloaitaikhoan" xml:space="preserve">
+    <value>Bạn chưa chọn tài khoản</value>
+  </data>
+  <data name="banchuachonsheet" xml:space="preserve">
+    <value>Bạn chưa chọn sheet</value>
+  </data>
+  <data name="bancochacchan" xml:space="preserve">
+    <value>Bạn có chắc chắn?</value>
+  </data>
+  <data name="banvuilongchonnguoidung" xml:space="preserve">
+    <value>Bạn vui lòng chọn người dùng</value>
+  </data>
+  <data name="banvuilongchonnhomnguoidung" xml:space="preserve">
+    <value>Bạn vui lòng chọn nhóm người dùng</value>
+  </data>
+  <data name="batbuocdoc" xml:space="preserve">
+    <value>Bắt buộc đọc</value>
+  </data>
+  <data name="capnhat" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="capnhatnhomtaikhoan" xml:space="preserve">
+    <value>Cập nhật nhóm tài khoản</value>
+  </data>
+  <data name="capnhattaikhoan" xml:space="preserve">
+    <value>Cập nhật tài khoản</value>
+  </data>
+  <data name="capnhattaikhoanthanhcong" xml:space="preserve">
+    <value>Cập nhật tài khoản thành công</value>
+  </data>
+  <data name="chinhsua" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="chonfiledinhkem" xml:space="preserve">
+    <value>Chọn File đính kèm</value>
+  </data>
+  <data name="chonloainguoidung" xml:space="preserve">
+    <value>Chọn loại người dùng</value>
+  </data>
+  <data name="chonloaitaikhoan" xml:space="preserve">
+    <value>Chọn loại tài khoản</value>
+  </data>
+  <data name="chonsach" xml:space="preserve">
+    <value>Chọn sách</value>
+  </data>
+  <data name="chonsheet" xml:space="preserve">
+    <value>Chọn sheet</value>
+  </data>
+  <data name="dangnhaplancuoi" xml:space="preserve">
+    <value>Đăng nhập lần cuối</value>
+  </data>
+  <data name="danhsachtaikhoan" xml:space="preserve">
+    <value>Danh sách tài khoản</value>
+  </data>
+  <data name="datlai" xml:space="preserve">
+    <value>Đặt lại</value>
+  </data>
+  <data name="datlaimatkhau" xml:space="preserve">
+    <value>Đặt lại mật khẩu</value>
+  </data>
+  <data name="datlaimatkhauthanhcong" xml:space="preserve">
+    <value>Đặt lại mật khẩu thành công</value>
+  </data>
+  <data name="diachi" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="doitrangthai" xml:space="preserve">
+    <value>Đổi trạng thái</value>
+  </data>
+  <data name="dong" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="dongf" xml:space="preserve">
+    <value>Dòng</value>
+  </data>
+  <data name="dongy" xml:space="preserve">
+    <value>Đồng ý</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="emailnguoidung" xml:space="preserve">
+    <value>Email người dùng</value>
+  </data>
+  <data name="filedinhkem" xml:space="preserve">
+    <value>File đính kèm</value>
+  </data>
+  <data name="phancongdocsachchonguoidung" xml:space="preserve">
+    <value>Phân công đọc sách cho &lt;b&gt;__numok__&lt;/b&gt; người dùng thành công</value>
+  </data>
+  <data name="phancongdocsachchonhomnguoidung" xml:space="preserve">
+    <value>Phân công đọc sách cho &lt;b&gt;__numok__&lt;/b&gt; nhóm người dùng thành công</value>
+  </data>
+  <data name="hienthi" xml:space="preserve">
+    <value>Hiển thị</value>
+  </data>
+  <data name="hovaten" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="huy" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="ketquathaotac" xml:space="preserve">
+    <value>Kết quả thao tác</value>
+  </data>
+  <data name="khoataikhoan" xml:space="preserve">
+    <value>Khóa tài khoản</value>
+  </data>
+  <data name="kichhoattaikhoan" xml:space="preserve">
+    <value>Kích hoạt tài khoản</value>
+  </data>
+  <data name="kichhoattrangthaitaikhoanthanhcong" xml:space="preserve">
+    <value>Kích hoạt trạng thái tài khoản thành công</value>
+  </data>
+  <data name="kichhoattrangthaitaikhoanthatbai" xml:space="preserve">
+    <value>Kích hoạt trạng thái tài khoản thất bại</value>
+  </data>
+  <data name="loaitaikhoan" xml:space="preserve">
+    <value>Loại tài khoản</value>
+  </data>
+  <data name="loidocghicosodulieu" xml:space="preserve">
+    <value>Lỗi đọc ghi cơ sở dữ liệu</value>
+  </data>
+  <data name="loisodongdulieu" xml:space="preserve">
+    <value>Có &lt;b&gt;__numerror__&lt;/b&gt; dòng dữ liệu bị lỗi</value>
+  </data>
+  <data name="manhanvien" xml:space="preserve">
+    <value>Mã nhân viên</value>
+  </data>
+  <data name="mokhoataikhoan" xml:space="preserve">
+    <value>Mở/khóa tài khoản</value>
+  </data>
+  <data name="ngaybatdau" xml:space="preserve">
+    <value>Ngày bất đầu</value>
+  </data>
+  <data name="ngaychinhsuanhom" xml:space="preserve">
+    <value>Ngày chỉnh sửa nhóm</value>
+  </data>
+  <data name="ngayketthuc" xml:space="preserve">
+    <value>Ngày kết thúc </value>
+  </data>
+  <data name="ngayketthucphailonhonngaybatdau" xml:space="preserve">
+    <value>Ngày kết thúc phải lớn hơn ngày bắt đầu</value>
+  </data>
+  <data name="ngaykichhoat" xml:space="preserve">
+    <value>Ngày kích hoạt</value>
+  </data>
+  <data name="ngaysinh" xml:space="preserve">
+    <value>Ngày sinh</value>
+  </data>
+  <data name="ngaytao" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="nguoidung" xml:space="preserve">
+    <value>Người dùng</value>
+  </data>
+  <data name="nguoitaonhom" xml:space="preserve">
+    <value>Người tạo nhóm</value>
+  </data>
+  <data name="nhapdulieu" xml:space="preserve">
+    <value>Nhập dữ liệu</value>
+  </data>
+  <data name="nhomcuahethong" xml:space="preserve">
+    <value>Nhóm của hệ thống</value>
+  </data>
+  <data name="nhomcuataikhoan" xml:space="preserve">
+    <value>Nhóm của tài khoản</value>
+  </data>
+  <data name="nhomtaikhoan" xml:space="preserve">
+    <value>Nhóm tài khoản</value>
+  </data>
+  <data name="quaylai" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="phancong" xml:space="preserve">
+    <value>Phân công</value>
+  </data>
+  <data name="saochep" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="saochepdulieutaikhoanthanhcong" xml:space="preserve">
+    <value>Sao chép dữ liệu tài khoản thành công</value>
+  </data>
+  <data name="saochephoacsudunglai" xml:space="preserve">
+    <value>Sao chép hoặc sử dụng lại</value>
+  </data>
+  <data name="saochephoacsudunglaikhoahoc" xml:space="preserve">
+    <value>Sao chép hoặc sử dụng lại khóa học</value>
+  </data>
+  <data name="sodienthoai" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="soluottruycapcuahocvientrongkhoahoc" xml:space="preserve">
+    <value>Số lượt truy cập của học viên trong khóa học</value>
+  </data>
+  <data name="songuoidung" xml:space="preserve">
+    <value>Số người dùng</value>
+  </data>
+  <data name="stt" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="taimauexcel" xml:space="preserve">
+    <value>Tải mẫu Excel</value>
+  </data>
+  <data name="taptinkhongdungdinhdang" xml:space="preserve">
+    <value>Tập tin không đúng định dạng</value>
+  </data>
+  <data name="taptinkhonghotro" xml:space="preserve">
+    <value>Tập tin không hỗ trợ</value>
+  </data>
+  <data name="ten" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="tennguoidung" xml:space="preserve">
+    <value>Tên người dùng</value>
+  </data>
+  <data name="tennhom" xml:space="preserve">
+    <value>Tên nhóm</value>
+  </data>
+  <data name="tenphongban" xml:space="preserve">
+    <value>Tên phòng ban</value>
+  </data>
+  <data name="tensach" xml:space="preserve">
+    <value>Tên sách</value>
+  </data>
+  <data name="tentaikhoan" xml:space="preserve">
+    <value>Tên tài khoản</value>
+  </data>
+  <data name="thaydoitrangthaitaikhoanthanhcong" xml:space="preserve">
+    <value>Thay đổi trạng thái tài khoản thành công</value>
+  </data>
+  <data name="thaydoitrangthaitaikhoanthatbai" xml:space="preserve">
+    <value>Thay đổi trạng thái thất bại</value>
+  </data>
+  <data name="themmoi" xml:space="preserve">
+    <value>Thêm mới</value>
+  </data>
+  <data name="themmoinguoidung" xml:space="preserve">
+    <value>Thêm mới người dùng</value>
+  </data>
+  <data name="themmoinguoidungthanhcong" xml:space="preserve">
+    <value>Thêm mới người dùng thành công</value>
+  </data>
+  <data name="themmoinhomtaikhoan" xml:space="preserve">
+    <value>Thêm mới nhóm tài khoản</value>
+  </data>
+  <data name="phancongdocsach" xml:space="preserve">
+    <value>Phân công đọc sách</value>
+  </data>
+  <data name="themmoitaikhoan" xml:space="preserve">
+    <value>Thêm mới tài khoản</value>
+  </data>
+  <data name="themmoitaikhoanthanhcong" xml:space="preserve">
+    <value>Thêm mới tài khoản thành công</value>
+  </data>
+  <data name="phancongdocsachtufile" xml:space="preserve">
+    <value>Phân công đọc sách từ file</value>
+  </data>
+  <data name="themtaikhoan" xml:space="preserve">
+    <value>Thêm tài khoản</value>
+  </data>
+  <data name="themtaikhoantufile" xml:space="preserve">
+    <value>Thêm tài khoản từ file</value>
+  </data>
+  <data name="themtaikhoanvaonhomtufile" xml:space="preserve">
+    <value>Thêm tài khoản vào nhóm từ file</value>
+  </data>
+  <data name="themtufile" xml:space="preserve">
+    <value>Thêm từ file</value>
+  </data>
+  <data name="thoigianbatdaunhohonthoigianketthuc" xml:space="preserve">
+    <value>Thời gian bắt đầu nhỏ hơn thời gian kết thúc</value>
+  </data>
+  <data name="thongbao" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="thongbaosignin" xml:space="preserve">
+    <value>Vui lòng nhập tên tài khoản và mật khẩu</value>
+  </data>
+  <data name="thongtinnguoidungsebixoa" xml:space="preserve">
+    <value>Thông tin người dùng sẽ bị xóa!</value>
+  </data>
+  <data name="thongtinnhomtaikhoansebixoa" xml:space="preserve">
+    <value>Thông tin nhóm tài khoản sẽ bị xóa!</value>
+  </data>
+  <data name="thongtinphancongdocsachsebixoa" xml:space="preserve">
+    <value>Thông tin phân công đọc sách sẽ bị xóa!</value>
+  </data>
+  <data name="thudientu" xml:space="preserve">
+    <value>Thư điện tử</value>
+  </data>
+  <data name="tongsocauhoi" xml:space="preserve">
+    <value>Tổng số câu hỏi</value>
+  </data>
+  <data name="tongsotrang" xml:space="preserve">
+    <value>Tổng số trang</value>
+  </data>
+  <data name="trangthai" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="trangthaikichhoat" xml:space="preserve">
+    <value>Trạng thái kích hoạt</value>
+  </data>
+  <data name="trangthaitaikhoan" xml:space="preserve">
+    <value>Trạng thái tài khoản</value>
+  </data>
+  <data name="vuilongchonnguoidunghoacnhomnguoidung" xml:space="preserve">
+    <value>Vui lòng chọn người dùng hoặc nhóm người dùng</value>
+  </data>
+  <data name="xemchitiet" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="xemdanhsachnguoidung" xml:space="preserve">
+    <value>Xem danh sách người dùng</value>
+  </data>
+  <data name="xemthongtinchitiettaikhoan" xml:space="preserve">
+    <value>Xem thông tin chi tiết tài khoản</value>
+  </data>
+  <data name="xoa" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="xoadulieunguoidungthanhcong" xml:space="preserve">
+    <value>Xóa dữ liệu người dùng thành công</value>
+  </data>
+  <data name="xoadulieunhomtaikhoanthanhcong" xml:space="preserve">
+    <value>Xóa dữ liệu nhóm tài khoản thành công</value>
+  </data>
+  <data name="xoadulieuphancongdocsachthanhcong" xml:space="preserve">
+    <value>Xóa dữ liệu phân công đọc sách thành công</value>
+  </data>
+  <data name="xoadulieutaikhoanthanhcong" xml:space="preserve">
+    <value>Xóa dữ liệu tài khoản thành công</value>
+  </data>
+  <data name="xuatdulieu" xml:space="preserve">
+    <value>Xuất dữ liệu</value>
+  </data>
+  <data name="xuatdulieuphancongdocsach" xml:space="preserve">
+    <value>Xuất dữ liệu phân công đọc sách</value>
+  </data>
+  <data name="xuatdulieutaikhoan" xml:space="preserve">
+    <value>Xuất dữ liệu tài khoản</value>
+  </data>
+  <data name="xuatthanhfile" xml:space="preserve">
+    <value>Xuất thành file</value>
+  </data>
+  <data name="phancongdocsachchonguoidunghoacnhomnguoidung" xml:space="preserve">
+    <value>Phân công đọc sách cho người dùng hoặc nhóm người dùng</value>
+  </data>
+  <data name="tennhomnguoidung" xml:space="preserve">
+    <value>Tên nhóm người dùng</value>
+  </data>
+  <data name="doitrangthaithanhcong" xml:space="preserve">
+    <value>Đổi trạng thái thành công</value>
+  </data>
+  <data name="loctheotennguoidung" xml:space="preserve">
+    <value>Lọc theo tên người dùng</value>
+  </data>
+  <data name="loctheotennhom" xml:space="preserve">
+    <value>Lọc theo tên nhóm</value>
+  </data>
+  <data name="loctheotensach" xml:space="preserve">
+    <value>Lọc theo tên sách</value>
+  </data>
+  <data name="batbuoc" xml:space="preserve">
+    <value>Bắt buộc</value>
+  </data>
+  <data name="khongbatbuoc" xml:space="preserve">
+    <value>Không bắt buộc</value>
+  </data>
+  <data name="loctheotrangthaidoc" xml:space="preserve">
+    <value>Lọc theo trạng thái đọc</value>
+  </data>
+</root>

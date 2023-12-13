@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "ControlViewer";
+    Layout = null;
+
+    List<Bookmark> lst_bookmark = ViewBag.lstbookmark;
+    int total = 0;
+    if (lst_bookmark.Count > 0)
+    {
+        total = lst_bookmark.Count;
+    }
+}
+
+<div class="popup_left_note">
+    <div class="title_note">
+        <i class="iconmoon iconmoon-BinhLuan1"></i>
+        <span>@Localizer["ghichu"]</span>
+        <span>(<span class="total_notes">0</span>)</span>
+        <i class="iconmoon iconmoon-Close" title="@Localizer["dong"]" onclick="show_hide_note()"></i>
+    </div>
+    <div class="cnt_body">
+        <div class="body_input_note">
+            <div>
+                <textarea class="form-control notes_content" placeholder="@Localizer["vietghichu"]" rows="3"></textarea>
+            </div>
+            <div>
+                @*<div class="btn btn_add_note" onclick="note_book_button_add()">*@
+                <div class="btn btn_add_note" onclick="save_notes()">
+                    <span>@Localizer["themghichu"]</span>
+                </div>
+            </div>
+        </div>
+        <div class="body_note">
+            @*@await Html.PartialAsync("~/Views/BookAttach/ViewListNote.cshtml")*@
+
+        </div>
+        <div class="footer_note">
+            <div class="btn btn_viewmore d-none" onclick="view_more_notes(this)" data-p="1" data-t="0">
+                <span>@Localizer["xemthem"]</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="popup_left_bookmark">
+    <div class="title_bookmark">
+        <i class="iconmoon iconmoon-Bookmark_1"></i>
+        <span>@Localizer["danhdautrang"]</span>
+        <span>(<span class="total_bookmark">0</span>)</span>
+        <i class="iconmoon iconmoon-Close" title="@Localizer["dong"]" onclick="show_hide_bookmark()"></i>
+    </div>
+    <div class="cnt_body">
+        <div class="body_bookmark">
+            @await Html.PartialAsync("~/Views/BookAttach/ViewListBookmark.cshtml")
+        </div>
+        @*<div class="footer_bookmark">
+        <div class="btn btn_viewmore @(lst_bookmark.Count > 0 && total > 20?"":"d-none")" onclick="view_more_bookmark(this)" data-p="1" data-t="@(lst_bookmark.Count > 0 ? total:0)">
+        <span>@Localizer["xemthem"]</span>
+        </div>
+        </div>*@
+    </div>
+</div>
+<div class="popup_left_tableofcontent">
+    <div class="title_tableofcontent">
+        <i class="iconmoon iconmoon-menu2"></i>
+        <span>@Localizer["mucluc"]</span>
+        <i class="iconmoon iconmoon-Close" title="@Localizer["dong"]" onclick="show_hide_tableofcontent(this)"></i>
+    </div>
+    <div class="body_tableofcontent">
+        <ul class="ul_root @(lst_bookmark.Count > 0 ? "" : "has-nodoctoc")">
+            @await Html.PartialAsync("~/Views/BookAttach/ViewTreeDocToc.cshtml",lst_bookmark)
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="group_btn_right">
+    <div class="btn_note" onclick="show_hide_note(this)">
+        <i class="iconmoon iconmoon-WriteNote"></i>
+        <span class="num_note"></span>
+    </div>
+    <div class="btn_bookmark" onclick="show_hide_bookmark(this)">
+        <i class="iconmoon iconmoon-Bookmark"></i>
+        <span class="num_bookmark d-none"></span>
+    </div>
+    <div class="btn_generate" onclick="IshideShowPopup()">
+        <i class="iconmoon iconmoon-TimKiem"></i>
+    </div>
+    <div class="btn_generate" onclick="generatetext()">
+        <i class="iconmoon iconmoon-loading"></i>
+    </div>
+</div>
+

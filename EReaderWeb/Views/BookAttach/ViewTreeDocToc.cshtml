@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "TopicTree";
+    Layout = null;
+    List<Bookmark> lst_bookmark = Model;
+}
+
+@if (lst_bookmark.Count > 0)
+{
+    foreach (Bookmark item in lst_bookmark)
+    {
+        <li data-p="@(item.Id==null?"null":item.Id)">
+            <div class="name_doctoc @(item.Degree != -1?"has-child" : "")">
+                @*has-child*@
+                <div class="icon_expand" onclick="expand_child_doctoc(this)">
+                    <i class="iconmoon iconmoon-Plus"></i>
+                    <i class="iconmoon iconmoon-min"></i>
+                </div>
+                <div class="label_doctoc" onclick="goto_doctoc(this)" data-p="@item.PageNum">
+                    <span>@item.SesionName</span>
+                </div>
+            </div>
+            @if (item.Degree != -1)
+            {
+                foreach (Bookmark jtem in lst_bookmark)
+                {
+                    if (item.Degree == jtem.Id)
+                    {
+                        <ul>
+                            <li data-p="@(item.Id==null?"null":item.Id)">
+                                <div class="name_doctoc child_expand" id="has_expand_@jtem.Id">
+                                    <div class="icon_expand" onclick="expand_child_doctoc(this)">
+                                        <i class="iconmoon iconmoon-min"></i>
+                                        <i class="iconmoon iconmoon-Plus"></i>
+                                    </div>
+                                    <div class="label_doctoc" onclick="goto_doctoc(this)" data-p="@item.PageNum">
+                                        <span>@item.SesionName</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+                }
+            }
+        </li>
+    }
+
+}
+else{
+    <li data-p="null" class="nodoctoc">
+        <div class="name_doctoc ">
+            <div class="icon_expand" onclick="expand_child_doctoc(this)">
+                <i class="iconmoon iconmoon-Plus"></i>
+                <i class="iconmoon iconmoon-min"></i>
+            </div>
+            <div class="label_doctoc">
+                <span class="text-nodoctoc">Sách này chưa có mục lục</span>
+            </div>
+        </div>
+    </li>
+}
+

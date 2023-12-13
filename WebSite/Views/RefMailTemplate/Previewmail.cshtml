@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+<div id="content_mail" style="align-items:center; background:#eeeeee; display:flex; justify-content:center; padding:5rem">
+    @Html.Raw(ViewBag.content)
+</div>
+<h4 class="modal-title" style="text-align: center;margin: 2rem auto;">
+    @Localizer["xemtruocmaumail"]
+</h4>
+<div id="id_form_input">
+</div>
+<div style="text-align:center;">
+    <a href="#" onclick="review()" style="background-color:#5C77D0;color:white !important" class="btn btn-custom ">@Localizer["xem"]</a>
+</div>
+<script>
+    var contentt = '@ViewBag.content';
+    var decoded = htmlDecode(contentt);
+    var arr = [];
+    var placeholder = _localizer.nhapdulieu;
+    arr = getPlainText_TagWord(decoded);
+    console.log(1)
+    for (var i = 0; i < arr.length; i++) {
+        for (j = i; j < arr.length; j++) {
+            if (arr[i] == arr[j]) {
+                arr.splice((i), 1);
+                
+            }
+        }
+        var html = `<div class="form-group row">
+                                                <label class="col-md-3 col-form-label">`+ arr[i] + `</label>
+                                            <div class="col-md-9">
+                                                    <input class="form-control" required id="`+ arr[i].replace(/%/g, '') + `" value="" type="text" name="` + arr[i].replace(/%/g, '') + `" placeholder="`+placeholder+`">
+                                            </div>
+                                        </div>`;
+        $('#id_form_input').append(html);
+    }
+    function review() {
+        var contentmail = htmlDecode(contentt);
+        for (var i = 0; i < arr.length; i++) {
+                contentmail = str_replaceAll(contentmail, arr[i], $('#'+arr[i].replace(/%/g, '')).val());
+        }
+        $('#content_mail').html(contentmail);
+    }
+</script>

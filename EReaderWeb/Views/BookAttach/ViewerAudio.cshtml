@@ -1,0 +1,34 @@
+﻿@{
+    Data_Detailbook file = Model;
+    ViewData["Title"] = "Sách Audio";
+    string url_file = file.UrlFile;
+    string domain = WebConfigs.AppSettings.DomainName.TrimEnd('/');
+    Layout = "~/Views/Shared/_LayoutViewer.cshtml";
+    int? total_page = 0;
+    //string image = file.coverfile != null ? WebConfigs.AppSettings.WebApiFileUrl + file.coverfile : WebConfigs.AppSettings.WebApiFileUrl + "CoverSheet/default.jpg";
+    string image = WebConfigs.AppSettings.WebApiFileUrl + "CoverSheet/default.jpg";
+}
+<style>
+
+</style>
+<div>
+    <div class="lv_popup_control">
+        @await Component.InvokeAsync("ControlViewer", new {id=ViewBag.FileId,FileRowId=ViewBag.FileRowId})
+    </div>
+    <div class="lv_content_viewer">
+        <iframe id="iframe" src="@Url.Content("~/lib/audio/index.html?url="+url_file+"&&image="+image+"&&title="+file.Title+"&&author=Thư viện")" style="width:100%;height:calc(100% - 3px);" allowfullscreen>
+        </iframe>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var link = '@url_file';
+        var _total_page = '@total_page';
+        var pagewidth = 0;
+        var pageheight = 0;
+        var AppName = 'AUDIO @WebConfigs.AppSettings.AppName';
+    </script>
+    <script src="~/js/file_viewer_render.js" asp-append-version="true"></script>
+    }
+
+

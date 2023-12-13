@@ -1,0 +1,131 @@
+﻿@using DefineConstants
+@using ObjectDefine
+@{
+    Layout = "_LayoutEmpty";
+    ViewData["Title"] = "ViewResultExercise";
+    docquiz_result docquiz_result = Model;
+    List<question_bank> lst_bank = ViewBag.Question;
+}
+<div class="p-4" style="padding-top:0px !important">
+    <div>
+        <div class="row position-relative">
+            <div class="cnt-title">
+                @*<a title="Đóng" href="#" onclick="close_popup_result_exam()" class="position-absolute">
+                <i class="iconmoon iconmoon-Back1"></i>
+                </a>*@
+                <h4 class="section-title hidden-xs text-uppercase">
+                    <span class="text-center-xs block margin-top-5">@docquiz_result.title</span>
+                </h4>
+            </div>
+            <div class="cnt-button d-none">
+                <div class="button-comment" onclick="initComment()">
+                    <i class="iconmoon iconmoon-BinhLuan"></i>
+                    <span>@Localizer["phanhoi"]</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="row no-margin mb-5 cnt-result">
+            <div class="col-xs-12 col-sm-3 text-center div-info-l">
+                <div style="margin: auto;">
+                    <h5 class="text-muted text-uppercase">@Localizer["diem"]</h5>
+                    <h1>
+                        <span id="ketqua">
+                            @(docquiz_result.score != null ? PubFunc.formatNumber((double)docquiz_result.score) : "0")
+                        </span>
+                    </h1>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-9 div-info-r border-top-xs text-center-xs">
+                <div class="row">
+                    <div class="col-3 text-center">
+                        <div class="label-text-col2">@Localizer["tongsocauhoi"]</div>
+                        <div class="label-text-col1">@docquiz_result.total_question</div>
+                    </div>
+                    <div class="col-3 text-center">
+                        <div class="label-text-col2">@Localizer["socaudung"]</div>
+                        <div class="label-text-col1" id="socaudung">@docquiz_result.num_correct</div>
+                    </div>
+                    <div class="col-3 text-center">
+                        <div class="label-text-col2">@Localizer["socausai"]</div>
+                        <div class="label-text-col1" id="socausai">@docquiz_result.num_incorrect</div>
+                    </div>
+                    <div class="col-3 text-center">
+                        <div class="label-text-col2">@Localizer["socauchualam"]</div>
+                        <div class="label-text-col1" id="socauchualam">@docquiz_result.num_noanswer</div>
+                    </div>
+                </div>
+                <div class="mt-5 cnt-info-bottom">
+                    <div class="m-auto">
+                        <span>
+                            <span class="text-muted">@Localizer["thoigianbatdaulambai"]: </span>
+                            <span id="tgbd" class="font-weight-600">
+                                @if (docquiz_result.date_taken != null)
+                                {
+                                    @DateTime.Parse(docquiz_result.date_taken.ToString()).ToString("dd/MM/yyyy HH:mm:ss")
+                                }
+                            </span>
+                        </span>
+                        <span class="label-info">
+                            <span class="text-muted">@Localizer["thoigiannopbai"]: </span>
+                            <span id="tgkt" class="font-weight-600">
+                                @if (docquiz_result.date_last_save != null)
+                                {
+                                    @DateTime.Parse(docquiz_result.date_last_save.ToString()).ToString("dd/MM/yyyy HH:mm:ss")
+                                }
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="padding-40-40">
+        <div class="cnt-question" id="cnt_takeexam">
+            @if (lst_bank.Count > 0)
+            {
+                @await Html.PartialAsync("~/Views/DocExam/ViewQuestionResult.cshtml", lst_bank)
+            }
+        </div>
+    </div>
+</div>
+<style>
+    .k-grid td {
+        line-height: 2.6em;
+        white-space: nowrap;
+        min-height: 2.5em;
+        border-bottom: 1px solid #fffdfd;
+    }
+
+    
+</style>
+@section Css{
+    <link href="@Url.Content("~/lib/mathlive/mathlive.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/mathlive/mathlive.core.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/css/takeexam.css")" asp-append-version="true" rel="stylesheet" />
+    <link href="@Url.Content("~/css/resultexams.css")" asp-append-version="true" rel="stylesheet" />
+}
+
+    @section Scripts{
+    <script src="@Url.Content("~/lib/mathlive/mathlive.js")" asp-append-version="true"></script>
+    <script>
+        //window.parent.change_title_popup('popup_result_exam', '@Localizer["ketqualambaikiemtra"]');
+        //render công thức
+        MathLive.renderMathInElement(
+            document.getElementById('cnt_takeexam'), {
+            ignoreClass: 'instruction|source',
+            TeX: {
+                delimiters: {
+                    inline: [['$$', '$$'], ['\\(', '\\)']],
+                    display: [['$$', '$$'], ['\\(', '\\)']],
+                }
+            },
+            renderAccessibleContent: 'mathml speakable-text'
+        }
+        );
+
+    </script>
+}
+

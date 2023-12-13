@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row cnt-fileattach">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["filedinhkem"]</label>
+        <div class="col-md-9">
+            <div id="attachfilename" class="mb-2"></div>
+            <button class="btn file_select" type="button" onclick="upload_attachfile()">
+                <i class="icon-paper-clip"></i>
+                <span>@Localizer["clickhoackeotaptinvaodaydetailen"].Value.ToString()</span>
+            </button>
+            <input type="file" data-name="" hidden id="fileimport_word" />
+        </div>
+    </div>
+    <div class="form-group row cnt-fileattach">
+        <label class="col-md-3 col-form-label" for="text-input">@Localizer["sodiemcuatungcauhoi"]</label>
+        <div class="col-md-9">
+            <input class="form-control"  required type="number" placeholder="@Localizer["nhapdiem"] *" value="" id="point_input_import" />
+        </div>
+    </div>
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<link href="@Url.Content("~/css/docxam_import.css")" asp-append-version="true" rel="stylesheet" />
+<link href="@Url.Content("~/css/custom-input/custom-input.css")" asp-append-version="true" rel="stylesheet" />
+
+<script>
+    $(document).ready(function () {
+        $("#form_import_result button").click(function () {
+            questiontemp = [];
+        });
+    });
+    function upload_attachfile() {
+        $('#fileimport_word').trigger('click');
+    }
+    $('#fileimport_word').on('change', function () {
+        var options = {
+            subFolder: 'FileBook',
+            fileType: 'document'
+        };
+        uploadApi(api_file, $('#fileimport_word')[0].files[0], function (e) {
+            if (e.ReturnCode == 0) {
+                $('#attachfilename').html(e.PathfileName).show();
+                $('#fileimport_word').attr('data-name', e.PathfileName);
+            }
+        }, options)
+    });
+   
+</script>
+
+
+

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @WebConfigs.AppSettings.AppName</title>
+    <link href="@Url.Content("~/images/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/iconmoon/style.css" asp-append-version="true" />
+    <link href="@Url.Content("~/lib/font-awesome-4.7.0/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+
+    <link href="@Url.Content("~/lib/toastr/toastr.min.css")" rel="stylesheet" asp-append-version="true" />
+    <link href="@Url.Content("~/lib/sweetalert2/dist/sweetalert2.min.css")" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/viewer.css" asp-append-version="true" />
+    @RenderSection("Css", required: false)
+</head>
+<body>
+    @await Component.InvokeAsync("HeaderViewer", new {id=ViewBag.FileId,FileRowId = ViewBag.FileRowId,type = ViewBag.type,UserId=ViewBag.UserId,CustomerId = ViewBag.CustomerId})
+    <div class="container container_page_viewer">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    @{
+        Dictionary<string, string> _localizer_layout = Localizer.GetAllStrings().ToDictionary(x => x.Name, x => x.Value);
+        string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    }
+    <script>
+         var _localizer_layout = @Html.Raw(JsonConvert.SerializeObject(_localizer_layout));
+        var _currentCulture = '@_currentCulture';
+        const _RootBase = '@Url.Content("~/")';
+        var _docid='@ViewBag.DocID';
+        var _docattachid='@ViewBag.ID';
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/lib/jquery-validation/dist/additional-methods.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/lib/ClientJS/fingerprint.js")"></script>
+    <script src="@Url.Content("~/lib/sweetalert2/dist/sweetalert2.min.js")" asp-append-version="true"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/js/general.js" asp-append-version="true"></script>
+    <script src="@Url.Content("~/js/viewer.js")" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

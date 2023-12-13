@@ -1,0 +1,35 @@
+﻿@using ObjectDefine
+@{
+    Layout = null;
+    List<refmailtemplate> lsrefmailtemplates = Model;
+    refmailtemplate refmailtemplates = new refmailtemplate();
+    if (lsrefmailtemplates.Count > 0)
+    {
+        refmailtemplates = lsrefmailtemplates[0];
+    }
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["tenmail"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="title" value="@refmailtemplates.mailtemplatetitle" type="text" name="username" placeholder="@Localizer["nhaptenmail"]">
+        </div>
+    </div>
+    <div class="form-group row" style="display:none">
+        <label class="col-md-3 col-form-label">@Localizer["tenmail"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="name" value="@refmailtemplates.mailtemplatename" type="text" name="name" placeholder="@Localizer["nhaptenmail"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["noidung"]</label>
+        <div class="col-md-9">
+            <div id="mailtemplatecontents">@Html.Raw(refmailtemplates.mailtemplatecontents)</div>
+        </div>
+    </div>
+  
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/ckeditor/ckeditor.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/refmailtemplate/func_addupdate.js")" asp-append-version="true"></script>

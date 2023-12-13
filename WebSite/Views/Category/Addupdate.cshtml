@@ -1,0 +1,40 @@
+﻿@using ObjectDefine
+@{
+    List<category> categories = Model;
+    category ls = new category();
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+    if (categories.Count > 0)
+    {
+        ls = categories[0];
+    }
+}
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["theloai"] (*)</label>
+        <div class="col-md-9">
+            <input class="form-control" required id="catgname" value="@ls.catgname" type="text" name="catgname" placeholder="@Localizer["nhaptheloai"]">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["hoatdong"]</label>
+        <div class="col-md-4 col-form-label">
+            <label class="switch switch-label switch-primary">
+                <input class="switch-input" type="checkbox" @(ls.iseffect == true ? "checked=\"checked\"" : "") id="iseffect">
+                <span class="switch-slider" data-checked="@Localizer["bat"]" data-unchecked="@Localizer["tat"]"></span>
+            </label>
+        </div>
+    </div>
+    @* <div class="form-group row">
+    <label class="col-md-3 col-form-label" for="topicid">@Localizer["chonchudecha"] (*)</label>
+    <div class="col-md-9">
+    <select required style="width:100%;" id="topicid" name="topicid"></select>
+    </div>
+    </div>*@
+</form>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/lib/jquery-validation/localization/messages_"+_currentCulture+".js")"></script>
+<script src="@Url.Content("~/lib/ckeditor/ckeditor.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/category/func_addupdate.js")" asp-append-version="true"></script>
+

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Viewer</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description">
+</head>
+
+<body>
+    <div style="width:100%;height:100%">
+        <div id="htmlresults" class="viewer_mobi"></div>
+    </div>
+    <style>
+        img{
+            max-width:100%;
+        }
+    </style>
+    <script src="lib/bufferpack/bufferpack.js"></script>
+    <script src="src/locmap.js"></script>
+    <script src="src/mobiread.js"></script>
+    <script src="spec/mobiread_util.js"></script>
+    <script>
+        var link = "";
+        const params = new URLSearchParams(window.location.search);
+        if (params != null) {
+            var url_file = params.get('url');
+            //console.log(url_file);
+            if (url_file) {
+                link = url_file;
+            }
+        }
+    </script>
+    <script src="render_viewer.js"></script>
+</body>
+
+</html>

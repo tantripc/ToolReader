@@ -1,0 +1,49 @@
+﻿@*@{
+    Layout = null;
+    List<docnote> lst_notes = Model;
+    List<pos> lst_poses = new List<pos>();
+    pos poses = new pos();
+}
+@foreach (docnote item in lst_notes)
+{
+    @* if (item.pos != null)
+    {
+        lst_poses = JsonConvert.DeserializeObject<List<pos>>(item.pos);
+        if (lst_poses.Count > 0)
+        {
+            poses = lst_poses[0];
+        }
+        @if (item.pagenumber != null)
+        {
+            <div class="item_note" style="background:@poses.bg" onclick="goto_note(@item.docnoteid,this,@poses.numbercolor)" data-p="@item.pagenumber">
+                <div class="page_note">@Localizer["trang"] @item.pagenumber</div>
+                <div>@item.note</div>
+                <div class="btn_delete" title="@Localizer["xoaghichu"]" onclick="delete_notes(@item.docnoteid)">
+                    <i class="iconmoon iconmoon-xoa"></i>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        @if (item.pagenumber != null)
+        {
+            <div class="item_note" onclick="goto_note(this)" data-p="@item.pagenumber">
+                <div class="page_note" >@Localizer["trang"] @item.pagenumber</div>
+                <div>@item.note</div>
+                <div class="btn_delete" title="@Localizer["xoaghichu"]" onclick="delete_notes(@item.docnoteid)">
+                    <i class="iconmoon iconmoon-xoa"></i>
+                </div>
+            </div>
+        }
+    }
+    <div class="item_note" onclick="goto_note(this)" data-p="@item.pagenumber">
+        <div class="page_note">@Localizer["trang"] @item.pagenumber</div>
+        <div>@item.note</div>
+        <div class="btn_delete" title="@Localizer["xoaghichu"]" onclick="delete_notes(@item.docnoteid)">
+            <i class="iconmoon iconmoon-xoa"></i>
+        </div>
+    </div>
+
+}
+*@

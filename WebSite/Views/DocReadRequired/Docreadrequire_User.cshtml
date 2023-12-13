@@ -1,0 +1,277 @@
+﻿@using ObjectDefine
+@{
+    string _currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    Layout = null;
+
+}
+<div id="addsh" role="application">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["sach"]:</label>
+        <div class="col-md-9">
+            <input style="width:100%" id="typedoc">
+        </div>
+    </div>
+    @*<div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["thoigian"]:</label>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <input style="width:100%" id="startdate" required placeholder="@Localizer["ngaybatdau"]">
+                </div>
+                <div class="col-md-6">
+                    <input style="width:100%" id="enddate" required placeholder="@Localizer["ngayketthuc"]">
+                </div>
+            </div>
+
+
+        </div>
+    </div>*@
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["batbuocdoc"]</label>
+        <div class="col-md-4 col-form-label">
+            <label class="switch switch-label switch-primary">
+                <input class="switch-input" type="checkbox" checked="checked" id="iseffect">
+                <span class="switch-slider" data-checked="@Localizer["bat"]" data-unchecked="@Localizer["tat"]"></span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label">@Localizer["loai"]:</label>
+        <div class="col-md-9">
+            <div class="item-radio">
+                <input class="k-radio" type="radio" id="nguoidung" value="1" name="nguoidung" checked="checked">
+                <label class="k-radio-label" for="nguoidung">@Localizer["nguoidung"]</label>
+                <input class="k-radio" type="radio" id="nhomnguoidung" value="2" name="nguoidung">
+                <label class="k-radio-label" for="nhomnguoidung">@Localizer["nhomnguoidung"]</label>
+            </div>
+        </div>
+    </div>
+
+    <div style="width:100%;display: flex;justify-content: space-between;padding-right: 5px;">
+        <div style="width: calc(50% - 40px);position:relative;margin-bottom:10px;">
+            <input type='text' style="width:100%;" id='searchBox' class='k-textbox' placeholder='@Localizer["nhapnoidungtimkiem"]' />
+            <i class="iconmoon iconmoon-TimKiem" id="search_icon" style="position: absolute;right: 8px;top: 8px;cursor: pointer;"></i>
+        </div>
+        <div style="width: calc(54% - 40px);position:relative;margin-bottom:10px;">
+            <input type='text' style="width:100%;" id='searchBoxselect' class='k-textbox' placeholder='@Localizer["nhapnoidungtimkiem"]' />
+            <i class="iconmoon iconmoon-TimKiem" id="search_iconselect" style="position: absolute;right: 8px;top: 8px;cursor: pointer;"></i>
+        </div>
+    </div>
+
+    <div id="User" class="course-section k-content wide">
+        <label for="optionalUser">@Localizer["nguoidung"]</label>
+        <label for="selectedUser">@Localizer["nguoidungdachon"]</label>
+        <br />
+        <select id="optionalUser"></select>
+        <select id="selectedUser"></select>
+    </div>
+    <div id="GroupUser" class="course-section k-content wide d-none">
+        <label for="optionalGroupuser">@Localizer["nhomnguoidung"]</label>
+        <label for="selectedGroupuser">@Localizer["nhomnguoidungdachon"]</label>
+        <br />
+        <select id="optionalGroupuser"></select>
+        <select id="selectedGroupuser"></select>
+    </div>
+    <script>
+        var _docid = '@ViewBag.docid';
+        var link_api_file = '@(WebConfigs.AppSettings.WebApiFileUrl.TrimEnd('/') + "/")';
+        $(document).ready(function () {
+            var learnerTemplate = '<span class="k-state-default" style="background-image: url(\'' + link_api_file + '#if(data.profilephoto!=null){##:data.profilephoto##}else{#Avatar/NoAvatar.png#}#\')"></span>' +
+                '<span class="k-state-default"><h3>#if(data.fullname!=null){##:data.fullname##}else{##:data.emailaddr##}#\</h3><h3 id="ugid" class="d-none">#if(data.ugid!=null){##:data.ugid##}else{##}#\</h3><p>#if(data.username!=null){##:data.username##}else{##}#\</p></span>';
+            $("#optionalUser").kendoListBox({
+                dataTextField: "username",
+                dataValueField: "userid",
+                template: learnerTemplate,
+                dataSource: {
+                    transport: {
+                        read: function (options) {
+                            $.ajax({
+                                url: _RootBase + "DocReadRequired/Docreadrequire_serarch_user",
+                                type: "Get",
+                                dataType: "json",
+                                async: false,
+                                data: {
+                                    posstart: 1,
+                                    numofrow: 500,
+                                    docid: _docid
+                                },
+                                success: function (result) {
+                                    var data = result.data;
+                                    options.success(data);
+                                },
+                                error: function (result) {
+                                    options.error(result);
+                                }
+                            });
+                        }
+                    },
+                },
+                draggable: { placeholder: customPlaceholder },
+                dropSources: ["selectedUser"],
+                connectWith: "selectedUser",
+                toolbar: {
+                    position: "right",
+                    tools: ["transferTo", "transferFrom"]
+                },
+                selectable: "multiple",
+            });
+
+            $("#selectedUser").kendoListBox({
+                dataTextField: "username",
+                dataValueField: "userid",
+                template: learnerTemplate,
+                draggable: { placeholder: customPlaceholder },
+                dropSources: ["optionalUser"],
+                connectWith: "optionalUser"
+            });
+
+            function customPlaceholder(draggedItem) {
+                return draggedItem
+                    .clone()
+                    .addClass("custom-placeholder")
+                    .removeClass("k-ghost");
+            }
+            $("#searchBox").on("input", function (e) {
+                var listBox = $("#optionalUser").getKendoListBox();
+                var searchString = $(this).val();
+                listBox.dataSource.filter({ field: "username", operator: "contains", value: searchString });
+                var listBox = $("#selectedUser").getKendoListBox();
+                var searchString = $(this).val();
+                listBox.dataSource.filter({ field: "username", operator: "contains", value: searchString });
+            });
+            $('#search_icon').on('click', function () {
+                var listBox = $("#optionalUser").getKendoListBox();
+                var searchString = $('#searchBox').val();
+                listBox.dataSource.filter({ field: "username", operator: "contains", value: searchString });
+                var listBox = $("#selectedUser").getKendoListBox();
+                var searchString = $('#searchBox').val();
+                listBox.dataSource.filter({ field: "username", operator: "contains", value: searchString });
+            })
+            $("#searchBoxselect").on("input", function (e) {
+
+                var listBox = $("#selectedUser").getKendoListBox();
+                var searchString = $(this).val();
+                listBox.dataSource.filter({ field: "username", operator: "contains", value: searchString });
+            });
+            $('#search_iconselect').on('click', function () {
+                var listBox = $("#selectedUser").getKendoListBox();
+                var searchString = $('#searchBox').val();
+                listBox.dataSource.filter({ field: "username", operator: "contains", value: searchString });
+            })
+        });
+    </script>
+    <script>
+        var link_api_file = '@(WebConfigs.AppSettings.WebApiFileUrl.TrimEnd('/') + "/")';
+        $(document).ready(function () {
+            var learnerTemplate = '<span class="k-state-default" style="background-image: url(\'' + link_api_file + '#if(data.profilephoto!=null){##:data.profilephoto##}else{#Avatar/NoAvatar.png#}#\')"></span>' +
+                '<span class="k-state-default"><h3>#: data.ugname #</h3><h3 id="ugid" class="d-none">#: data.ugid #</h3><p>#: data.numuser # ' + _localizer.nguoidung + '</p></span>';
+            $("#optionalGroupuser").kendoListBox({
+                dataTextField: "ugname",
+                dataValueField: "ugid",
+                template: learnerTemplate,
+                dataSource: {
+                    transport: {
+                        read: function (options) {
+                            $.ajax({
+                                url: _RootBase + "UserGroup/UserGroup_Search",
+                                type: "POST",
+                                dataType: "json",
+                                async: false,
+                                data: {
+                                    posstart: 1,
+                                    numofrow: 500
+                                },
+                                success: function (result) {
+                                    var data = result.data;
+                                    options.success(data);
+                                },
+                                error: function (result) {
+                                    options.error(result);
+                                }
+                            });
+                        }
+                    },
+                },
+                draggable: { placeholder: customPlaceholder },
+                dropSources: ["selectedGroupuser"],
+                connectWith: "selectedGroupuser",
+                toolbar: {
+                    position: "right",
+                    tools: ["transferTo", "transferFrom"]
+                },
+                selectable: "multiple",
+            });
+
+            $("#selectedGroupuser").kendoListBox({
+                dataTextField: "ugname",
+                dataValueField: "ugid",
+                template: learnerTemplate,
+                draggable: { placeholder: customPlaceholder },
+                dropSources: ["optionalGroupuser"],
+                connectWith: "optionalGroupuser"
+            });
+
+            function customPlaceholder(draggedItem) {
+                return draggedItem
+                    .clone()
+                    .addClass("custom-placeholder")
+                    .removeClass("k-ghost");
+            }
+            $("#searchBox").on("input", function (e) {
+                var listBox = $("#optionalGroupuser").getKendoListBox();
+                var searchString = $(this).val();
+                listBox.dataSource.filter({ field: "ugname", operator: "contains", value: searchString });
+
+            });
+            $('#search_icon').on('click', function () {
+                var listBox = $("#optionalGroupuser").getKendoListBox();
+                var searchString = $('#searchBox').val();
+                listBox.dataSource.filter({ field: "ugname", operator: "contains", value: searchString });
+
+            })
+            $("#searchBoxselect").on("input", function (e) {
+                var listBox = $("#selectedGroupuser").getKendoListBox();
+                var searchString = $(this).val();
+                listBox.dataSource.filter({ field: "ugname", operator: "contains", value: searchString });
+            });
+            $('#search_iconselect').on('click', function () {
+                var listBox = $("#selectedGroupuser").getKendoListBox();
+                var searchString = $('#searchBox').val();
+                listBox.dataSource.filter({ field: "ugname", operator: "contains", value: searchString });
+            })
+        });
+        $(document).ready(function () {
+            $('input[name="nguoidung"]').on('change', function () {
+                if ($(this).val() == 2) {
+                    $('#GroupUser').removeClass('d-none');
+                    $('#User').addClass('d-none');
+                }
+                else {
+                    $('#GroupUser').addClass('d-none');
+                    $('#User').removeClass('d-none');
+                }
+            });
+            loadKendoComboBox({
+                id: "typedoc",
+                placeholder: _localizer.chonsach,
+                dataTextField: "title",
+                dataValueField: "docid",
+                value: _docid ? _docid : '',
+                url: _RootBase + "Doc/search_foradmin",
+                data: {
+                    numofrow: -1,
+                    docid: _docid
+                },
+                isrequired: true
+            });
+            loadKendoDatePicker({
+                id: "startdate"
+            });
+            loadKendoDatePicker({
+                id: "enddate"
+            });
+        });
+    </script>
+</div>
+<link href="@Url.Content("~/css/docreadrequired.css")" asp-append-version="true" rel="stylesheet" />
+

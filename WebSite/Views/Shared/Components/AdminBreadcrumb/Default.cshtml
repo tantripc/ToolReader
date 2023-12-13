@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Breadcrumb";
+    ListBreadcrumb Breadcrumb = Model;
+}
+<!-- Breadcrumb-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a title="Trang chủ" href="@Url.Action("Index", "Home")">Trang chủ</a>
+    </li>
+    @if (Breadcrumb != null && Breadcrumb.ListNav != null && Breadcrumb.ListNav.Count > 0)
+    {
+        foreach (BreadcrumbObject item in Breadcrumb.ListNav)
+        {
+            <li class="breadcrumb-item">
+                @if (@item.link != "")
+                {
+                    <a title="@item.name" href="@item.link">@item.name</a>
+                }
+                else
+                {
+                    <a title="@item.name">@item.name</a>
+                }
+            </li>
+        }
+    }
+</ol>
+

@@ -1,0 +1,113 @@
+﻿@{
+     List<question_bank> lst = Model;
+    question_bank question = new question_bank();
+    if (lst.Count > 0)
+    {
+        question = lst[0];
+    }
+}
+<div class="row" id="createQuestion">
+    <div class="col-md-12">
+        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+             <div class="form-group">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label for="recipient-name" class="col-form-label col-md-3">@(Localizer["diem"])(*):</label>
+                        <div class="col-md-9" id="diem">
+                            <input class="form-control"  type="number" placeholder="@Localizer["nhapdiem"] *" value="@question.point" id="point_input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label class="col-form-label col-md-3">@(Localizer["loaicauhoi"])(*):</label>
+                        <div class="col-md-9">
+                            <div id="question_type" name="question_type" style="width:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="form-group group-content">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label class="col-form-label col-md-3">@(Localizer["noidungcauhoi"])(*):</label>
+                        <div class="col-md-9">
+                            <div class="form-control validate[required] editor_control" id="question-title" name="question-title">@Html.Raw(question.content)</div>
+                        </div>
+                        <div id="notes_hd" style="position:absolute;right:-10px;">
+                            <a href="#" id="popoverbootstrap" class="d-none" data-toggle="popover" title="@Localizer["huongdannhapcauhoidienkhuyet"]" data-content="@Localizer["noidunghuongdandienkhuyet"]" style="font-size:20px;">
+                                <i class="iconmoon iconmoon-information"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group group-answer">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label class="col-form-label col-md-3">@Localizer["noidungtraloi"]:</label>
+                        <div class="col-md-9">
+                            <div class="form-group group-option-question" style="padding-right:0px;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group group-solution-answer d-none">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label class="col-form-label col-md-3">@Localizer["dapan"]:</label>
+                        <div class="col-md-9">
+                            <div class="form-control editor_control" id="solution_answer">@Html.Raw(question.solution_key)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label for="recipient-name" class="col-form-label col-md-3">@Localizer["goiy"]:</label>
+                        <div class="col-md-9">
+                            <div class="form-control editor_control" id="question-explantion">@Html.Raw(question.explanation)</div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+        </form>
+
+    </div>
+
+</div>
+<link href="@Url.Content("~/lib/jquery-validation/custom.css")" asp-append-version="true" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery-validation/dist/jquery.validate.js")" asp-append-version="true"></script>
+@*<script src="@Url.Content("~/lib/ckeditor/plugins/eqneditor/plugin.js")" asp-append-version="true"></script>*@
+<link href="@Url.Content("~/css/add_question.css")" rel="stylesheet" asp-append-version="true" />
+
+<script>
+    var qbankid = '@question.v_questiontype';
+    var motluachon = '@v_questiontype.MOTLUACHON';
+    var nhieuluachon = '@v_questiontype.NHIEULUACHON';
+    var dungsai = '@v_questiontype.DUNGSAI';
+    var dienkhuyet = '@v_questiontype.DIENKHUYET';
+    var ghepdoi = '@v_questiontype.GHEPDOI';
+    var traloingan = '@v_questiontype.TRALOINGAN';
+    var tuluan = '@v_questiontype.TULUAN';
+    var v_questiontype = '@question.v_questiontype';
+      var question_bank_choice = @Json.Serialize(question.question_bank_choice);
+        var question_bank_suggest = @Json.Serialize(question.question_bank_suggest);
+                var content = '@question.content';
+        var solution_key = '@question.solution_key';
+
+</script>
+<style>
+    .popover{
+        z-index:3008;
+    }
+</style>
+  <script src="@Url.Content("~/lib/popper.js")" asp-append-version="true"></script>
+<script src="@Url.Content("~/js/docexam/add_question.js")" asp-append-version="true"></script>

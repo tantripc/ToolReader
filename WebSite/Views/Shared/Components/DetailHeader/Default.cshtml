@@ -1,0 +1,54 @@
+﻿@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    ViewData["Title"] = "Header";
+    users acc = Model;
+    if (string.IsNullOrEmpty(acc.profilephoto))
+    {
+        acc.profilephoto = "Avatar/NoAvatar.png";
+    }    
+      doc data = ViewBag.Doc;
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+<header class="app-header navbar">
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="@Url.Action("Index","Home")">
+        <img class="navbar-brand-full" src="@Url.Content("~/images/logo/logo_black.png")" width="100" height="40" style="object-fit:scale-down" alt="Logo">
+        <img class="navbar-brand-minimized" src="@Url.Content("~/images/logo/logo.png")" width="40" height="40" alt="Logo">
+    </a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <span class="position-relative sub_title">
+            <span style="left: 10px;font-size: 18px;position: absolute;top: 0px;">
+                <a style="text-decoration: none;" class="iconmoon iconmoon-back" href="@Url.Action("Index","Home")" data-url="@Url.Action("Index","Home")" title="@Localizer["quaylai"]"></a>
+            </span>
+        <span style="padding-left: 40px;font-size: 16px;" title="@data.title">
+                     @Localizer["sach"]: @data.title
+            </span>
+        </span>
+    <ul class="nav navbar-nav ml-auto">
+
+        <li class="nav-item dropdown infor_account_header">
+            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <span>@acc.fullname</span>
+                <img title="@acc.fullname" data-val="@acc.userid" class="img-avatar" src="@WebConfigs.AppSettings.WebApiFileUrl.TrimEnd('/')/@acc.profilephoto" alt="@acc.fullname">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                    <strong>Tài khoản @acc.fullname</strong>
+                </div>                
+                <a class="dropdown-item" href="@Url.Action("Profile","Account")">
+                    <i class="fa fa-user"></i> Trang cá nhân
+                </a>                
+                <a class="dropdown-item" href="@Url.Action("SignOut","Account")">
+                    <i class="fa fa-lock"></i> Đăng xuất
+                </a>
+            </div>
+        </li>
+    </ul>
+</header>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "MenuLeft";
+
+}
+
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" id="Active_Docattach" href="@Url.Action("Index","DocAttach",new{ id = ViewBag.docid })">
+                    <i class="nav-icon iconmoon iconmoon-GiaoAn"></i>
+                    <span>File nội dung</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","DocRelate",new{ id = ViewBag.docid })">
+                    <i class="nav-icon iconmoon iconmoon-TieuHoc"></i> @Localizer["sachlienquan"] 
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","DocComment",new{ id = ViewBag.docid })">
+                    <i class="nav-icon iconmoon iconmoon-Comment"></i> @Localizer["binhluan"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","DocRate",new{ id = ViewBag.docid })">
+                    <i class="nav-icon iconmoon iconmoon-DanhGiaGVTT"></i> @Localizer["danhgia"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","DocExam",new{ id = ViewBag.docid })">
+                    <i class="nav-icon iconmoon iconmoon-ChamThi"></i> @Localizer["baikiemtra"]
+                </a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" id="Active_Docreadrequired" href="@Url.Action("Index","DocReadRequiredInDoc",new{ id = ViewBag.docid })">
+                    <i class="nav-icon iconmoon iconmoon-SachCanDoc"></i> @Localizer["phancongdocsach"]
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Doc" asp-action="Index">
+                    <i class="nav-icon iconmoon iconmoon-back"></i> @Localizer["quaylai"]
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>
+

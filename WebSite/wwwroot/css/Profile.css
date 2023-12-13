@@ -1,0 +1,41 @@
+﻿.profile-user .profile-photo-edit {
+    position: absolute;
+    right: 0;
+    left: auto;
+    bottom: -1px;
+    cursor: pointer;
+}
+
+.avatar-xs {
+    height: 2rem;
+    width: 2rem;
+}
+
+.avatar-title {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #6c5dd4;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-weight: 500;
+    height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+}
+.card-header-action {
+    cursor: pointer;
+    padding: 10px;
+    background: #698AD8;
+    color: #fff !important;
+    margin-right: 0 !important;
+    border-radius: 8px;
+}
+._button {
+    justify-content: flex-end;
+    padding: 15px;
+}
