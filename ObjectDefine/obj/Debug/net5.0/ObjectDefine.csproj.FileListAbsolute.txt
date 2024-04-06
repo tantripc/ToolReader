@@ -1,0 +1,5 @@
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net5.0\ObjectDefine.csproj.AssemblyReference.cache
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net5.0\ObjectDefine.GeneratedMSBuildEditorConfig.editorconfig
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net5.0\ObjectDefine.AssemblyInfoInputs.cache
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net5.0\ObjectDefine.AssemblyInfo.cs
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net5.0\ObjectDefine.csproj.CoreCompileInputs.cache

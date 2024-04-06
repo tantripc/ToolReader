@@ -30,3 +30,14 @@ E:\LTTRI\WebSite-4Library\ObjectDefine\obj\Debug\net6.0\ObjectDefine.csproj.Core
 E:\LTTRI\WebSite-4Library\ObjectDefine\obj\Debug\net6.0\ObjectDefine.dll
 E:\LTTRI\WebSite-4Library\ObjectDefine\obj\Debug\net6.0\ref\ObjectDefine.dll
 E:\LTTRI\WebSite-4Library\ObjectDefine\obj\Debug\net6.0\ObjectDefine.pdb
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\ObjectDefine.GeneratedMSBuildEditorConfig.editorconfig
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\ObjectDefine.AssemblyInfoInputs.cache
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\ObjectDefine.AssemblyInfo.cs
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\ObjectDefine.csproj.CoreCompileInputs.cache
+E:\LTTRI\ToolReader\ObjectDefine\bin\Debug\net6.0\ObjectDefine.deps.json
+E:\LTTRI\ToolReader\ObjectDefine\bin\Debug\net6.0\ObjectDefine.dll
+E:\LTTRI\ToolReader\ObjectDefine\bin\Debug\net6.0\ObjectDefine.pdb
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\ObjectDefine.dll
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\refint\ObjectDefine.dll
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\ObjectDefine.pdb
+E:\LTTRI\ToolReader\ObjectDefine\obj\Debug\net6.0\ref\ObjectDefine.dll
