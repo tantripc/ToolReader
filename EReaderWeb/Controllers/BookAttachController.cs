@@ -19,10 +19,12 @@ namespace EReaderWeb.Controllers
 
         private readonly string _ServiceLibrary;
         private readonly string? _ApiLoadImage;
+        private readonly string? _UrlGetImageTempLibrary;
         public BookAttachController()
         {
             _ServiceLibrary = WebConfigs.AppSettings.WebApiServiceLibrary;
             _ApiLoadImage = WebConfigs.AppSettings.ApiLoadImage;
+            _UrlGetImageTempLibrary = WebConfigs.AppSettings.UrlGetImageTemp;
         }
         Rep_Library Rep_Librarys = new Rep_Library(WebConfigs.AppSettings.WebApiServiceLibrary, WebConfigs.AppSettings.WebApi_clientId, WebConfigs.AppSettings.WebApi_clientSecret);
 
@@ -205,7 +207,11 @@ namespace EReaderWeb.Controllers
                             case ".m3u8": name_file = "ViewerMedia"; break;
                             default: name_file = "Viewer"; break;
                         }
-                        if (data_detailbooks.FileExt == ".pdf" || data_detailbooks.FileExt == ".docx" || data_detailbooks.FileExt == ".doc")
+                        if (data_detailbooks.FileExt == ".jpg" || data_detailbooks.FileExt == ".png" || data_detailbooks.FileExt == ".jpeg" || data_detailbooks.FileExt == ".bmp")
+                        {
+                            ViewBag.UrlFilePdf = _ServiceLibrary.TrimEnd('/') + data_detailbooks.UrlFile;
+                        }
+                        else if (data_detailbooks.FileExt == ".pdf" || data_detailbooks.FileExt == ".docx" || data_detailbooks.FileExt == ".doc")
                         {
 
                             //api lấy hình ảnh
@@ -326,9 +332,13 @@ namespace EReaderWeb.Controllers
             string strImageFileFullThumnail = folder_image + "/" + FileId + "/" + "imagethumbnail" + "/" + pagenum + ".png";
             //tạo file text 
 
-
-
-            if (Islink == false || fileName_Image != null || fileExt != null || FileId != null)
+            byte[] fileContents = null;
+            if (fileExt == ".jpg" || fileExt == ".png" || fileExt == ".jpeg" || fileExt == ".bmp")
+            {
+                using (var wc = new WebClient())
+                    fileContents = wc.DownloadData(_UrlGetImageTempLibrary + fileName_Image);
+            }
+            else if (Islink == false || fileName_Image != null || fileExt != null || FileId != null)
             {
                 //gọi api lấy file ảnh
                 var rep = Rep_Librarys.LoadImageFileDD(pagenum, fileName_Image, fileExt);
@@ -336,8 +346,12 @@ namespace EReaderWeb.Controllers
                 Stream response = await rep.Content.ReadAsStreamAsync();
                 if (response.Length > 0 && response != null)
                 {
-                    byte[] fileContents = new byte[response.Length];
+                    fileContents = new byte[response.Length];
                     response.Read(fileContents, 0, (int)response.Length);
+                    
+                }
+                if (fileContents != null && fileContents.Length > 0)
+                {
                     Image image = Image.FromStream(new MemoryStream(fileContents));
                     //resize ảnh 
                     Bitmap objBitmap = new(image, new Size(793, 1125));
@@ -345,14 +359,10 @@ namespace EReaderWeb.Controllers
                     Bitmap objBitmapthumnail = new(image, new Size(169, 250));
                     objBitmapthumnail.Save(strImageFileFullThumnail);
                     objBitmap.Save(strImageFileFull);
+                    return Json(new { returncode = 1 });
                 }
-                return Json(new { returncode = 1 });
             }
-            else
-            {
-                return Json(new { returncode = 0 });
-            }
-
+            return Json(new { returncode = 0 });
         }
 
 
@@ -367,7 +377,6 @@ namespace EReaderWeb.Controllers
             byte[] fileData = null;
             using (var wc = new WebClient())
                 fileData = wc.DownloadData(url);
-
             return File(new MemoryStream(fileData), "application/octet-stream");
         }
 

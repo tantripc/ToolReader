@@ -1,0 +1,2 @@
+thêm vào appsetting config
+"UrlGetImageTemp": "http://demo.vebrary.vn/SharedDocuments/ViewOnlineTemp/", //Server contains image temp

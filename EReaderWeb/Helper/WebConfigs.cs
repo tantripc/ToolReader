@@ -34,6 +34,7 @@
         public string? UrlSaveImage { get; set; }
         public string? ApiLoadImage { get; set; }
         public string? UrlSaveImageLocal { get; set; }
+        public string? UrlGetImageTemp { get; set; }
     }
 
 }
